@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+  height: fit-content;
+}
+
+
+
+nav{
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+
+}
+
+.nav_div_prawy{
+  display: flex;
+  border: black;
+  border-style: dashed;
+  align-items: center;
+}
+
+.nav_div_lewy{
+  display: flex;
+  width:auto;
+  border: black;
+  border-style: dashed;
+  align-items: center;
+}
+
+.nav_div_lewy a{
+    width: 90px;
+  border: black;
+  border-style: dashed;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.gradient-section {
+  width:100%;
+  
+  background: linear-gradient(
+  145deg, 
+  #A00034 0%,      /* ciemna czerwień */
+  #C2185B 35%,     /* rozowy */
+  #FF0033 40%,     /* jaskrawy czerwony */
+  #FF4081 50%,     /* Intensywny różowy */
+  #FF1744 80%,     /* Czerwień z różem */
+  #A00034 100%     /* ciemna czerwien */
+  );
+  height: 100%;
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 60%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  z-index: -1; /* Gradient w tle */
+  
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: lighter;
+	margin-right:20px;
+  color:white;
+}
+.logo-MPK {
+  font-size: 24px;
+	color:white;
+	font-weight: bold;
+}
+
+.content {
+  display:flex;
+  flex: 1; /* Wypełnia dostępną przestrzeń */
+  padding: 20px;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  border: blue;
+  border-style: dashed;
+}
+
+/* Tu ten prostokat na srodku */
+.div_content_container{
+  margin-top:50px;
+  display:flex;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  width: 70vw;
+  height: 60vh;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  
+}
+
+/* Stopka */
+.footer {
+  background-color: #A00034;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  font-size: 13px;
+}
+#lewa{
+  display:flex;
+  align-items: center;
+  border: black;
+  border-style: dashed;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+	
+}
+
+.social a {
+  width: 90px;
+  border: black;
+  border-style: dashed;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+}
