@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="../CSS/menu.css" />
+  <link rel="stylesheet" href="../CSS/login.css" />
   <script src="../JS/login.js" defer></script>
   <title>Logowanie</title>
 </head>
 
 <body>
   <!--gradient -->
-  <div class="gradient-section">
+  <div class="gradient-section-login">
   </div>
   <div class="container">
 
@@ -21,23 +22,24 @@
         <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
       </div>
     </nav>
-
+    <span class="back-arrow">&larr;</span>
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
-      <!-- Tu ten prostokat na srodku -->
-      <div class="div_content_container">
-        <!-- Form Login -->
-        <form id="loginForm">
-          <h2>Logowanie</h2>
+      <div class="login-box">
+        <p class="title">Zaloguj</p>
+        <!-- Tu ten prostokat na srodku -->
+        <div class="div_content_container-login">
+          <!-- Form Login -->
+          <form id="loginForm">
+            <label for="email">Adres Email:</label>
+            <input type="email" id="email" name="email" required />
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" required />
 
-          <label for="password">Hasło:</label>
-          <input type="password" id="password" name="password" required />
-
-          <button type="submit">Zaloguj</button>
-        </form>
+            <button type="submit">Zaloguj się</button>
+          </form>
+        </div>
       </div>
     </div>
     

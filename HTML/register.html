@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="../CSS/menu.css" />
+  <link rel="stylesheet" href="../CSS/register.css" />
   <script src="../JS/register.js" defer></script>
   <title>Rejestracja</title>
 </head>
 
 <body>
   <!--gradient -->
-  <div class="gradient-section">
+  <div class="gradient-section-register">
   </div>
   <div class="container">
 
@@ -21,36 +22,39 @@
         <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
       </div>
     </nav>
-
+    <span class="back-arrow">&larr;</span>
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
-      <!-- Tu ten prostokat na srodku -->
-      <div class="div_content_container">
-        <!-- Form Register -->
-        <form id="registrationForm">
-          <label for="firstName">Imię:</label>
-          <input type="text" id="firstName" name="firstName"><br>
+      <div class="register-box">
+        <p class="title">Utwórz swoje konto</p>
+        <!-- Tu ten prostokat na srodku -->
+        <div class="div_content_container-register">
+          <!-- Form Register -->
+          <form id="registrationForm">
+            <label for="firstName">Imię:</label>
+            <input type="text" id="firstName" name="firstName"><br>
 
-          <label for="lastName">Nazwisko:</label>
-          <input type="text" id="lastName" name="lastName"><br>
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" id="lastName" name="lastName"><br>
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email"><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
 
-          <label for="password">Hasło:</label>
-          <input type="password" id="password" name="password"><br>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password"><br>
 
-          <label for="cardNumber">Numer Karty:</label>
-          <input type="text" id="cardNumber" name="cardNumber"><br>
+            <label for="cardNumber">Numer Karty:</label>
+            <input type="text" id="cardNumber" name="cardNumber"><br>
 
-          <label for="expiryDate">Data Ważności (MM/YY):</label>
-          <input type="text" id="expiryDate" name="expiryDate"><br>
+            <label for="expiryDate">Data Ważności (MM/YY):</label>
+            <input type="text" id="expiryDate" name="expiryDate"><br>
 
-          <label for="csv">CSV:</label>
-          <input type="text" id="csv" name="csv"><br>
+            <label for="csv">CSV:</label>
+            <input type="text" id="csv" name="csv"><br>
 
-          <button type="submit">Zarejestruj</button>
-        </form>
+            <button type="submit">Zarejestruj</button>
+          </form>
+        </div>
       </div>
     </div>
     
