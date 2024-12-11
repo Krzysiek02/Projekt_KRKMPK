@@ -75,8 +75,23 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         saveUser(user);
         alert('Rejestracja zakończona pomyślnie!');
         this.reset();
+        window.location.href = '../HTML/login.html';
     }
 });
+
+function handleBack(event) {
+    event.preventDefault();
+    console.log('test')
+    window.location.href = '../HTML/index.html';
+}
+
+// Atach event listener to the back button
+
+document.querySelector('.back-arrow').addEventListener('click', handleBack);
+
+// Atach event listener to the logo button
+
+document.querySelector('.logo').addEventListener('click', handleBack);
 
 // Validation
 console.log(JSON.parse(localStorage.getItem('users')));
