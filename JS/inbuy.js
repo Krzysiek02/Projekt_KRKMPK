@@ -17,23 +17,5 @@ function addDefaultUser() {
     }
 }
 
-// Function to handle navigation
-function handleNavigation(event) {
-    event.preventDefault();
-    const targetUrl = event.currentTarget.dataset.target;
-    if (targetUrl) {
-        window.location.href = targetUrl;
-    }
-}
-
-// Attach event listeners to buttons
-const navigationButtons = document.querySelectorAll('[data-target]');
-navigationButtons.forEach(button => {
-    button.addEventListener('click', handleNavigation);
-});
-
 // Add default user on page load
 document.addEventListener('DOMContentLoaded', addDefaultUser);
-
-// Validation
-console.log(JSON.parse(localStorage.getItem('users')));

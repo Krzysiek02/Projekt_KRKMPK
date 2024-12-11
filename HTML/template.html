@@ -16,7 +16,7 @@
     <!--Nav bar -->
 		<nav>
       <div class="nav_div_lewy">
-        <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
+        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span  class="logo-MPK">MPK</span></div>
         <a href="//">Inteligentny zakup biletu</a> |
         <a href="//">Szybki zakup biletu</a> |
         <a href="//">Mapy i schematy Krakowa</a> |
@@ -25,8 +25,10 @@
       <div class="nav_div_prawy">
         <a href="//">EN</a> |
         <a href="//">BUY</a> |
-        <a href="//">Zarejestruj się</a> |
-        <a href="//">Zaloguj się</a>
+        <div id="logging">
+          <button id="registerButton" data-target="../HTML/register.html">Zarejestruj się</button>
+          <button id="loginButton" data-target="../HTML/login.html">Zaloguj się</button>
+        </div>
       </div>
     </nav>
     
@@ -40,11 +42,11 @@
     <!-- Stopka -->
     <div class="footer">
       <div id="lewa">
-        <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
+        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span  class="logo-MPK">MPK</span></div>
         <div >©2024 KrakMPK. All rights reserved</div>
       </div>
         <div class="social">
-          <a href="#">Polityka prywatności</a>
+          <a href="./polityka_prywatnosci.html">Polityka prywatności</a>
           <a href="#">Skontaktuj się z nami</a>
           <a href="#">TEST</a>
           <a href="#">TEST</a>
@@ -53,7 +55,7 @@
     </div>
   </div>
   
-  <script src="../JS/script.js" defer></script>
+  <script src="../JS/navigation.js" defer></script>
 </body>
 
 </html>
