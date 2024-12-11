@@ -17,22 +17,5 @@ function handleLogin(event) {
     }
 }
 
-function handleBack(event) {
-    event.preventDefault();
-    window.location.href = '../HTML/index.html';
-}
-
 // Attach event listener to the login form
-
 document.getElementById('loginForm').addEventListener('submit', handleLogin);
-
-// Atach event listener to the back button
-
-document.querySelector('.back-arrow').addEventListener('click', handleBack);
-
-// Atach event listener to the logo button
-
-document.querySelector('.logo').addEventListener('click', handleBack);
-
-// Validation
-console.log(JSON.parse(localStorage.getItem('users')));

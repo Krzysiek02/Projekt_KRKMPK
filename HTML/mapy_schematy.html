@@ -6,30 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../CSS/menu.css" />
   <link rel="stylesheet" href="../CSS/mapy_schematy.css" />
-  <script src="../JS/index.js"></script>
-  <title>Browser</title>
+  <title>KrakMPK - Mapy i schematy Krakowa</title>
 </head>
 
 <body>
   <!--gradient -->
-  <div class="gradient-section">
-  </div>
+  <div class="gradient-section"></div>
   <div class="container">
 
     <!--Nav bar -->
 		<nav>
       <div class="nav_div_lewy">
-        <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
+        <div class="logo" data-target="../HTML/index.html">Krak<span  class="logo-MPK">MPK</span></div>
         <a href="//">Inteligentny zakup biletu</a> |
         <a href="//">Szybki zakup biletu</a> |
-        <a href="//">Mapy i schematy Krakowa</a> |
+        <a href="#">Mapy i schematy Krakowa</a> |
         <a href="//">Rozkład jazdy</a>
       </div>
       <div class="nav_div_prawy">
         <a href="//">EN</a> |
         <a href="//">BUY</a> |
-        <a href="//">Zarejestruj się</a> |
-        <a href="//">Zaloguj się</a>
+        <button id="registerButton" data-target="../HTML/register.html">Zarejestruj się</button>
+        <button id="loginButton" data-target="../HTML/login.html">Zaloguj się</button>
       </div>
     </nav>
     
@@ -86,7 +84,6 @@
     </div>
   </div>
   
-  
+  <script src="../JS/script.js"></script>
 </body>
-
 </html>

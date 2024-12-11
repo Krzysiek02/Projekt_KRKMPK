@@ -5,30 +5,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../CSS/menu.css" />
-  <script src="../JS/script.js"></script>
-  <title>Browser</title>
+  <title>KrakMPK - Inteligentny zakup biletu</title>
 </head>
 
 <body>
   <!--gradient -->
-  <div class="gradient-section">
-  </div>
+  <div class="gradient-section"></div>
   <div class="container">
 
     <!--Nav bar -->
 		<nav>
       <div class="nav_div_lewy">
-        <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
-        <a href="//">Inteligentny zakup biletu</a> |
+        <div class="logo" data-target="../HTML/index.html">Krak<span  class="logo-MPK">MPK</span></div>
+        <a href="#">Inteligentny zakup biletu</a> |
         <a href="//">Szybki zakup biletu</a> |
-        <a href="//">Mapy i schematy Krakowa</a> |
+        <a href="./mapy_schematy.html">Mapy i schematy Krakowa</a> |
         <a href="//">Rozkład jazdy</a>
       </div>
       <div class="nav_div_prawy">
         <a href="//">EN</a> |
         <a href="//">BUY</a> |
-        <a href="../HTML/register.html">Zarejestruj się</a> |
-        <a href="../HTML/login.html">Zaloguj się</a>
+        <button id="registerButton" data-target="../HTML/register.html">Zarejestruj się</button>
+        <button id="loginButton" data-target="../HTML/login.html">Zaloguj się</button>
       </div>
     </nav>
     
@@ -55,7 +53,7 @@
     </div>
   </div>
   
-  
+  <script src="../JS/script.js"></script>
 </body>
 
 </html>

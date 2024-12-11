@@ -12,8 +12,6 @@
   height: fit-content;
 }
 
-
-
 nav{
   display:flex;
   justify-content: space-between;
@@ -76,6 +74,11 @@ nav{
 	margin-right:20px;
   color:white;
 }
+
+.logo:hover {
+  cursor: pointer;
+}
+
 .logo-MPK {
   font-size: 24px;
 	color:white;
