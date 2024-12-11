@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../CSS/style.css" />
-  <script src="../JS/script.js"></script>
-  <title>Browser</title>
+  <script src="../JS/register.js" defer></script>
+  <title>Rejestracja</title>
 </head>
 
 <body>
@@ -16,26 +16,41 @@
   <div class="container">
 
     <!--Nav bar -->
-		<nav>
+    <nav>
       <div class="nav_div_lewy">
         <div class="logo">Krak<span  class="logo-MPK">MPK</span></div>
-        <a href="//">Inteligentny zakup biletu</a> |
-        <a href="//">Szybki zakup biletu</a> |
-        <a href="//">Mapy i schematy Krakowa</a> |
-        <a href="//">Rozkład jazdy</a>
-      </div>
-      <div class="nav_div_prawy">
-        <a href="//">EN</a> |
-        <a href="//">BUY</a> |
-        <button>Zarejestruj się</button>
-        <button>Zaloguj się</button>
       </div>
     </nav>
-    
+
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
+        <!-- Form Register -->
+        <form id="registrationForm">
+          <label for="firstName">Imię:</label>
+          <input type="text" id="firstName" name="firstName"><br>
+
+          <label for="lastName">Nazwisko:</label>
+          <input type="text" id="lastName" name="lastName"><br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email"><br>
+
+          <label for="password">Hasło:</label>
+          <input type="password" id="password" name="password"><br>
+
+          <label for="cardNumber">Numer Karty:</label>
+          <input type="text" id="cardNumber" name="cardNumber"><br>
+
+          <label for="expiryDate">Data Ważności (MM/YY):</label>
+          <input type="text" id="expiryDate" name="expiryDate"><br>
+
+          <label for="csv">CSV:</label>
+          <input type="text" id="csv" name="csv"><br>
+
+          <button type="submit">Zarejestruj</button>
+        </form>
       </div>
     </div>
     
@@ -54,8 +69,6 @@
         </div>
     </div>
   </div>
-  
-  
 </body>
 
 </html>
