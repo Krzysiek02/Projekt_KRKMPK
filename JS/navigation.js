@@ -75,6 +75,3 @@ if (backButton) {
 
 // Run the navigation update on page load
 document.addEventListener('DOMContentLoaded', updateNavigation);
-
-// Validation
-console.log(JSON.parse(localStorage.getItem('users')));
