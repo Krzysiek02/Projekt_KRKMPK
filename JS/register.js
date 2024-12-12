@@ -19,7 +19,7 @@ function validateForm() {
         input.style.border = '';
         if (errorElement) errorElement.remove();
 
-        if (!field.regex.test(input.value)) {
+        if (!field.regex.test(input.value.trim())) {
             isValid = false;
             input.style.border = '2px solid red';
             const errorMessage = document.createElement('div');
@@ -30,8 +30,8 @@ function validateForm() {
         }
 
         // Additional validation for expiry date
-        if (field.id === 'expiryDate' && field.regex.test(input.value)) {
-            const [month, year] = input.value.split('/').map(Number);
+        if (field.id === 'expiryDate' && field.regex.test(input.value.trim())) {
+            const [month, year] = input.value.trim().split('/').map(Number);
             const currentDate = new Date();
             const currentYear = currentDate.getFullYear() % 100;
             const currentMonth = currentDate.getMonth() + 1;
@@ -63,13 +63,13 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     event.preventDefault();
     if (validateForm()) {
         const user = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value,
-            cardNumber: document.getElementById('cardNumber').value.replaceAll(' ', ''),
-            expiryDate: document.getElementById('expiryDate').value,
-            csv: document.getElementById('csv').value,
+            firstName: document.getElementById('firstName').value.trim(),
+            lastName: document.getElementById('lastName').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value.trim(),
+            cardNumber: document.getElementById('cardNumber').value.trim(),
+            expiryDate: document.getElementById('expiryDate').value.trim(),
+            csv: document.getElementById('csv').value.trim(),
             isLoggedIn: false
         };
         saveUser(user);

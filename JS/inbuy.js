@@ -7,7 +7,7 @@ function addDefaultUser() {
             lastName: 'Kowalski',
             email: 'jan.kowalski@gmail.com',
             password: 'janKOWALSKI123!',
-            cardNumber: '1234123412341234',
+            cardNumber: '1234 1234 1234 1234',
             expiryDate: '01/25',
             csv: '123',
             isLoggedIn: false
