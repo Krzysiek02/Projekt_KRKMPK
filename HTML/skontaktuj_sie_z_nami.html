@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../CSS/menu.css" />
-  <title>TEMPLATE</title>
+  <link rel="stylesheet" href="../CSS/login.css" />
+  <title>KrakMPK - Skontaktuj się z nami</title>
 </head>
 
 <body>
@@ -14,28 +15,44 @@
   <div class="container">
 
     <!--Nav bar -->
-		<nav>
+    <nav>
       <div class="nav_div_lewy">
         <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span  class="logo-MPK">MPK</span></div>
-        <a href="//">Inteligentny zakup biletu</a> |
-        <a href="//">Szybki zakup biletu</a> |
-        <a href="//">Mapy i schematy Krakowa</a> |
-        <a href="//">Rozkład jazdy</a>
-      </div>
-      <div class="nav_div_prawy">
-        <a href="//">EN</a> |
-        <a href="//">BUY</a> |
-        <div id="logging">
-          <button data-target="../HTML/register.html">Zarejestruj się</button>
-          <button data-target="../HTML/login.html">Zaloguj się</button>
-        </div>
       </div>
     </nav>
-    
+    <span class="back-arrow">&larr;</span>
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
+        <div class="left">
+          <h3>Masz jakieś pytania?</h3>
+          <h1>Skontaktuj się z nami</h1>
+          <p>+32 XXX XXX XXX</p>
+          <p>xxxxxx@gmail.com</p>
+          <p>Kraków</p>
+        </div>
+        <div class="right">
+          <form id="contactForm">
+            <label for="firstName">Imię:</label>
+            <input type="text" id="firstName">
+
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" id="lastName">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+
+            <label for="phone">Numer telefonu:</label>
+            <input type="text" id="phone">
+
+            <label for="message">Treść wiadomości:</label>
+            <textarea id="message" maxlength="1000"></textarea>
+            <div id="charCounter">0/1000</div>
+
+            <button type="submit">Wyślij</button>
+          </form>
+        </div>
       </div>
     </div>
     
@@ -47,16 +64,17 @@
       </div>
         <div class="social">
           <a href="./polityka_prywatnosci.html">Polityka prywatności</a>
-          <a href="./skontaktuj_sie_z_nami.html">Skontaktuj się z nami</a>
+          <a href="#">Skontaktuj się z nami</a>
           <a href="#">TEST</a>
           <a href="#">TEST</a>
           <a href="#">TEST</a>
         </div>
     </div>
   </div>
-  
+
   <script src="../JS/shared.js"></script>
-  <script src="../JS/navigation.js" defer></script>
+  <script src="../JS/navigation.js"></script>
+  <script src="../JS/contact.js"></script>
 </body>
 
 </html>

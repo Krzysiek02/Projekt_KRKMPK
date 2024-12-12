@@ -10,7 +10,7 @@ function updateNavigation() {
                 <button id="toggleMenuButton" class="down-arrow">&darr;</button>
                 <span id="userName">${currentUser.firstName} ${currentUser.lastName}</span>
                 <div id="menuOptions" style="display: none;">
-                    <button data-target="//">Moje konto</button>
+                    <button data-target="../HTML/moje_konto.html">Moje konto</button>
                     <button data-target="//">Ulubione</button>
                     <button data-target="//">Historia zakupów</button>
                     <button data-target="//">Moja teczka</button>
@@ -33,20 +33,21 @@ function updateNavigation() {
         logoutButton.addEventListener('click', () => {
             currentUser.isLoggedIn = false;
             localStorage.setItem('users', JSON.stringify(users));
+            alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.firstName} ${currentUser.lastName}`)
             location.reload();
         });
 
     } else if (loggingDiv) {
         loggingDiv.innerHTML = `
-            <button id="registerButton" data-target="../HTML/register.html">Zarejestruj się</button>
-            <button id="loginButton" data-target="../HTML/login.html">Zaloguj się</button>
+            <button data-target="../HTML/register.html">Zarejestruj się</button>
+            <button data-target="../HTML/login.html">Zaloguj się</button>
         `;
+    }
 
-        const navigationButtons = document.querySelectorAll('[data-target]');
+    const navigationButtons = document.querySelectorAll('[data-target]');
         navigationButtons.forEach(button => {
             button.addEventListener('click', handleNavigation);
-        });
-    }
+    });
 }
 
 // Function to handle navigation
