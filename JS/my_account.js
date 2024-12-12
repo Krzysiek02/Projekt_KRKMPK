@@ -71,6 +71,7 @@ function addEventListeners(user) {
             editButton.style.display = 'inline';
             saveButton.style.display = 'none';
             cancelButton.style.display = 'none';
+            location.reload();
         }
     });
 

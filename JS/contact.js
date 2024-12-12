@@ -64,6 +64,7 @@ document.getElementById('contactForm').addEventListener('submit', function (even
     alert('Twoja wiadomość została wysłana pomyślnie!');
     this.reset();
     charCounter.textContent = '0/1000';
+    location.reload();
   }
 });
 
