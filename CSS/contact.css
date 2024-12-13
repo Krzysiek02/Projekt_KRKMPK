@@ -41,8 +41,9 @@
     margin-top:30px;
 }
 .right{
+    margin-left:10px;
     display: flex;
-    border: 2px black dotted;
+    /* border: 2px black dotted; */
     width: 50vw;
     max-width: 700px;
     justify-content: center ;
@@ -53,7 +54,7 @@
     color: black;
     display: flex;
     flex-direction: row; 
-    border: 2px blue dotted;
+    /* border: 2px blue dotted; */
     width: 50vw;
 }
 
@@ -86,7 +87,7 @@
 }
 #form_message{
     width:100%!important;
-    border: 2px orange dotted;
+    /* border: 2px orange dotted; */
     align-self: center!important;
 }
 .button-container {

@@ -40,7 +40,7 @@
   font-weight: bold;
   font-size: 80px;
   margin-bottom: 20px;
-  border: 2px black dotted;
+  /* border: 2px black dotted; */
   display:inline-flex;
 }
   .title::after { 
@@ -49,7 +49,7 @@
     margin-top: 80px;
 }
 .login-box {
-  border: 2px black dotted;
+  /* border: 2px black dotted; */
   width: 55vw;
   max-width: 700px;
   min-width: 400px;
@@ -68,7 +68,7 @@
 #loginForm{
   display: flex;
   flex-direction: column;
-  border: 2px black dotted;
+  /* border: 2px black dotted; */
 }
 .login-box input {
   padding: 10px;

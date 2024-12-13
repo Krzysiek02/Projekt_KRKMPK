@@ -41,11 +41,11 @@
   font-weight: bold;
   font-size: 80px;
   margin-bottom: 20px;
-  border: 2px black dotted;
+  /* border: 2px black dotted; */
   display:inline-flex;
 }
 .register-box {
-  border: 2px black dotted;
+  /* border: 2px black dotted; */
   width: 65vw;
   max-width: 700px;
   min-width: 400px;
@@ -65,7 +65,7 @@
   width: fit-content;
   display: flex;
   flex-direction: column;
-  border: 2px blue dotted;
+  /* border: 2px blue dotted; */
 }
 .register-box input {
   padding: 10px;

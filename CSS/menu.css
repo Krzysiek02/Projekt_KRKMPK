@@ -23,14 +23,15 @@ nav{
 .nav_div_prawy{
   margin-right:15px;
   display: flex;
-  border: orange;
-  border-style: dashed;
+  /* border: orange;
+  border-style: dashed; */
   align-items: center;
+  
 }
 
 .nav_div_prawy #logging button{
   color:white;
-  
+  transition: background-color 0.3s;
   font-size:15px;
   padding:14px;
   border: none;
@@ -39,30 +40,39 @@ nav{
   color: white;
   cursor: pointer;
   margin-right: 10px;
+  
 }
 .nav_div_prawy #logging .register-button{
   background: #7c485f!important; /*TO NIE DZIALA???*/
 }
-
+.nav_div_prawy #logging button:hover{
+  background: #d80665!important;
+  
+}
 .nav_div_lewy{
   margin-left:5px;
   display: flex;
   width:auto;
-  border: black;
-  border-style: dashed;
+  /* border: black;
+  border-style: dashed; */
   align-items: center;
 }
 
 .nav_div_lewy a{
     width: 90px;
-  border: black;
-  border-style: dashed;
+  /* border: black;
+  border-style: dashed; */
   text-align: center;
   color: white;
   font-size: 15px;
   text-decoration: none;
   margin-left:20px;
+  transition: color 0.3s;
 }
+.nav_div_lewy a:hover{
+  color: #740938;
+}
+
 
 .gradient-section {
   width:100%;
@@ -77,7 +87,7 @@ nav{
   #A00034 100%     /* ciemna czerwien */
   );
   height: 100%;
-  position: absolute;
+  position: fixed;
   clip-path: polygon(0 0, 100% 0, 100% 30%, 0 60%);
   display: flex;
   align-items: center;
@@ -112,8 +122,8 @@ nav{
   justify-content: center;
   color: white;
   align-items: center;
-  border: blue;
-  border-style: dashed;
+  /* border: blue;
+  border-style: dashed; */
 }
 
 /* Tu ten prostokat na srodku */
@@ -142,8 +152,8 @@ nav{
 #lewa{
   display:flex;
   align-items: center;
-  border: black;
-  border-style: dashed;
+  /* border: black;
+  border-style: dashed; */
 }
 
 .social {
@@ -154,8 +164,8 @@ nav{
 
 .social a {
   width: 90px;
-  border: black;
-  border-style: dashed;
+  /* border: black;
+  border-style: dashed; */
   text-align: center;
   color: white;
   font-size: 15px;
