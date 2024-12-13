@@ -26,8 +26,10 @@
       <div class="nav_div_prawy">
         <a href="//"> <img src="../IMAGES/flaga_UK.png" alt="UK Flag" class="flag-uk" /> </a>
         <a href="//"> <img src="../IMAGES/koszyk.png" alt="koszyk" class="flag-uk" /> </a>
-        <button data-target="../HTML/register.html">Zarejestruj się</button>
-        <button data-target="../HTML/login.html">Zaloguj się</button>
+        <div id="logging">
+          <button data-target="../HTML/register.html">Zarejestruj się</button>
+          <button data-target="../HTML/login.html">Zaloguj się</button>
+        </div>
       </div>
     </nav>
     
@@ -38,33 +40,38 @@
         <div class="image-item">
           <p>STREFY BILETOWE KRAKOWA</p>
           <img src="../IMAGES/zdjecie1.jpg" alt="Strefy biletowe Krakowa" />
-          <div class="zoom-icon" onclick=""><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
+          <div class="zoom-icon" onclick="showImage('../IMAGES/zdjecie1.jpg')"><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
         </div>
         <div class="image-item">
           <p>LINIE NOCNE</p>
           <img src="../IMAGES/zdjecie1.jpg" alt="Linie nocne" />
-          <div class="zoom-icon" onclick=""><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
+          <div class="zoom-icon" onclick="showImage('../IMAGES/zdjecie1.jpg')"><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
         </div>
         <div class="image-item">
           <p>LINIE AGLOMERACYJNE</p>
           <img src="../IMAGES/zdjecie1.jpg" alt="Linie aglomeracyjne" />
-          <div class="zoom-icon" onclick=""><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
+          <div class="zoom-icon" onclick="showImage('../IMAGES/zdjecie1.jpg')"><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
         </div>
         <div class="image-item">
           <p>TRANSPORT PUBLICZNY</p>
           <img src="../IMAGES/zdjecie1.jpg" alt="Transport publiczny" />
-          <div class="zoom-icon" onclick=""><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
+          <div class="zoom-icon" onclick="showImage('../IMAGES/zdjecie1.jpg')"><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
         </div>
         <div class="image-item">
           <p>LINIE TRAMWAJOWE</p>
           <img src="../IMAGES/zdjecie1.jpg" alt="Linie tramwajowe" />
-          <div class="zoom-icon" onclick=""><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
+          <div class="zoom-icon" onclick="showImage('../IMAGES/zdjecie1.jpg')"><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
         </div>
         <div class="image-item">
           <p>LINIE TRAMWAJOWE - ZMIANY CZASOWE</p>
           <img src="../IMAGES/zdjecie1.jpg" alt="Linie tramwajowe - zmiany czasowe" />
-          <div class="zoom-icon" onclick=""><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
+          <div class="zoom-icon" onclick="showImage('../IMAGES/zdjecie1.jpg')"><img src="../IMAGES/zoom_icon.png" alt="Zoom Icon"></div>
         </div>
+      </div>
+      
+      <div id="image-popup" class="image-popup"> 
+        <span class="close" onclick="closeImage()">&times;</span> 
+        <img class="popup-content" id="popup-img"> 
       </div>
     </div>
     
@@ -83,8 +90,9 @@
         </div>
     </div>
   </div>
-  
+
   <script src="../JS/shared.js"></script>
   <script src="../JS/navigation.js"></script>
+  <script src="../JS/mapy_schematy.js"></script>
 </body>
 </html>
