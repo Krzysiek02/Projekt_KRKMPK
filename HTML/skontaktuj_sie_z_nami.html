@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../CSS/menu.css" />
   <link rel="stylesheet" href="../CSS/login.css" />
+  <link rel="stylesheet" href="../CSS/contact.css" />
   <title>KrakMPK - Skontaktuj się z nami</title>
 </head>
 
@@ -28,29 +29,37 @@
         <div class="left">
           <h3>Masz jakieś pytania?</h3>
           <h1>Skontaktuj się z nami</h1>
-          <p>+32 XXX XXX XXX</p>
-          <p>xxxxxx@gmail.com</p>
-          <p>Kraków</p>
+          <p class="doLewej">+32 XXX XXX XXX</p>
+          <p class="doLewej">xxxxxx@gmail.com</p>
+          <p class="doLewej">Kraków</p>
         </div>
         <div class="right">
           <form id="contactForm">
-            <label for="firstName">Imię:</label>
-            <input type="text" id="firstName">
-
-            <label for="lastName">Nazwisko:</label>
+            <div class="form_inputs">
+              <label for="firstName">Imię:</label>
+              <input type="text" id="firstName">
+            </div>
+            <div class="form_inputs">
+              <label for="lastName">Nazwisko:</label>
             <input type="text" id="lastName">
-
-            <label for="email">Email:</label>
+            </div>
+            <div class="form_inputs">
+              <label for="email">Email:</label>
             <input type="email" id="email">
-
-            <label for="phone">Numer telefonu:</label>
+            </div>
+            <div class="form_inputs">
+              <label for="phone">Numer telefonu:</label>
             <input type="text" id="phone">
+            </div>
+            <div class="form_inputs" id="form_message">
+              <label for="message">Treść wiadomości:</label>
+              <textarea id="message" maxlength="1000"></textarea>
+              <div id="charCounter">0/1000</div>
+            </div>
 
-            <label for="message">Treść wiadomości:</label>
-            <textarea id="message" maxlength="1000"></textarea>
-            <div id="charCounter">0/1000</div>
-
-            <button type="submit">Wyślij</button>
+            <div class="button-container">
+              <button type="submit">Wyślij</button> 
+            </div>
           </form>
         </div>
       </div>
@@ -65,9 +74,9 @@
         <div class="social">
           <a href="./polityka_prywatnosci.html">Polityka prywatności</a>
           <a href="#">Skontaktuj się z nami</a>
-          <a href="#">TEST</a>
-          <a href="#">TEST</a>
-          <a href="#">TEST</a>
+          <a href="#" class="ikonki"><img src="../IMAGES/twitter.png" alt="koszyk" class="flag-uk" /></a>
+          <a href="#" class="ikonki"><img src="../IMAGES/instagram.png" alt="koszyk" class="flag-uk" /></a>
+          <a href="#" class="ikonki"><img src="../IMAGES/facebook.png" alt="koszyk" class="flag-uk" /></a>
         </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -20,13 +21,31 @@ nav{
 }
 
 .nav_div_prawy{
+  margin-right:15px;
   display: flex;
-  border: black;
+  border: orange;
   border-style: dashed;
   align-items: center;
 }
 
+.nav_div_prawy #logging button{
+  color:white;
+  
+  font-size:15px;
+  padding:14px;
+  border: none;
+  border-radius: 20px;
+  background: #740938;
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.nav_div_prawy #logging .register-button{
+  background: #7c485f!important; /*TO NIE DZIALA???*/
+}
+
 .nav_div_lewy{
+  margin-left:5px;
   display: flex;
   width:auto;
   border: black;
@@ -42,6 +61,7 @@ nav{
   color: white;
   font-size: 15px;
   text-decoration: none;
+  margin-left:20px;
 }
 
 .gradient-section {
@@ -116,7 +136,7 @@ nav{
   color: white;
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
+  padding: 10px 20px;
   font-size: 13px;
 }
 #lewa{
@@ -140,4 +160,87 @@ nav{
   color: white;
   font-size: 15px;
   text-decoration: none;
+  margin-left:20px;
+}
+.social .ikonki{
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  margin-left:25px;
+}
+.social .ikonki img{
+  width: 30px;
+  margin-left:5px;
+  margin-top:4px;
+}
+
+.flag-uk {
+  width: 40px; 
+  height: auto; 
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-left: 15px;
+}
+
+/* Style for the dropdown button */
+#userMenu {
+  position: relative;
+  display: inline-block;
+  margin-left: 14px;
+}
+#userMenu span{
+  color:white;
+  font-weight: lighter;
+  font-size:15px;
+  padding:14px;
+
+  border-radius: 20px;
+  background: #740938;
+  color: white;
+}
+
+#toggleMenuButton {
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+}
+
+#toggleMenuButton.down-arrow::after {
+  content: '\25BC'; /* down arrow */
+}
+
+#toggleMenuButton.up-arrow::after {
+  content: '\25B2'; /* up arrow */
+}
+
+#menuOptions {
+  display: none;
+  position: absolute;
+  right: 0px;
+  background-color: #740938;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 200px;
+  border-radius: 10px;
+  margin-top: 18px;
+}
+
+
+#menuOptions button {
+  text-align: center;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 90%;
+  background-color: #AF1740;
+  margin: 10px auto;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#menuOptions button:hover {
+  background-color: #f00645;
 }

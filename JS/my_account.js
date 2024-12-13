@@ -100,12 +100,14 @@ function renderUserProfile(user) {
             <p>Nazwisko: <span id="lastName">${user.lastName}</span></p>
             <p>Email: <span id="email">${user.email}</span></p>
             <p>Numer karty: <span id="card-Number">${user.cardNumber}</span></p>
-            <p>Data ważności: <span id="expiry-Date">${user.expiryDate}</span></p>
-            <p>CSV: <span id="csv">${user.csv}</span></p>
+            <p class="krotki">Data ważności: <span id="expiry-Date">${user.expiryDate}</span></p>
+            <p class="krotki">CSV: <span id="csv">${user.csv}</span></p>
 
+            <div id="buttons">
             <button id="edit-button">Edytuj</button>
             <button id="cancel-button" style="display: none;">Cofnij</button>
-            <button id="save-button" style="display: none;">Zapisz</button>
+            <button id="save-button" style="display: none; margin-left: 10px;" >Zapisz</button>
+            </div>
         </div>
     `;
     addEventListeners(user);

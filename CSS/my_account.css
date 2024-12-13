@@ -1,0 +1,87 @@
+/* Tu ten prostokat na srodku */
+.div_content_container{
+    margin-top:50px;
+    display:flex;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    width: 70vw;
+    max-width: 1390px;
+    height: 100vh;
+    height: fit-content;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px black dotted;
+    justify-content: center;
+}
+.content{
+    border: 2px orange dotted;
+}
+#user-section{
+    display: flex;
+    flex-direction: column;
+    border: 2px black dotted;
+    width: 70vw;
+    position: relative;
+}
+#user-section h2{
+    align-self: center;
+    color: #740938;
+    font-size: 60px;
+    
+}
+
+
+#user-section p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #740938;
+    margin: 10px 0 5px;
+    font-size: 40px;
+}
+
+#user-section p > span, #user-section p > input {
+    
+    font-size: 40px;
+    display: flex;
+    width: 40vw;
+    max-width: 800px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+    margin-right: 8%; 
+}
+
+
+#csv,#expiry-Date, .krotki > input{
+    max-width: 200px!important;
+    width: 40vw!important; 
+    margin-right:38%!important;         /*Do naprawy kiedys */
+}
+#user-section button {
+    font-size:15px;
+  font-weight: bold;
+  margin-top: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: #740938;
+  color: white;
+  cursor: pointer;
+  width: fit-content;
+  height: 40px;
+}
+#user-section #buttons {
+    right:8%;
+    bottom:10px;
+    position: absolute;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    border: 2px black dotted;
+    width:140px;
+    
+    }
