@@ -13,14 +13,13 @@
   height: fit-content;
 }
 
-nav{
+nav {
   display:flex;
   justify-content: space-between;
   width:100%;
-
 }
 
-.nav_div_prawy{
+.nav_div_right {
   margin-right:15px;
   display: flex;
   /* border: orange;
@@ -29,7 +28,21 @@ nav{
   
 }
 
-.nav_div_prawy #logging button{
+.nav_div_right .bucket, .nav_div_right .language_change {
+  border: 0px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+.nav_div_right .bucket img, .nav_div_right .language_change img{
+  height: 25px;
+  width: 35px;
+}
+
+.nav_div_right .logging button{
   color:white;
   transition: background-color 0.3s;
   font-size:15px;
@@ -40,16 +53,13 @@ nav{
   color: white;
   cursor: pointer;
   margin-right: 10px;
-  
 }
-.nav_div_prawy #logging .register-button{
-  background: #7c485f!important; /*TO NIE DZIALA???*/
-}
-.nav_div_prawy #logging button:hover{
+
+.nav_div_right .logging button:hover {
   background: #d80665!important;
-  
 }
-.nav_div_lewy{
+
+.nav_div_left{
   margin-left:5px;
   display: flex;
   width:auto;
@@ -58,7 +68,7 @@ nav{
   align-items: center;
 }
 
-.nav_div_lewy a{
+.nav_div_left a{
     width: 90px;
   /* border: black;
   border-style: dashed; */
@@ -69,12 +79,11 @@ nav{
   margin-left:20px;
   transition: color 0.3s;
 }
-.nav_div_lewy a:hover{
-  color: #740938;
+.nav_div_left a:hover{
+  color: #e6cb6b;
 }
 
-
-.gradient-section {
+.gradient_section {
   width:100%;
   
   background: linear-gradient(
@@ -97,6 +106,19 @@ nav{
   
 }
 
+.back_arrow { 
+  position: absolute; 
+  left: 40px;
+  top:120px;  
+  font-size: 40px; 
+  cursor: pointer; 
+  color: white;
+}
+
+.back_arrow:hover {
+  color: #e6cb6b;
+} 
+
 /* Logo */
 .logo {
   font-size: 24px;
@@ -109,7 +131,7 @@ nav{
   cursor: pointer;
 }
 
-.logo-MPK {
+.logo_MPK {
   font-size: 24px;
 	color:white;
 	font-weight: bold;
@@ -127,7 +149,7 @@ nav{
 }
 
 /* Tu ten prostokat na srodku */
-.div_content_container{
+.div_content_container {
   margin-top:50px;
   display:flex;
   background-color: rgba(255, 255, 255, 0.8);
@@ -149,7 +171,12 @@ nav{
   padding: 10px 20px;
   font-size: 13px;
 }
-#lewa{
+
+.footer a:hover{
+  color: #e6cb6b;
+}
+
+.left{
   display:flex;
   align-items: center;
   /* border: black;
@@ -172,20 +199,20 @@ nav{
   text-decoration: none;
   margin-left:20px;
 }
-.social .ikonki{
+.social .icons{
   border-radius: 50px;
   width: 40px;
   height: 40px;
   background-color: white;
   margin-left:25px;
 }
-.social .ikonki img{
+.social .icons img{
   width: 30px;
   margin-left:5px;
   margin-top:4px;
 }
 
-.flag-uk {
+.flag_uk {
   width: 40px; 
   height: auto; 
   margin-right: 5px;
@@ -194,12 +221,12 @@ nav{
 }
 
 /* Style for the dropdown button */
-#userMenu {
+.user_menu {
   position: relative;
   display: inline-block;
   margin-left: 14px;
 }
-#userMenu span{
+.user_menu span{
   color:white;
   font-weight: lighter;
   font-size:15px;
@@ -210,21 +237,7 @@ nav{
   color: white;
 }
 
-#toggleMenuButton {
-  background-color: #f1f1f1;
-  border: none;
-  cursor: pointer;
-}
-
-#toggleMenuButton.down-arrow::after {
-  content: '\25BC'; /* down arrow */
-}
-
-#toggleMenuButton.up-arrow::after {
-  content: '\25B2'; /* up arrow */
-}
-
-#menuOptions {
+.nav_div_right .logging .menu_options {
   display: none;
   position: absolute;
   right: 0px;
@@ -237,7 +250,7 @@ nav{
 }
 
 
-#menuOptions button {
+.nav_div_right .logging .menu_options button {
   text-align: center;
   color: white;
   padding: 12px 16px;
@@ -251,6 +264,6 @@ nav{
   cursor: pointer;
 }
 
-#menuOptions button:hover {
+.menu_options button:hover {
   background-color: #f00645;
 }

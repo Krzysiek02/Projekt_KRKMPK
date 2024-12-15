@@ -2,14 +2,14 @@
 function addDefaultUser() {
     if (users.length === 0) {
         const defaultUser = {
-            firstName: 'Jan',
-            lastName: 'Kowalski',
+            first_name: 'Jan',
+            last_name: 'Kowalski',
             email: 'jan.kowalski@gmail.com',
             password: 'janKOWALSKI123!',
-            cardNumber: '1234 1234 1234 1234',
-            expiryDate: '01/25',
+            card_number: '1234 1234 1234 1234',
+            expiry_date: '01/25',
             csv: '123',
-            isLoggedIn: false
+            is_logged_in: false
         };
         users.push(defaultUser);
         localStorage.setItem('users', JSON.stringify(users));
@@ -17,6 +17,9 @@ function addDefaultUser() {
 
     // Validation accounts
     console.log(JSON.parse(localStorage.getItem('users')));
+
+    // Validation messages
+    console.log(JSON.parse(localStorage.getItem('messages')));
 }
 
 // Add default user on page load

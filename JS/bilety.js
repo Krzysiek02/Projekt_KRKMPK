@@ -7,3 +7,6 @@ function renderAuthorized(user) {
         `;   
     }
 };
+
+// Add default user on page load
+document.addEventListener('DOMContentLoaded', updateContent);

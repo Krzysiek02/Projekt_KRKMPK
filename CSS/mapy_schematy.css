@@ -6,7 +6,7 @@
   width: 100vw;
   max-width: 1700px;
 }
-.image-item {
+.image_item {
     width: 500px; 
     box-sizing: border-box; 
     display: flex;
@@ -18,7 +18,7 @@
     position: relative;
   }
   
-  .image-item img {
+  .image_item img {
     width: 100%;
     height: auto;
     border-radius: 10px;
@@ -26,18 +26,18 @@
     transition: transform 0.3s ease;
   }
   
-  .image-item img:hover {
+  .image_item img:hover {
     transform: scale(1.15);
   }
   
-  .image-item p {
+  .image_item p {
     color: #740938;
     margin-bottom:20px;
     margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
   }
-  .zoom-icon {
+  .zoom_icon {
     height: 40px;
     position: absolute;
     bottom: 10px;
@@ -50,7 +50,7 @@
   }
 
   /* Popup image */
-  .image-popup {
+  .image_popup {
     display: none;
     position: fixed;
     z-index: 1;
@@ -62,7 +62,7 @@
     background-color: rgba(0, 0, 0, 0.8);
   }
   
-  .popup-content {
+  .popup_content {
     margin: auto;
     display: block;
     width: 80%;

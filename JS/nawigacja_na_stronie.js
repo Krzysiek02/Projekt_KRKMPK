@@ -10,24 +10,25 @@ function handleNavigation(event) {
 
 // Update the navigation dynamically based on user login status
 function updateNavigation() {
-    const loggingDiv = document.getElementById('logging');
+    const currentUser = users.find(user => user.is_logged_in);
+    const loggingDiv = document.querySelector('.logging');
 
     if (currentUser && loggingDiv) {
         loggingDiv.innerHTML = `
-            <div id="userMenu">
-                <button id="toggleMenuButton" class="down-arrow">&darr;</button>
-                <span id="userName">${currentUser.firstName} ${currentUser.lastName}</span>
-                <div id="menuOptions" style="display: none;">
+            <div class="user_menu">
+                <button class="toggle_menu_button">&darr;</button>
+                <span class="user_name">${currentUser.first_name} ${currentUser.last_name}</span>
+                <div class="menu_options" style="display: none;">
                     <button data-target="../HTML/moje_konto.html">Moje konto</button>
                     <button data-target="../HTML/ulubione.html">Ulubione</button>
-                    <button data-target="//">Historia zakupów</button>
-                    <button data-target="//">Moja teczka</button>
-                    <button id="logoutButton">WYLOGUJ</button>
+                    <button data-target="../HTML/historia_zakupow.html">Historia zakupów</button>
+                    <button data-target="../HTML/moja_teczka.html">Moja teczka</button>
+                    <button class="logout_button">WYLOGUJ</button>
                 </div>
             </div>`;
 
-        const toggleMenuButton = document.getElementById('toggleMenuButton');
-        const menuOptions = document.getElementById('menuOptions');
+        const toggleMenuButton = document.querySelector('.toggle_menu_button');
+        const menuOptions = document.querySelector('.menu_options');
 
         toggleMenuButton.addEventListener('click', () => {
             const isMenuVisible = menuOptions.style.display === 'block';
@@ -37,9 +38,9 @@ function updateNavigation() {
             toggleMenuButton.innerHTML = isMenuVisible ? '&darr;' : '&uarr;';
         });
 
-        const logoutButton = document.getElementById('logoutButton');
+        const logoutButton = document.querySelector('.logout_button');
         logoutButton.addEventListener('click', () => {
-            currentUser.isLoggedIn = false;
+            currentUser.is_logged_in = false;
             localStorage.setItem('users', JSON.stringify(users));
             alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.firstName} ${currentUser.lastName}`)
             location.reload();
@@ -47,8 +48,8 @@ function updateNavigation() {
 
     } else if (loggingDiv) {
         loggingDiv.innerHTML = `
-            <button data-target="../HTML/register.html">Zarejestruj się</button>
-            <button data-target="../HTML/login.html">Zaloguj się</button>
+            <button data-target="../HTML/rejestracja.html">Zarejestruj się</button>
+            <button data-target="../HTML/logowanie.html">Zaloguj się</button>
         `;
     }
 
@@ -60,7 +61,7 @@ function updateNavigation() {
         });
     }
 
-    const backButton = document.querySelector('.back-arrow');
+    const backButton = document.querySelector('.back_arrow');
 
     if (backButton) {
         backButton.addEventListener('click', (event) => {

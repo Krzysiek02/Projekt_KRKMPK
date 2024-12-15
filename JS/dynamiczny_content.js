@@ -11,7 +11,7 @@ function renderUnauthorized() {
 
 // Dynamicly rendering whether user is logged 
 function updateContent() {
-    const loggedInUser = users.find(user => user.isLoggedIn);
+    const loggedInUser = users.find(user => user.is_logged_in);
     if (loggedInUser) {
         renderAuthorized(loggedInUser);
     } else {

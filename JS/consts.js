@@ -1,5 +1,5 @@
-// Loading users
+// Users
 const users = JSON.parse(localStorage.getItem('users')) || [];
 
-// Loading deafult users
-const currentUser = users.find(user => user.isLoggedIn);
+// Messages
+const messages = JSON.parse(localStorage.getItem('messages')) || [];

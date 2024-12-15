@@ -1,4 +1,4 @@
-.div_content_container-login{
+.div_content_container_login{
   display:flex;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
@@ -12,7 +12,7 @@
   justify-content: center;
   margin-left: 50px;
 }
-.gradient-section-login {
+.gradient_section_login {
   width:100%;
   
   background: linear-gradient(
@@ -48,7 +48,7 @@
     content: "się"; 
     margin-top: 80px;
 }
-.login-box {
+.login_box {
   /* border: 2px black dotted; */
   width: 55vw;
   max-width: 700px;
@@ -61,16 +61,16 @@
   align-items: center;
 }
 
-.login-box label {
+.login_box label {
   color: black;
   margin: 10px 0 5px;
 }
-#loginForm{
+.login_form{
   display: flex;
   flex-direction: column;
   /* border: 2px black dotted; */
 }
-.login-box input {
+.login_box input {
   padding: 10px;
   margin-bottom: 10px;
   border: none;
@@ -80,7 +80,7 @@
   min-width: 200px;
 }
 
-.login-box button {
+.login_box button {
   font-size:15px;
   font-weight: bold;
   margin-top: 40px;
@@ -93,17 +93,6 @@
   width: 100%;
 }
 
-.login-box button:hover {
+.login_box button:hover {
   background: #a52a2a;
 }
-.back-arrow { 
-    position: absolute; 
-    left: 40px;
-    top:120px;  
-    font-size: 40px; 
-    cursor: pointer; 
-}
-
-.back-arrow:hover {
-  cursor: pointer;
-} 

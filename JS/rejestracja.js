@@ -1,20 +1,20 @@
 // Function to validate form inputs
 function validateForm() {
     const fields = [
-        { id: 'firstName', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Imię może zawierać tylko litery i maksymalnie 50 znaków.' },
-        { id: 'lastName', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Nazwisko może zawierać tylko litery i maksymalnie 50 znaków.' },
-        { id: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, error: 'Wprowadź poprawny adres email.' },
-        { id: 'password', regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,100}$/, error: 'Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną cyfrę i jeden znak specjalny.' },
-        { id: 'cardNumber', regex: /^\d{4} ?\d{4} ?\d{4} ?\d{4}$/, error: 'Numer karty musi składać się z 16 cyfr, może zawierać spacje co 4 cyfry.' },
-        { id: 'expiryDate', regex: /^(0[1-9]|1[0-2])\/\d{2}$/, error: 'Data ważności w formacie MM/YY.' },
-        { id: 'csv', regex: /^\d{3}$/, error: 'CSV musi zawierać 3 cyfry.' }
+        { class: 'first_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Imię może zawierać tylko litery i maksymalnie 50 znaków.' },
+        { class: 'last_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Nazwisko może zawierać tylko litery i maksymalnie 50 znaków.' },
+        { class: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, error: 'Wprowadź poprawny adres email.' },
+        { class: 'password', regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,100}$/, error: 'Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną cyfrę i jeden znak specjalny.' },
+        { class: 'card_number', regex: /^\d{4} ?\d{4} ?\d{4} ?\d{4}$/, error: 'Numer karty musi składać się z 16 cyfr, może zawierać spacje co 4 cyfry.' },
+        { class: 'expiry_date', regex: /^(0[1-9]|1[0-2])\/\d{2}$/, error: 'Data ważności w formacie MM/YY.' },
+        { class: 'csv', regex: /^\d{3}$/, error: 'CSV musi zawierać 3 cyfry.' }
     ];
 
     let isValid = true;
 
     fields.forEach(field => {
-        const input = document.getElementById(field.id);
-        const errorElement = document.getElementById(`${field.id}-error`);
+        const input = document.querySelector(`.${field.class}`);
+        const errorElement = document.querySelector(`.${field.class}_error`);
 
         input.style.border = '';
         if (errorElement) errorElement.remove();
@@ -23,14 +23,14 @@ function validateForm() {
             isValid = false;
             input.style.border = '2px solid red';
             const errorMessage = document.createElement('div');
-            errorMessage.id = `${field.id}-error`;
+            errorMessage.className = `${field.class}_error`;
             errorMessage.style.color = 'red';
             errorMessage.textContent = field.error;
             input.insertAdjacentElement('afterend', errorMessage);
         }
 
         // Additional validation for expiry date
-        if (field.id === 'expiryDate' && field.regex.test(input.value.trim())) {
+        if (field.class === 'expiry_date' && field.regex.test(input.value.trim())) {
             const [month, year] = input.value.trim().split('/').map(Number);
             const currentDate = new Date();
             const currentYear = currentDate.getFullYear() % 100;
@@ -40,7 +40,7 @@ function validateForm() {
                 isValid = false;
                 input.style.border = '2px solid red';
                 const errorMessage = document.createElement('div');
-                errorMessage.id = `${field.id}-error`;
+                errorMessage.className = `${field.class}-error`;
                 errorMessage.style.color = 'red';
                 errorMessage.textContent = 'Karta nieaktualna. Podaj poprawną datę ważności.';
                 input.insertAdjacentElement('afterend', errorMessage);
@@ -57,26 +57,28 @@ function saveUser(user) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
+
+// Function for registration
 function registration(event) {
     event.preventDefault();
     
     if (validateForm()) {
         const user = {
-            firstName: document.getElementById('firstName').value.trim(),
-            lastName: document.getElementById('lastName').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            password: document.getElementById('password').value.trim(),
-            cardNumber: document.getElementById('cardNumber').value.trim(),
-            expiryDate: document.getElementById('expiryDate').value.trim(),
-            csv: document.getElementById('csv').value.trim(),
-            isLoggedIn: false
+            first_name: document.querySelector('.first_name').value.trim(),
+            last_name: document.querySelector('.last_name').value.trim(),
+            email: document.querySelector('.email').value.trim(),
+            password: document.querySelector('.password').value.trim(),
+            card_number: document.querySelector('.card_number').value.trim(),
+            expiry_date: document.querySelector('.expiry_date').value.trim(),
+            csv: document.querySelector('.csv').value.trim(),
+            is_logged_in: false
         };
         saveUser(user);
         alert('Rejestracja zakończona pomyślnie!');
         this.reset();
-        window.location.href = '../HTML/login.html';
+        window.location.href = '../HTML/logowanie.html';
     }
 }
 
 // Attach event listener to the form
-document.getElementById('registrationForm').addEventListener('submit', );
+document.querySelector('.registration_form').addEventListener('submit', registration);

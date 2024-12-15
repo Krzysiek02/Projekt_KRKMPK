@@ -1,5 +1,5 @@
 /* Tu ten prostokat na srodku */
-.div_content_container{
+.div_content_container {
     margin-top:50px;
     display:flex;
     background-color: rgba(255, 255, 255, 0.8);
@@ -13,10 +13,10 @@
     /* border: 2px black dotted; */
     justify-content: center;
 }
-.content{
+.content {
     /* border: 2px orange dotted; */
 }
-#user-section{
+.user_section {
     display: flex;
     flex-direction: column;
     /* border: 2px black dotted; */
@@ -25,20 +25,20 @@
     min-height: 550px;
 }
 
-#formularz{
+.form {
     display: flex;
     flex-direction: row;
     min-height: 550px;
 }
 
-#formularz #lewa{
+.form .left_side {
     width: 400px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
 }
-#formularz #prawa{
+.form .right {
     margin-left: 15px;
     /* border: 2px black dotted; */
     width: 100%;
@@ -47,26 +47,22 @@
     align-items: flex-start;
     justify-content: space-between;
 }
-#user-section h2{
+.user_section h2 {
     align-self: center;
     color: #740938;
     font-size: 60px;
-    
 }
 
-
-#user-section p {
+.user_section p {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #740938;
     margin: 10px 0 5px;
-    font-size: 30px;
-    
+    font-size: 30px;    
 }
 
-#formularz span, #formularz input {
-    
+.form span, .form input {
     font-size: 30px;
     display: flex;
     width: 100%;
@@ -77,17 +73,15 @@
     background-color: #fff;
     color: #333;
     box-sizing: border-box;
-    
-    
 }
 
 
-#csv,#expiry-Date, .krotki > input{
+.csv, .expiry_date, .short > input{
     max-width: 200px!important;
     width: 40vw!important; 
 }
-#user-section button {
-    font-size:15px;
+.user_section button {
+  font-size:15px;
   font-weight: bold;
   margin-top: 40px;
   padding: 10px;
@@ -99,7 +93,7 @@
   width: fit-content;
   height: 40px;
 }
-#user-section #buttons {
+.user_section .buttons {
     right:6%;
     bottom:10px;
     position: absolute;
@@ -111,17 +105,17 @@
     
     }
     @media (max-width: 827px) {
-        #formularz #lewa{
+        .form .left_side {
             width: 200px;
         }
-        #user-section p {
+        .user_section p {
             font-size: 20px;
             
         }
-        #formularz span, #formularz input {
+        .form span, .form input {
             font-size: 20px;
         }
-        #csv,#expiry-Date, .krotki > input{
+        .csv, .expiry_date, .short > input{
             width: 100px!important; 
         }
-    }
+}

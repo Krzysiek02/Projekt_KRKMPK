@@ -1,10 +1,11 @@
 // Dynamicly rendering logged user
-function renderUserProfile(user) {
+function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
-    contentContainer.innerHTML = `
+    if (contentContainer) {
+        contentContainer.innerHTML = `
         
-    `;
-    addEventListeners(user);
+        `;   
+    }
 };
 
 // Add default user on page load
