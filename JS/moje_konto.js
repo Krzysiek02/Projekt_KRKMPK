@@ -96,12 +96,12 @@ function renderAuthorized(user) {
                 <h2><span>Moje konto</span></h2>
                 <div class="form">
                     <div class="left_side">
-                        <p>Imię: </p>
-                        <p>Nazwisko: </p>
-                        <p>Email: </p>
-                        <p>Numer karty: </p>
-                        <p class="short">Data ważności: </p>
-                        <p class="short">CSV: </p>
+                        <p id="firstName">Imię: </p>
+                        <p id="lastName">Nazwisko: </p>
+                        <p id="email">Email: </p>
+                        <p id="cardNumber">Numer karty: </p>
+                        <p class="short" id="expiryDate">Data ważności: </p>
+                        <p class="short" id="csv">CSV: </p>
                     </div>
                     <div class="right">
                         <span class="first_name">${user.first_name}</span>

@@ -42,7 +42,7 @@ function updateNavigation() {
         logoutButton.addEventListener('click', () => {
             currentUser.is_logged_in = false;
             localStorage.setItem('users', JSON.stringify(users));
-            alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.firstName} ${currentUser.lastName}`)
+            alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.first_name} ${currentUser.last_name}`)
             location.reload();
         });
 

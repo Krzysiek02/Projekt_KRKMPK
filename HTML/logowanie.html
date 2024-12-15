@@ -27,13 +27,12 @@
         <p class="title">Zaloguj</p>
         <!-- Tu ten prostokat na srodku -->
         <div class="div_content_container_login">
-          <!-- Form Login -->
           <form class="login_form">
             <label for="email">Adres Email:</label>
-            <input type="email" class="email" name="email" required />
+            <input id="email" type="email" class="email" name="email" autocomplete="email" required />
 
             <label for="password">Hasło:</label>
-            <input type="password" class="password" name="password" required />
+            <input id="password" type="password" class="password" name="password" autocomplete="new-password" required />
 
             <button type="submit">Zaloguj się</button>
           </form>

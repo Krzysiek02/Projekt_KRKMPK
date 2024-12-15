@@ -26,7 +26,6 @@ function validateForm() {
     input.style.border = '';
     if (errorElement) {
       errorElement.remove();
-      console.log("xd");
     }
 
     if (!field.regex.test(input.value.trim())) {
@@ -37,7 +36,6 @@ function validateForm() {
       errorMessage.style.color = 'red';
       errorMessage.textContent = field.error;
       input.insertAdjacentElement('afterend', errorMessage);
-      console.log("xd1");
     }
   });
 
@@ -57,8 +55,8 @@ function message(event) {
 
   if (validateForm()) {
     const message = {
-      firstName: document.querySelector('.first_name').value.trim(),
-      lastName: document.querySelector('.last_name').value.trim(),
+      first_name: document.querySelector('.first_name').value.trim(),
+      last_name: document.querySelector('.last_name').value.trim(),
       email: document.querySelector('.email').value.trim(),
       phone: document.querySelector('.phone').value.trim(),
       message: document.querySelector('.message').value.trim()

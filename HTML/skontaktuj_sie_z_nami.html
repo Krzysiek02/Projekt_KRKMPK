@@ -36,29 +36,29 @@
           <form class="contact_form">
             <div class="form_inputs">
               <label for="firstName">Imię:</label>
-              <input type="text" class="first_name">
+              <input id="firstName" type="text" class="first_name" autocomplete="given-name">
             </div>
             <div class="form_inputs">
               <label for="lastName">Nazwisko:</label>
-            <input type="text" class="last_name">
+              <input id="lastName" type="text" class="last_name" autocomplete="family-name">
             </div>
             <div class="form_inputs">
               <label for="email">Email:</label>
-            <input type="email" class="email">
+              <input id="email" type="email" class="email" autocomplete="email">
             </div>
             <div class="form_inputs">
               <label for="phone">Numer telefonu:</label>
-            <input type="text" class="phone">
+              <input id="phone" type="tel" class="phone" autocomplete="tel">
             </div>
-            <div class="form_inputs" class="form_message">
+            <div class="form_inputs form_message">
               <label for="message">Treść wiadomości:</label>
-              <textarea class="message" maxlength="1000"></textarea>
+              <textarea id="message" class="message" maxlength="1000" autocomplete="off"></textarea>
               <div class="char_counter">0/1000</div>
             </div>
             <div class="button_container">
-              <button type="submit">Wyślij</button> 
+              <button type="submit">Wyślij</button>
             </div>
-          </form>
+          </form>          
         </div>
       </div>
     </div>

@@ -28,31 +28,30 @@
         <p class="title">Utwórz swoje konto</p>
         <!-- Tu ten prostokat na srodku -->
         <div class="div_content_container_register">
-          <!-- Form Register -->
           <form class="registration_form">
             <label for="firstName">Imię:</label>
-            <input type="text" class="first_name" name="firstName"><br>
-
+            <input id="firstName" type="text" class="first_name" name="firstName" autocomplete="given-name"><br>
+          
             <label for="lastName">Nazwisko:</label>
-            <input type="text" class="last_name" name="lastName"><br>
-
+            <input id="lastName" type="text" class="last_name" name="lastName" autocomplete="family-name"><br>
+          
             <label for="email">Email:</label>
-            <input type="email" class="email" name="email"><br>
-
+            <input id="email" type="email" class="email" name="email" autocomplete="email"><br>
+          
             <label for="password">Hasło:</label>
-            <input type="password" class="password" name="password"><br>
-
+            <input id="password" type="password" class="password" name="password" autocomplete="new-password"><br>
+          
             <label for="cardNumber">Numer Karty:</label>
-            <input type="text" class="card_number" name="cardNumber"><br>
-
+            <input id="cardNumber" type="text" class="card_number" name="cardNumber" autocomplete="cc-number"><br>
+          
             <label for="expiryDate">Data Ważności (MM/YY):</label>
-            <input type="text" class="expiry_date" name="expiryDate"><br>
-
+            <input id="expiryDate" type="text" class="expiry_date" name="expiryDate" autocomplete="cc-exp"><br>
+          
             <label for="csv">CSV:</label>
-            <input type="text" class="csv" name="csv"><br>
-
+            <input id="csv" type="text" class="csv" name="csv" autocomplete="cc-csc"><br>
+          
             <button type="submit">Zarejestruj</button>
-          </form>
+          </form>          
         </div>
       </div>
     </div>
