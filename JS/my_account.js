@@ -1,5 +1,4 @@
 const users = JSON.parse(localStorage.getItem('users')) || [];
-const loggedInUser = users.find(user => user.isLoggedIn);
 
 // Function to validate form inputs
 function validateInput(field, value) {
@@ -124,15 +123,6 @@ function renderUserProfile(user) {
     `;
     addEventListeners(user);
 };
-
-// Dynamicly rendering whether user is logged 
-function updateContent() {
-    if (loggedInUser) {
-        renderUserProfile(loggedInUser);
-    } else {
-        renderUnauthorized();
-    }
-}
 
 // Add default user on page load
 document.addEventListener('DOMContentLoaded', updateContent);

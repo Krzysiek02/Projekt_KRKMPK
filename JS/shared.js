@@ -11,3 +11,13 @@ function renderUnauthorized() {
         </div>
     `;
 };
+
+// Dynamicly rendering whether user is logged 
+function updateContent() {
+    const loggedInUser = users.find(user => user.isLoggedIn);
+    if (loggedInUser) {
+        renderUserProfile(loggedInUser);
+    } else {
+        renderUnauthorized();
+    }
+}

@@ -11,7 +11,7 @@ function updateNavigation() {
                 <span id="userName">${currentUser.firstName} ${currentUser.lastName}</span>
                 <div id="menuOptions" style="display: none;">
                     <button data-target="../HTML/moje_konto.html">Moje konto</button>
-                    <button data-target="//">Ulubione</button>
+                    <button data-target="../HTML/ulubione.html">Ulubione</button>
                     <button data-target="//">Historia zakupów</button>
                     <button data-target="//">Moja teczka</button>
                     <button id="logoutButton">WYLOGUJ</button>
