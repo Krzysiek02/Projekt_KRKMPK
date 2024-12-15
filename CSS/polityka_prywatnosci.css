@@ -1,18 +1,11 @@
-.content{
+.content {
     flex-direction: column;
 }
 .content p{
     color: white;
     font-size: 50px;
 }
-.div_content_container{
+.div_content_container {
     color: #740938;
     font-size: large;
-}
-.back-arrow { 
-    position: absolute; 
-    left: 40px;
-    top:120px;  
-    font-size: 40px; 
-    cursor: pointer; 
 }

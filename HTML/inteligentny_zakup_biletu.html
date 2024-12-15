@@ -4,34 +4,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../CSS/menu.css" />
+  <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="../CSS/inteligentny_zakup_biletu.css" />
   <title>KrakMPK - Inteligentny zakup biletu</title>
 </head>
 
 <body>
-  <!--gradient -->
-  <div class="gradient-section"></div>
+  <!--Gradient -->
+  <div class="gradient_section"></div>
   <div class="container">
-
     <!--Nav bar -->
 		<nav>
-      <div class="nav_div_lewy">
-        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span  class="logo-MPK">MPK</span></div>
+      <div class="nav_div_left">
+        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span class="logo_MPK">MPK</span></div>
         <a href="#">Inteligentny zakup biletu</a>
-        <a href="//">Szybki zakup biletu</a>
+        <a href="./szybki_zakup_biletu.html">Szybki zakup biletu</a>
         <a href="./mapy_schematy.html">Mapy i schematy Krakowa</a>
         <a href="./rozklad_jazdy.html">Rozkład jazdy</a>
       </div>
-      <div class="nav_div_prawy">
-        <a href="//"> <img src="../IMAGES/flaga_UK.png" alt="UK Flag" class="flag-uk" /> </a>
-        <a href="//"> <img src="../IMAGES/koszyk.png" alt="koszyk" class="flag-uk" /> </a>
-        <div id="logging">
-          <button class="register-button" data-target="../HTML/register.html" >Zarejestruj się</button>
-          <button data-target="../HTML/login.html">Zaloguj się</button>
+      <div class="nav_div_right">
+        <button class="language_change"> <img src="../IMAGES/flaga_UK.png" alt="UK Flag" class="flag_uk" /> </button>
+        <button class="bucket" data-target="../HTML/koszyk.html"> <img src="../IMAGES/koszyk.png" alt="Koszyk" class="flag_uk" /> </button>
+        <div class="logging">
+          <button class="registration" data-target="../HTML/rejestracja.html" >Zarejestruj się</button>
+          <button class="login" data-target="../HTML/logowanie.html">Zaloguj się</button>
         </div>
       </div>
     </nav>
-    
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
@@ -39,26 +39,26 @@
         
       </div>
     </div>
-    
     <!-- Stopka -->
     <div class="footer">
-      <div id="lewa">
-        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span  class="logo-MPK">MPK</span></div>
-        <div >©2024 KrakMPK. All rights reserved</div>
+      <div class="left">
+        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span class="logo_MPK">MPK</span></div>
+        <div>©2024 KrakMPK. All rights reserved</div>
       </div>
         <div class="social">
           <a href="./polityka_prywatnosci.html">Polityka prywatności</a>
           <a href="./skontaktuj_sie_z_nami.html">Skontaktuj się z nami</a>
-          <a href="#" class="ikonki"><img src="../IMAGES/twitter.png" alt="koszyk" class="flag-uk" /></a>
-          <a href="#" class="ikonki"><img src="../IMAGES/instagram.png" alt="koszyk" class="flag-uk" /></a>
-          <a href="#" class="ikonki"><img src="../IMAGES/facebook.png" alt="koszyk" class="flag-uk" /></a>
+          <a href="https://x.com/?lang=pl&mx=2" class="icons" target="_blank"><img src="../IMAGES/twitter.png" alt="X" class="flag_uk" /></a>
+          <a href="https://www.instagram.com/" class="icons" target="_blank"><img src="../IMAGES/instagram.png" alt="Instagram" class="flag_uk" /></a>
+          <a href="https://www.facebook.com/" class="icons" target="_blank" target="_blank"><img src="../IMAGES/facebook.png" alt="Facebook" class="flag_uk" /></a>
         </div>
     </div>
   </div>
   
-  <script src="../JS/shared.js"></script>
-  <script src="../JS/navigation.js"></script>
-  <script src="../JS/inbuy.js"></script>
+  <script src="../JS/consts.js"></script>
+  <script src="../JS/scripts.js"></script>
+  <script src="../JS/nawigacja_na_stronie.js"></script>
+  <script src="../JS/inteligentny_zakup_biletu.js"></script>
 </body>
 
 </html>
