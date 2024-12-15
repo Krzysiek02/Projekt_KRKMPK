@@ -6,28 +6,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
   <link rel="stylesheet" href="../CSS/menu.css" />
-  <link rel="stylesheet" href="../CSS/moje_konto.css" />
-  <title>KrakMPK - Moje Konto</title>
+  <link rel="stylesheet" href="../CSS/register.css" />
+  <title>KrakMPK - Rejestracja</title>
 </head>
 
 <body>
   <!--Gradient -->
-  <div class="gradient_section"></div>
+  <div class="gradient_section_register"></div>
   <div class="container">
+
     <!--Nav bar -->
     <nav>
       <div class="nav_div_lewy">
         <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span class="logo_MPK">MPK</span></div>
       </div>
     </nav>
-    <span class="back_arrow">&larr;</span>
+    <span class="back-arrow">&larr;</span>
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
-      <!-- Tu ten prostokat na srodku -->
-      <div class="div_content_container">
-        <!-- Główny content się pojawi tutaj dynamicznie -->
+      <div class="register-box">
+        <p class="title">Utwórz swoje konto</p>
+        <!-- Tu ten prostokat na srodku -->
+        <div class="div_content_container-register">
+          <!-- Form Register -->
+          <form class="registration_form">
+            <label for="firstName">Imię:</label>
+            <input type="text" class="first_name" name="firstName"><br>
+
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" class="last_name" name="lastName"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" class="email" name="email"><br>
+
+            <label for="password">Hasło:</label>
+            <input type="password" class="password" name="password"><br>
+
+            <label for="cardNumber">Numer Karty:</label>
+            <input type="text" class="card_number" name="cardNumber"><br>
+
+            <label for="expiryDate">Data Ważności (MM/YY):</label>
+            <input type="text" class="expiry_date" name="expiryDate"><br>
+
+            <label for="csv">CSV:</label>
+            <input type="text" class="csv" name="csv"><br>
+
+            <button type="submit">Zarejestruj</button>
+          </form>
+        </div>
       </div>
     </div>
+    
     <!-- Stopka -->
     <div class="footer">
       <div class="left">
@@ -47,8 +76,7 @@
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
-  <script src="../JS/dynamiczny_content.js"></script>
-  <script src="../JS/moje_konto.js"></script>
+  <script src="../JS/rejestracja.js"></script>
 </body>
 
 </html>

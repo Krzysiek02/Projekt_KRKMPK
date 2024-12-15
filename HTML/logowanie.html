@@ -5,27 +5,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
-  <link rel="stylesheet" href="../CSS/style.css" />
-  <title>KrakMPK - TEMPLATE</title>
+  <link rel="stylesheet" href="../CSS/menu.css" />
+  <link rel="stylesheet" href="../CSS/logowanie.css" />
+  <title>KrakMPK - Logowanie</title>
 </head>
 
 <body>
   <!--Gradient -->
-  <div class="gradient_section"></div>
+  <div class="gradient_section_login"></div>
   <div class="container">
     <!--Nav bar -->
     <nav>
-      <div class="nav_div_left">
-        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span class="logo_MPK">MPK</span>
+      <div class="nav_div_lewy">
+        <div class="logo" data-target="../HTML/inteligentny_zakup_biletu.html">Krak<span class="logo_MPK">MPK</span></div>
       </div>
     </nav>
+    <span class="back_arrow">&larr;</span>
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
-        <span class="back_arrow">&larr;</span>
+      <div class="login_box">
+        <p class="title">Zaloguj</p>
         <!-- Tu ten prostokat na srodku -->
-        <div class="div_content_container">
-            
+        <div class="div_content_container_login">
+          <!-- Form Login -->
+          <form class="login_form">
+            <label for="email">Adres Email:</label>
+            <input type="email" class="email" name="email" required />
+
+            <label for="password">Hasło:</label>
+            <input type="password" class="password" name="password" required />
+
+            <button type="submit">Zaloguj się</button>
+          </form>
         </div>
+      </div>
     </div>
     <!-- Stopka -->
     <div class="footer">
@@ -42,10 +55,11 @@
         </div>
     </div>
   </div>
-  
+
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
+  <script src="../JS/logowanie.js"></script>
 </body>
 
 </html>

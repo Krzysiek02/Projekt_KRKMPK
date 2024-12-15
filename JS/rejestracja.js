@@ -53,14 +53,13 @@ function validateForm() {
 
 // Function to save user data to localStorage
 function saveUser(user) {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
 }
 
-// Attach event listener to the form
-document.getElementById('registrationForm').addEventListener('submit', function (event) {
+function registration(event) {
     event.preventDefault();
+    
     if (validateForm()) {
         const user = {
             firstName: document.getElementById('firstName').value.trim(),
@@ -77,4 +76,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         this.reset();
         window.location.href = '../HTML/login.html';
     }
-});
+}
+
+// Attach event listener to the form
+document.getElementById('registrationForm').addEventListener('submit', );

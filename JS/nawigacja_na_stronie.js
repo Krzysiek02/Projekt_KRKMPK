@@ -1,7 +1,15 @@
+// Function to handle navigation
+function handleNavigation(event) {
+    event.preventDefault();
+
+    const targetUrl = event.currentTarget.dataset.target;
+    if (targetUrl) {
+        window.location.href = targetUrl;
+    }
+}
+
 // Update the navigation dynamically based on user login status
 function updateNavigation() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const currentUser = users.find(user => user.isLoggedIn);
     const loggingDiv = document.getElementById('logging');
 
     if (currentUser && loggingDiv) {
@@ -45,33 +53,21 @@ function updateNavigation() {
     }
 
     const navigationButtons = document.querySelectorAll('[data-target]');
+
+    if (navigationButtons) {
         navigationButtons.forEach(button => {
             button.addEventListener('click', handleNavigation);
-    });
-}
-
-// Function to handle navigation
-function handleNavigation(event) {
-    event.preventDefault();
-    const targetUrl = event.currentTarget.dataset.target;
-    if (targetUrl) {
-        window.location.href = targetUrl;
+        });
     }
-}
 
-// Attach event listeners to buttons
-const navigationButtons = document.querySelectorAll('[data-target]');
-navigationButtons.forEach(button => {
-    button.addEventListener('click', handleNavigation);
-});
+    const backButton = document.querySelector('.back-arrow');
 
-// Attach event listeners to back buttons
-const backButton = document.querySelector('.back-arrow');
-if (backButton) {
-    backButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        window.history.back();
-    });
+    if (backButton) {
+        backButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.history.back();
+        });
+    }
 }
 
 // Run the navigation update on page load

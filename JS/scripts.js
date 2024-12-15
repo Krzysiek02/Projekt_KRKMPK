@@ -1,6 +1,5 @@
 // Add default user if not already present
 function addDefaultUser() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
     if (users.length === 0) {
         const defaultUser = {
             firstName: 'Jan',
@@ -15,6 +14,9 @@ function addDefaultUser() {
         users.push(defaultUser);
         localStorage.setItem('users', JSON.stringify(users));
     }
+
+    // Validation accounts
+    console.log(JSON.parse(localStorage.getItem('users')));
 }
 
 // Add default user on page load

@@ -1,7 +1,4 @@
-// Validation accounts
-console.log(JSON.parse(localStorage.getItem('users')));
-
-// Validation unauthorized login for specific content
+// Dynamicly rendering whether user isn't logged 
 function renderUnauthorized() {
     const contentContainer = document.querySelector('.div_content_container');
     contentContainer.innerHTML = `
@@ -16,8 +13,11 @@ function renderUnauthorized() {
 function updateContent() {
     const loggedInUser = users.find(user => user.isLoggedIn);
     if (loggedInUser) {
-        renderUserProfile(loggedInUser);
+        renderAuthorized(loggedInUser);
     } else {
         renderUnauthorized();
     }
 }
+
+// Add dynamicly loading content od the page
+document.addEventListener('DOMContentLoaded', updateContent);

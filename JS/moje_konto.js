@@ -1,5 +1,3 @@
-const users = JSON.parse(localStorage.getItem('users')) || [];
-
 // Function to validate form inputs
 function validateInput(field, value) {
     const validationRules = {
@@ -90,39 +88,37 @@ function addEventListeners(user) {
 };
 
 // Dynamicly rendering logged user
-function renderUserProfile(user) {
+function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
-    contentContainer.innerHTML = `
-    
-        <div id="user-section">
-            <h2><span>Moje konto</span></h2>
-            <div id="formularz">
-                <div id="lewa">
-                    <p>Imię: </p>
-                    <p>Nazwisko: </p>
-                    <p>Email: </p>
-                    <p>Numer karty: </p>
-                    <p class="krotki">Data ważności: </p>
-                    <p class="krotki">CSV: </p>
+    if (contentContainer) {
+        contentContainer.innerHTML = `
+            <div id="user-section">
+                <h2><span>Moje konto</span></h2>
+                <div id="formularz">
+                    <div id="lewa">
+                        <p>Imię: </p>
+                        <p>Nazwisko: </p>
+                        <p>Email: </p>
+                        <p>Numer karty: </p>
+                        <p class="krotki">Data ważności: </p>
+                        <p class="krotki">CSV: </p>
+                    </div>
+                    <div id="prawa">
+                        <span id="firstName">${user.firstName}</span>
+                        <span id="lastName">${user.lastName}</span>
+                        <span id="email">${user.email}</span>
+                        <span id="card-Number">${user.cardNumber}</span>
+                        <span id="expiry-Date">${user.expiryDate}</span>
+                        <span id="csv">${user.csv}</span>
+                    </div>
                 </div>
-                <div id="prawa">
-                    <span id="firstName">${user.firstName}</span>
-                    <span id="lastName">${user.lastName}</span>
-                    <span id="email">${user.email}</span>
-                    <span id="card-Number">${user.cardNumber}</span>
-                    <span id="expiry-Date">${user.expiryDate}</span>
-                    <span id="csv">${user.csv}</span>
+                <div id="buttons">
+                <button id="edit-button">Edytuj</button>
+                <button id="cancel-button" style="display: none;">Cofnij</button>
+                <button id="save-button" style="display: none; margin-left: 10px;" >Zapisz</button>
                 </div>
             </div>
-            <div id="buttons">
-            <button id="edit-button">Edytuj</button>
-            <button id="cancel-button" style="display: none;">Cofnij</button>
-            <button id="save-button" style="display: none; margin-left: 10px;" >Zapisz</button>
-            </div>
-        </div>
-    `;
-    addEventListeners(user);
+        `;
+        addEventListeners(user);
+    }
 };
-
-// Add default user on page load
-document.addEventListener('DOMContentLoaded', updateContent);

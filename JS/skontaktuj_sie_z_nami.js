@@ -1,4 +1,4 @@
-// Licznik znaków dla pola "message"
+// Counter for message
 const messageField = document.getElementById('message');
 const charCounter = document.getElementById('charCounter');
 
@@ -7,7 +7,7 @@ messageField.addEventListener('input', () => {
   charCounter.textContent = `${currentLength}/1000`;
 });
 
-// Funkcja walidująca dane formularza
+// Function for validate message form
 function validateForm() {
   const fields = [
     { id: 'firstName', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Imię może zawierać tylko litery i maksymalnie 50 znaków.' },
