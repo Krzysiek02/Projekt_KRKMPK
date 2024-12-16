@@ -12,8 +12,16 @@ function renderUnauthorized() {
 // Dynamicly rendering whether user is logged 
 function updateContent() {
     const loggedInUser = users.find(user => user.is_logged_in);
+    const ticketCount = selectedTicketsToBuy.length > 0;
     if (loggedInUser) {
         renderAuthorized(loggedInUser);
+    } else if (ticketCount) {
+        if (loggedInUser) {
+            renderAuthorized(loggedInUser);
+        }
+        else {
+            renderUnauthorizedWithTickets();
+        }
     } else {
         renderUnauthorized();
     }

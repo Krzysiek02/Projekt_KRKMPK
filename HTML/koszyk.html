@@ -38,9 +38,24 @@
     </nav>
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
+      <span class="back_arrow">&larr;</span>
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
-        
+        <div class="ticket-purchase-container">
+          <div class="tickets-display">
+            <h2>Bilety w Koszyku</h2>
+            <div id="tickets-container" class="tickets-container"></div>
+          </div>
+          <div class="summary">
+            <h3>Podsumowanie</h3>
+            <div class="summary-section"></div>
+            <div class="action-buttons">
+              <button id="reset-filters">Wyczyść Bilety</button>
+              <button id="proceed-to-payment" disabled>Przejdź do Płatności</button>
+              <button id="go-to-buy" data-target="../HTML/inteligentny_zakup_biletu.html">Kontynuuj zakupy</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Stopka -->

@@ -2,6 +2,7 @@
 function addDefaultUser() {
     if (users.length === 0) {
         const defaultUser = {
+            id: 1,
             first_name: 'Jan',
             last_name: 'Kowalski',
             email: 'jan.kowalski@gmail.com',
@@ -9,7 +10,8 @@ function addDefaultUser() {
             card_number: '1234 1234 1234 1234',
             expiry_date: '01/25',
             csv: '123',
-            is_logged_in: false
+            is_logged_in: false,
+            basket: []
         };
         users.push(defaultUser);
         localStorage.setItem('users', JSON.stringify(users));
@@ -24,7 +26,27 @@ function hamburger_menu() {
     if (hamburger) {
         hamburger.addEventListener("click", function() {
             navLinks.classList.toggle("show");
-            });
+        });
+    }
+}
+
+// Downloanding current basket
+function getCurrentBasket() {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    if (loggedInUser) {
+        return loggedInUser.basket || [];
+    }
+    return JSON.parse(localStorage.getItem('selectedTicketsToBuy')) || [];
+}
+
+// Saving current basket
+function saveCurrentBasket(basket) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    if (loggedInUser) {
+        loggedInUser.basket = basket;
+        localStorage.setItem('users', JSON.stringify(users));
+    } else {
+        localStorage.setItem('selectedTicketsToBuy', JSON.stringify(basket));
     }
 }
 
