@@ -53,25 +53,31 @@ function validateForm() {
 
 // Function to save user data to localStorage
 function saveUser(user) {
+    const lastId = users.length > 0 ? Math.max(...users.map(u => u.id || 1)) : 1;
+    user.id = lastId + 1;
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
 }
-
 
 // Function for registration
 function registration(event) {
     event.preventDefault();
     
     if (validateForm()) {
+        const firstNameInput = document.querySelector('.first_name').value.trim();
+        const lastNameInput = document.querySelector('.last_name').value.trim();
+        const emailInput = document.querySelector('.email').value.trim();
+
         const user = {
-            first_name: document.querySelector('.first_name').value.trim(),
-            last_name: document.querySelector('.last_name').value.trim(),
-            email: document.querySelector('.email').value.trim(),
+            first_name: firstNameInput.charAt(0).toUpperCase() + firstNameInput.slice(1).toLowerCase(),
+            last_name: lastNameInput.charAt(0).toUpperCase() + lastNameInput.slice(1).toLowerCase(),
+            email: emailInput.toLowerCase(),
             password: document.querySelector('.password').value.trim(),
             card_number: document.querySelector('.card_number').value.trim(),
             expiry_date: document.querySelector('.expiry_date').value.trim(),
             csv: document.querySelector('.csv').value.trim(),
-            is_logged_in: false
+            is_logged_in: false,
+            basket: []
         };
         saveUser(user);
         alert('Rejestracja zakończona pomyślnie!');

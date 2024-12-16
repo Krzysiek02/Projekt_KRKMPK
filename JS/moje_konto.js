@@ -122,3 +122,6 @@ function renderAuthorized(user) {
         addEventListeners(user);
     }
 };
+
+// Add dynamicly loading content od the page
+document.addEventListener('DOMContentLoaded', updateContentLogin);
