@@ -1,30 +1,29 @@
 .div_content_container {
     width: 80vw;
-  justify-content: space-around;
+    justify-content: space-around;
 }
 .left_form {
-    
     border-radius: 15px;
     width:25vw;
     max-width: 350px;
-  padding-left: 20px;
-  padding-right: 20px;
-  background: linear-gradient(
-  20deg, 
-  #A00034 0%,      /* ciemna czerwień */
-  #C2185B 35%,     /* rozowy */
-  #FF0033 40%,     /* jaskrawy czerwony */
-  #FF4081 70%,     /* Intensywny różowy */
-  #FF1744 90%,     /* Czerwień z różem */
-  #A00034 100%     /* ciemna czerwien */
-  );
-  height: 500px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(
+        20deg, 
+        #A00034 0%,      /* ciemna czerwień */
+        #C2185B 35%,     /* rozowy */
+        #FF0033 40%,     /* jaskrawy czerwony */
+        #FF4081 70%,     /* Intensywny różowy */
+        #FF1744 90%,     /* Czerwień z różem */
+        #A00034 100%     /* ciemna czerwien */
+    );
+    height: 500px;
     justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  word-wrap: break-word;
-  color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-wrap: break-word;
+    color: white;
 }
 .left_form h3 {
     font-weight: lighter;
@@ -117,7 +116,7 @@ label {
 
 .button_container button:hover {
     background: #a52a2a;
-  }
+}
 
 @media (max-width: 987px) { 
     .right{
@@ -143,8 +142,8 @@ label {
     }
     .div_content_container{
         width: 80vw;
-      flex-direction: column;
-      align-items: center;
+        flex-direction: column;
+        align-items: center;
     }
 
 }
