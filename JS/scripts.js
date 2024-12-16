@@ -14,12 +14,6 @@ function addDefaultUser() {
         users.push(defaultUser);
         localStorage.setItem('users', JSON.stringify(users));
     }
-
-    // Validation accounts
-    console.log(JSON.parse(localStorage.getItem('users')));
-
-    // Validation messages
-    console.log(JSON.parse(localStorage.getItem('messages')));
 }
 
 // Hamburger menu
@@ -34,8 +28,23 @@ function hamburger_menu() {
     }
 }
 
+// Validation functionality
+function validation() {
+    // Validation accounts
+    console.log(JSON.parse(localStorage.getItem('users')));
+
+    // Validation messages
+    console.log(JSON.parse(localStorage.getItem('messages')));
+
+    // Validation selected tickets
+    console.log(JSON.parse(localStorage.getItem('selectedTicketsToBuy')));
+}
+
 // Add default user on page load
 document.addEventListener('DOMContentLoaded', addDefaultUser);
+
+// Add default validation check
+document.addEventListener('DOMContentLoaded', validation);
 
 // Add hamburger menu on page load
 document.addEventListener('DOMContentLoaded', hamburger_menu);
