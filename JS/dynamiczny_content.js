@@ -10,12 +10,22 @@ function renderUnauthorized() {
 };
 
 // Dynamicly rendering whether user is logged 
-function updateContent() {
+function updateContentLogin() {
     const loggedInUser = users.find(user => user.is_logged_in);
-    const ticketCount = selectedTicketsToBuy.length > 0;
+    const currentBasket = getCurrentBasket();
+    console.log(currentBasket.length);
     if (loggedInUser) {
         renderAuthorized(loggedInUser);
-    } else if (ticketCount) {
+    } else {
+        renderUnauthorized();
+    }
+}
+
+// Dynamicly rendering whether there are tickets in backet
+function updateContentBacket() {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    const currentBasket = getCurrentBasket();
+    if (currentBasket.length > 0) {
         if (loggedInUser) {
             renderAuthorized(loggedInUser);
         }
@@ -26,6 +36,3 @@ function updateContent() {
         renderUnauthorized();
     }
 }
-
-// Add dynamicly loading content od the page
-document.addEventListener('DOMContentLoaded', updateContent);

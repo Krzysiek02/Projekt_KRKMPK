@@ -1,3 +1,4 @@
+// Dynamicly rendering logged user with tickets
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
     if (contentContainer) {
@@ -29,6 +30,7 @@ function renderAuthorized(user) {
     }
 }
 
+// Dynamicly rendering unlogged user with tickets
 function renderUnauthorizedWithTickets() {
     const contentContainer = document.querySelector('.div_content_container');
     if (contentContainer) {
@@ -37,7 +39,7 @@ function renderUnauthorizedWithTickets() {
             <form id="payment-form">
                 <div>
                     <label for="blik-number">Numer blik</label>
-                    <input type="text" id="card-number" value="" />
+                    <input type="text" id="blik-number" value="" />
                 </div>
                 <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
                 <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
@@ -74,7 +76,7 @@ function validateForm() {
 }
 
 function validateBlikNumber(blikNumber) {
-    const cardPattern = /^\d{6}$/;
+    const cardPattern = /^\d{3} ?\d{3}$/;
     return cardPattern.test(blikNumber);
 }
 
@@ -82,3 +84,6 @@ function calculateTotalPrice() {
     const currentBasket = getCurrentBasket();
     return currentBasket.reduce((total, ticket) => total + ticket.sum_price, 0);
 }
+
+// Add dynamicly loading content od the page
+document.addEventListener('DOMContentLoaded', updateContentBacket);

@@ -1,3 +1,4 @@
+// Dynamicly rendering logged user with tickets
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
     if (contentContainer) {
@@ -33,6 +34,7 @@ function renderAuthorized(user) {
     }
 }
 
+// Dynamicly rendering unlogged user with tickets
 function renderUnauthorizedWithTickets() {
     const contentContainer = document.querySelector('.div_content_container');
     if (contentContainer) {
@@ -120,3 +122,6 @@ function calculateTotalPrice() {
     const currentBasket = getCurrentBasket();
     return currentBasket.reduce((total, ticket) => total + ticket.sum_price, 0);
 }
+
+// Add dynamicly loading content od the page
+document.addEventListener('DOMContentLoaded', updateContentBacket);

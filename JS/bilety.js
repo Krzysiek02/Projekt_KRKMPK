@@ -8,5 +8,5 @@ function renderAuthorized(user) {
     }
 };
 
-// Add default user on page load
-document.addEventListener('DOMContentLoaded', updateContent);
+// Add dynamicly loading content od the page
+document.addEventListener('DOMContentLoaded', updateContentLogin);
