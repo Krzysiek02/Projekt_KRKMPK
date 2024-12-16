@@ -17,6 +17,8 @@ nav {
   display:flex;
   justify-content: space-between;
   width:100%;
+  padding-top:5px;
+  
 }
 
 .nav_div_right {
@@ -59,7 +61,7 @@ nav {
   background: #d80665!important;
 }
 
-.nav_div_left{
+.nav_div_left {
   margin-left:5px;
   display: flex;
   width:auto;
@@ -69,6 +71,7 @@ nav {
 }
 
 .nav_div_left a{
+
     width: 90px;
   /* border: black;
   border-style: dashed; */
@@ -209,7 +212,7 @@ nav {
 .social .icons img{
   width: 30px;
   margin-left:5px;
-  margin-top:4px;
+  margin-top:5px;
 }
 
 .flag_uk {
@@ -266,4 +269,58 @@ nav {
 
 .menu_options button:hover {
   background-color: #f00645;
+}
+
+/* Hamburger menu */
+.hamburger_menu {
+  display: none;
+  cursor: pointer;
+  margin-right: 15px;
+  font-size: 30px;
+  color: white;
+  margin-top:-4px;
+  
+}
+
+.nav_links {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .hamburger_menu {
+    display: flex;
+  }
+
+  .nav_links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #A00034;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    z-index: 1;
+  }
+
+  .nav_links a {
+    padding: 10px;
+    text-align: center;
+    width: 95%;
+  }
+
+  .nav_links.show {
+    display: flex;
+  }
+}
+@media (max-width: 700px) {
+  .footer {
+    flex-direction: column-reverse;
+  }
+  .left{
+    margin-top: 10px;
+  }
+  .social{
+    align-self: center;
+  }
 }
