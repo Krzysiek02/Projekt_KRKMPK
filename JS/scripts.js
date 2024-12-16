@@ -24,16 +24,18 @@ function addDefaultUser() {
 
 // Hamburger menu
 function hamburger_menu() {
-    console.log("test");
     const hamburger = document.querySelector(".hamburger_menu");
     const navLinks = document.querySelector(".nav_links");
 
-    hamburger.addEventListener("click", function() {
-    navLinks.classList.toggle("show");
-    });
+    if (hamburger) {
+        hamburger.addEventListener("click", function() {
+            navLinks.classList.toggle("show");
+            });
+    }
 }
 
 // Add default user on page load
 document.addEventListener('DOMContentLoaded', addDefaultUser);
+
 // Add hamburger menu on page load
 document.addEventListener('DOMContentLoaded', hamburger_menu);
