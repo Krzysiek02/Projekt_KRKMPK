@@ -5,7 +5,7 @@ function renderAuthorized(user) {
         contentContainer.innerHTML = `
             <h2>Płatność kartą</h2>
             <form id="payment-form">
-                <div>
+                <div class="payment_form_input">
                     <label for="blik-number">Numer blik</label>
                     <input type="text" id="blik-number" value="" />
                 </div>
@@ -70,8 +70,14 @@ function validateForm() {
 
     if (isBlikNumberValid) {
         payButton.disabled = false;
+        payButton.style.backgroundColor = "#740938";
+        payButton.style.color = "white";
+        payButton.style.cursor = "pointer";
     } else {
         payButton.disabled = true;
+        payButton.style.backgroundColor = 'transparent';
+        payButton.style.color = "grey";
+        payButton.style.cursor = "not-allowed";
     }
 }
 
@@ -87,3 +93,4 @@ function calculateTotalPrice() {
 
 // Add dynamicly loading content od the page
 document.addEventListener('DOMContentLoaded', updateContentBacket);
+document.addEventListener('DOMContentLoaded', validateForm);

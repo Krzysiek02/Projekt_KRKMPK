@@ -8,6 +8,7 @@
     max-width: 1200px;
     margin: 40px auto;
     color: black;
+    
 }
 
 .tickets-display, .summary {
@@ -27,6 +28,9 @@ h2, h3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
+    max-height: 425px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 .ticket {

@@ -5,15 +5,15 @@ function renderAuthorized(user) {
         contentContainer.innerHTML = `
             <h2>Płatność kartą</h2>
             <form id="payment-form">
-                <div>
+                <div class="payment_form_input">
                     <label for="card-number">Numer karty</label>
                     <input type="text" id="card-number" value="${user.card_number}" readonly />
                 </div>
-                <div>
+                <div class="payment_form_input">
                     <label for="expiry-date">Data ważności</label>
                     <input type="text" id="expiry-date" value="${user.expiry_date}" readonly />
                 </div>
-                <div>
+                <div class="payment_form_input">
                     <label for="csv">CSV</label>
                     <input type="text" id="csv" value="${user.csv}" readonly />
                 </div>

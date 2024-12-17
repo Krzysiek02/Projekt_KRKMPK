@@ -5,8 +5,11 @@ function renderAuthorized(user) {
         contentContainer.innerHTML = `
             <h3>Dziękujemy za dokonanie płatności!</h3>
             <p>Twoje bilety zostały zakupione. Wybierz, czy chcesz je dodać do swojej teczki, czy bezpośrednio aktywować:</p>
-            <button id="addToFolderButton">Dodaj do teczki</button>
-            <button id="downloadButton">Pobierz</button>
+            <div class="div_buttons">
+                <button id="addToFolderButton">Dodaj do teczki</button>
+                <button id="downloadButton">Pobierz</button>
+            </div>
+            
         `;
 
         const addToFolderButton = document.getElementById('addToFolderButton');
