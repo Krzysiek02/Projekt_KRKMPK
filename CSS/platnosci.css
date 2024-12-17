@@ -42,7 +42,7 @@ h2 {
     width: 40vw;
     max-width: 500px;
     min-height: 300px;
-    min-width: 900px;
+    min-width: 500px;
     backdrop-filter: blur(5px);
     background-color: rgba(243, 245, 246, 0.856);
 }

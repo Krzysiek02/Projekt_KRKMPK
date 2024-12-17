@@ -1,12 +1,23 @@
 // Dynamicly rendering whether user isn't logged 
 function renderUnauthorized() {
     const contentContainer = document.querySelector('.div_content_container');
-    contentContainer.innerHTML = `
+    const contentContainerPlatnosci = document.querySelector('.div_content_container_platnosci');
+    if (contentContainer) {
+        contentContainer.innerHTML = `
         <div id="unauthorized-section">
             <h2>Brak dostępu!</h2>
             <p>Musisz być zalogowany aby widzieć tą stronę.</p>
         </div>
     `;
+    } else if (contentContainerPlatnosci) {
+        contentContainerPlatnosci.innerHTML = `
+        <div id="unauthorized-section">
+            <h2>Brak dostępu!</h2>
+            <p>Musisz być zalogowany aby widzieć tą stronę.</p>
+        </div>`
+        ;
+    }
+    
 };
 
 // Dynamicly rendering whether user is logged 
