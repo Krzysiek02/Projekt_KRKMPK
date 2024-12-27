@@ -6,25 +6,21 @@ function renderUnauthorized() {
         contentContainer.innerHTML = `
         <div id="unauthorized-section">
             <h2>Brak dostępu!</h2>
-            <p>Musisz być zalogowany aby widzieć tą stronę.</p>
         </div>
     `;
     } else if (contentContainerPlatnosci) {
         contentContainerPlatnosci.innerHTML = `
         <div id="unauthorized-section">
             <h2>Brak dostępu!</h2>
-            <p>Musisz być zalogowany aby widzieć tą stronę.</p>
         </div>`
         ;
     }
-    
 };
 
 // Dynamicly rendering whether user is logged 
 function updateContentLogin() {
     const loggedInUser = users.find(user => user.is_logged_in);
     const currentBasket = getCurrentBasket();
-    console.log(currentBasket.length);
     if (loggedInUser) {
         renderAuthorized(loggedInUser);
     } else {

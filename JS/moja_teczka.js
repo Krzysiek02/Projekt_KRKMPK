@@ -3,10 +3,250 @@ function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
     if (contentContainer) {
         contentContainer.innerHTML = `
-        
+        <div class="ticket-file-container">
+          <div class="not-active-section">
+            <h3>Nieaktywne</h3>
+            <div class="tickets-display">
+                <div id="tickets-container1" class="tickets-container"></div>
+            </div>
+          </div>
+          <div class="active-section">
+            <h3>Aktywne</h3>
+            <div class="tickets-display">
+                <div id="tickets-container2" class="tickets-container"></div>
+            </div>
+          </div>
+        </div>
         `;   
     }
-};
 
-// Add dynamicly loading content od the page
+    let notActiveTickets = user.not_active_file || [];
+    let activeTickets = user.active_file || [];
+    renderTickets(notActiveTickets, false, user);
+    renderTickets(activeTickets, true, user);    
+}
+
+function renderTickets(my_file_tickets, isActive, user) {
+    let ticketsContainer = document.getElementById(isActive ? 'tickets-container2' : 'tickets-container1');
+    ticketsContainer.innerHTML = '';
+
+    if (my_file_tickets.length > 0) {
+        my_file_tickets.forEach((ticket, index) => {
+            const ticketElement = document.createElement('div');
+            const first_letter = ticket.client_type[0].toUpperCase();
+            const rest_of_text = ticket.client_type.slice(1);
+            const name = first_letter + rest_of_text;
+            const currentCount = ticket.quantity || 0;
+
+            let ticketTimeLabel;
+            if (ticket.travel_time == 1440) {
+                ticketTimeLabel = '24 h';
+            } else if (ticket.travel_time == 2440) {
+                ticketTimeLabel = '48 h';
+            } else if (ticket.travel_time == 2880) {
+                ticketTimeLabel = '72 h';
+            } else if (ticket.travel_time == 10080) {
+                ticketTimeLabel = '7 dni';
+            } else {
+                ticketTimeLabel = `${ticket.travel_time} minut`;
+            }
+
+            ticketElement.classList.add('ticket');
+            ticketElement.innerHTML = `
+                <div class="ticket-info">
+                    <p><strong>Bilet ${name}</strong></p>
+                    ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                    <p>Czas: ${ticketTimeLabel}</p>
+                    <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
+                    <p>Cena: ${ticket.price} zł</p>
+                    <p>Ilość: ${currentCount}</p>
+                    ${isActive ? `<div class="timer" id="timer-${index}"></div>` : ''}
+                </div>
+                <div class="ticket-buttons">
+                    ${!isActive ? `<button class="active-button" data-index="${index}">Aktywuj</button>` : ''}
+                    ${isActive ? `<button class="view-button" data-index="${index}">Podgląd</button>` : ''}
+                    ${isActive ? `<button class="download-button" data-index="${index}">Pobierz</button>` : ''}
+                </div>
+            `;
+
+            ticketsContainer.appendChild(ticketElement);
+
+            if (!isActive) {
+                ticketElement.querySelector('.active-button').addEventListener('click', () => {
+                    showActivationModal(index, ticket, user);
+                });
+            } else {
+                ticketElement.querySelector('.view-button').addEventListener('click', () => {
+                    viewTicket(index, ticket, user);
+                });
+
+                ticketElement.querySelector('.download-button').addEventListener('click', () => {
+                    downloadTicket(index, ticket, user);
+                });
+
+                startTimer(ticket, index, user);
+            }
+        });
+    } else {
+        const element = document.createElement('div');
+        element.innerHTML = `  
+            <div class="ticket-info">
+                <p><strong>Brak Biletów</strong></p>
+            </div>
+        `;
+        ticketsContainer.appendChild(element);
+    }
+}
+
+function showActivationModal(index, ticket, user) {
+    const contentContainer = document.querySelector('.div_content_container');
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+        <div class="modal">
+            <h2>Ile biletów aktywować?</h2>
+            <div class="quantity-selector">
+                <button id="decrement">-</button>
+                <input type="number" id="quantity" value="1" min="1" max="${ticket.quantity}" readonly>
+                <button id="increment">+</button>
+            </div>
+            <div class="modal-buttons">
+                <button id="confirm">Potwierdź</button>
+                <button id="cancel">Anuluj</button>
+            </div>
+        </div>
+    `;
+    contentContainer.appendChild(modal);
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    const quantityInput = modal.querySelector('#quantity');
+    modal.querySelector('#decrement').addEventListener('click', () => {
+        quantityInput.value = Math.max(1, parseInt(quantityInput.value) - 1);
+    });
+    modal.querySelector('#increment').addEventListener('click', () => {
+        quantityInput.value = Math.min(ticket.quantity, parseInt(quantityInput.value) + 1);
+    });
+    modal.querySelector('#cancel').addEventListener('click', () => {
+        contentContainer.removeChild(modal);
+    });
+    modal.querySelector('#confirm').addEventListener('click', () => {
+        const quantityToActivate = parseInt(quantityInput.value);
+        activateTickets(index, ticket, user, quantityToActivate);
+    });
+    
+}
+
+function activateTickets(index, ticket, user, quantity) {
+    const now = new Date();
+    const activationDate = now.toLocaleDateString('pl-PL');
+    const activationTime = now.toLocaleTimeString('pl-PL');
+    
+    const activeTickets = user.active_file || [];
+    
+    activeTickets.push({
+        ...ticket,
+        activation_date: activationDate,
+        activation_time: activationTime,
+        quantity: quantity
+    });
+    
+    saveCurrentActiveFile(activeTickets);
+
+    ticket.quantity -= quantity;
+    
+    if (ticket.quantity > 0) {
+        const notActiveTickets = user.not_active_file || [];
+        notActiveTickets[index] = ticket;
+        saveCurrentNotActiveFileMyFile(notActiveTickets);
+    } else {
+        const notActiveTickets = user.not_active_file || [];
+        notActiveTickets.splice(index, 1);
+        saveCurrentNotActiveFileMyFile(notActiveTickets);
+    }    
+    renderAuthorized(user);
+}
+
+
+function startTimer(ticket, index, user) {
+    const timerElement = document.getElementById(`timer-${index}`);
+    const activationDateParts = ticket.activation_date.split('.');
+    const activationTimeParts = ticket.activation_time.split(':');
+    const activationDateString = `${activationDateParts[2]}-${activationDateParts[1]}-${activationDateParts[0]}T${activationTimeParts[0]}:${activationTimeParts[1]}:${activationTimeParts[2]}`;
+    const activationDate = new Date(activationDateString);
+    const travelTimeMs = ticket.travel_time * 60 * 1000;
+    const expirationTime = activationDate.getTime() + travelTimeMs;
+
+    let timerInterval;
+    let expired = false;
+
+    function updateTimer() {
+        const now = Date.now();
+        const remainingTime = expirationTime - now;
+
+        if (remainingTime <= 0 && !expired) {
+            expired = true;
+            alert(`Bilet nr. ${index} wygasł.`);
+            const activeTickets = user.active_file || [];
+            const activeTicketsFilter = activeTickets.filter(t => t !== ticket);
+            saveCurrentActiveFileMyFile(activeTicketsFilter);
+            renderAuthorized(user);
+            clearInterval(timerInterval);
+            timerInterval = null;
+            return;
+        }
+
+        const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
+        const seconds = Math.floor((remainingTime / 1000) % 60);
+        timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+function viewTicket(index, ticket, user) {
+    const contentContainer = document.querySelector('.div_content_container');
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `  
+        <div class="modal">
+            <div id="qr-code"></div>
+            <button class="close-modal">X</button>
+        </div>
+    `;
+    contentContainer.appendChild(modal);
+
+    const qrContent = `Bilet: ${ticket.client_type}, Czas: ${ticket.travel_time} minut, Strefa: ${ticket.zone}, Data: ${ticket.activation_date}, Godzina: ${ticket.activation_time}`;
+
+    QRCode.toDataURL(qrContent, { width: 200, height: 200 }, (err, url) => {
+        if (err) {
+            console.error('Błąd generowania kodu QR:', err);
+            return;
+        }
+        const qrImage = new Image();
+        qrImage.src = url;
+        modal.querySelector('#qr-code').appendChild(qrImage);
+    });
+
+    modal.querySelector('.close-modal').addEventListener('click', () => {
+        contentContainer.removeChild(modal);
+    });
+}
+
+function downloadTicket(index, ticket, user) {
+    const qrContent = `Bilet: ${ticket.client_type}, Czas: ${ticket.travel_time} minut, Strefa: ${ticket.zone}, Data: ${ticket.activation_date}, Godzina: ${ticket.activation_time}`;
+
+    QRCode.toDataURL(qrContent, { width: 200, height: 200 }, (err, url) => {
+        if (err) {
+            console.error('Błąd generowania kodu QR:', err);
+            return;
+        }
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `bilet_${index + 1}.png`;
+        link.click();
+    });
+}
+
+// Add dynamicly loading content of the page
 document.addEventListener('DOMContentLoaded', updateContentLogin);

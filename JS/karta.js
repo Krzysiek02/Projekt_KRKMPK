@@ -83,7 +83,7 @@ function validateForm() {
     const isCardValid = validateCardNumber(cardNumber);
     const isExpiryDateValid = validateExpiryDate(expiryDate);
     const isCsvValid = validateCsv(csv);
-
+    
     if (isCardValid && isExpiryDateValid && isCsvValid) {
         payButton.disabled = false;
     } else {
@@ -97,7 +97,7 @@ function validateCardNumber(cardNumber) {
 }
 
 function validateExpiryDate(expiryDate) {
-    const expiryPattern = /^(0[1-9]|1[0-2])\/(2[0-9])$/;
+    const expiryPattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
     if(expiryPattern.test(expiryDate)) {
         const [month, year] = expiryDate.split('/').map(value => parseInt(value, 10));
         const currentDate = new Date();
