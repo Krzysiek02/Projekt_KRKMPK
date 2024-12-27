@@ -16,20 +16,16 @@ function renderAuthorized(user) {
         let qrContent = "";
 
         if (currentBasket.length > 0) {
-            const purchaseDate = new Date().toISOString().split('T')[0];
+            const now = new Date();
+            const purchaseDate = now.toLocaleDateString('pl-PL');
             const purchaseHistory = currentBasket.map(ticket => {
-                ticket.purchase_date = purchaseDate;
+                qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
                 return {
                     ...ticket,
                     purchase_date: purchaseDate
                 };
             });
             saveCurrentHistory(purchaseHistory);
-            purchaseHistory.forEach(ticket => {
-                qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
-            });
-            currentBasket = [];
-            saveCurrentBasket(currentBasket);
         }
 
         const qrContainer = document.createElement('div');
@@ -56,15 +52,33 @@ function renderAuthorized(user) {
                     link.href = url;
                     link.download = "bilety_qr.png";
                     link.click();
+                    const now = new Date();
+                    const activationDate = now.toLocaleDateString('pl-PL');
+                    const activationTime = now.toLocaleTimeString('pl-PL');
+                    const myActiveFile = currentBasket.map(ticket => {
+                        return {
+                            ...ticket,
+                            activation_date: activationDate,
+                            activation_time: activationTime,
+                        };
+                    });
+                    saveCurrentActiveFile(myActiveFile);
                 });
             }
         });
 
         const addToFolderButton = document.getElementById('addToFolderButton');
-
         if (addToFolderButton) {
             addToFolderButton.addEventListener('click', () => {
                 alert("Bilety zostały dodane do teczki.");
+                const myNotActiveFile = currentBasket.map(ticket => {
+                    return {
+                        ...ticket,
+                        activation_date: null,
+                        activation_time: null,
+                    };
+                });
+                saveCurrentNotActiveFile(myNotActiveFile);
             });
         }
 
@@ -75,6 +89,9 @@ function renderAuthorized(user) {
             });
         }
     }
+
+    currentBasket = [];
+    saveCurrentBasket(currentBasket);
 }
 
 // Dynamicly rendering unlogged user with tickets
@@ -89,6 +106,8 @@ function renderUnauthorizedWithTickets() {
 
         let currentBasket = getCurrentBasket();
         let qrContent = "";
+        const now = new Date();
+        const purchaseDate = now.toLocaleDateString('pl-PL');
 
         if (currentBasket.length > 0) {
             currentBasket.forEach(ticket => {

@@ -59,9 +59,29 @@ function saveUser(user) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
+// Function to check if the email is already taken
+function isEmailTaken(email) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users.some(user => user.email === email);
+}
+
+// Function to reper proper card adress formula
+function formatCardNumber(cardNumber) {
+    const cleanedCardNumber = cardNumber.replace(/\D/g, '');
+    return cleanedCardNumber.replace(/(\d{4})(?=\d)/g, '$1 ').trim();
+}
+
 // Function for registration
 function registration(event) {
     event.preventDefault();
+
+    const emailInput = document.querySelector('.email').value.trim();
+
+    if (isEmailTaken(emailInput)) {
+        alert('Konto z tym adresem email już istnieje. Wybierz inny adres.');
+        this.reset();
+        return;
+    }
     
     if (validateForm()) {
         const firstNameInput = document.querySelector('.first_name').value.trim();
@@ -73,14 +93,15 @@ function registration(event) {
             last_name: lastNameInput.charAt(0).toUpperCase() + lastNameInput.slice(1).toLowerCase(),
             email: emailInput.toLowerCase(),
             password: document.querySelector('.password').value.trim(),
-            card_number: document.querySelector('.card_number').value.trim(),
+            card_number: formatCardNumber(document.querySelector('.card_number').value.trim()),
             expiry_date: document.querySelector('.expiry_date').value.trim(),
             csv: document.querySelector('.csv').value.trim(),
             is_logged_in: false,
             basket: [],
             favourites: [],
-            my_file: [],
-            purchase_history: []
+            not_active_file: [],
+            active_file: [],
+            history: []
         };
         saveUser(user);
         alert('Rejestracja zakończona pomyślnie!');

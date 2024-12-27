@@ -13,8 +13,9 @@ function addDefaultUser() {
             is_logged_in: false,
             basket: [],
             favourites: [],
-            my_file: [],
-            purchase_history: []
+            not_active_file: [],
+            active_file: [],
+            history: []
         };
         users.push(defaultUser);
         localStorage.setItem('users', JSON.stringify(users));
@@ -53,12 +54,6 @@ function saveCurrentBasket(basket) {
     }
 }
 
-// Downloanding current favourites
-function getCurrentFavourites() {
-    const loggedInUser = users.find(user => user.is_logged_in);
-    return loggedInUser ? loggedInUser.favourites || [] : [];
-}
-
 // Saving current favourites
 function saveCurrentFavourites(favourites) {
     const loggedInUser = users.find(user => user.is_logged_in);
@@ -66,16 +61,49 @@ function saveCurrentFavourites(favourites) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
-// Downloanding current history
-function getCurrentHistory() {
-    const loggedInUser = users.find(user => user.is_logged_in);
-    return loggedInUser ? loggedInUser.history || [] : [];
-}
-
 // Saving current history
 function saveCurrentHistory(history) {
     const loggedInUser = users.find(user => user.is_logged_in);
-    loggedInUser.history = [...new Set(history)];
+    loggedInUser.history = [...new Set([...(loggedInUser.history || []), ...history])];
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Downloanding current active tickets
+function saveCurrentActiveFile(active_file) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    loggedInUser.active_file = [...new Set([...(loggedInUser.active_file || []), ...active_file])];
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Downloanding current active tickets with My File
+function saveCurrentActiveFileMyFile(active_file) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    loggedInUser.active_file = active_file || [];
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Downloanding current not active tickets
+function saveCurrentNotActiveFile(not_active_file) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    const updatedNotActiveFile = not_active_file.reduce((acc, newTicket) => {
+        const existingTicketIndex = acc.findIndex(ticket => ticket.id === newTicket.id);
+        
+        if (existingTicketIndex !== -1) {
+            acc[existingTicketIndex].quantity += newTicket.quantity;
+        } else {
+            acc.push(newTicket);
+        }
+
+        return acc;
+    }, loggedInUser.not_active_file || []);
+    loggedInUser.not_active_file = updatedNotActiveFile;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Downloanding current not active tickets with My File
+function saveCurrentNotActiveFileMyFile(not_active_file) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    loggedInUser.not_active_file = [...new Set(not_active_file)];
     localStorage.setItem('users', JSON.stringify(users));
 }
 
