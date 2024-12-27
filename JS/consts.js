@@ -143,14 +143,19 @@ const base_tickets = [
     },
 ]
 
+function ticket_name_change(ticket_string) {
+    const first_letter = ticket_string[0].toUpperCase();
+    const rest_of_text = ticket_string.slice(1);
+    return first_letter + rest_of_text; 
+}
+
 // Function to produce ticket names
 function ticket_name(ticket) {
-    const first_letter = ticket.client_type[0].toUpperCase();
-    const rest_of_text = ticket.client_type.slice(1);
-    const name = first_letter + rest_of_text; 
+    const name = ticket_name_change(ticket.client_type);
     const time = ticket.travel_time === 1440 ? '24 godziny' : `${ticket.travel_time} minut`
     const zone = ticket.zone === 'first' ? 'Strefa 1' : 'Strefa 1 + 2 + 3'
-    return `${name} ${time} ${zone}`;
+    const quantity_type = ticket_name_change(ticket.quantity_type);
+    return `${name} ${time} ${zone} ${quantity_type}`;
 }
 
 // Update tickets with names

@@ -11,7 +11,10 @@ function addDefaultUser() {
             expiry_date: '01/25',
             csv: '123',
             is_logged_in: false,
-            basket: []
+            basket: [],
+            favourites: [],
+            my_file: [],
+            purchase_history: []
         };
         users.push(defaultUser);
         localStorage.setItem('users', JSON.stringify(users));
@@ -48,6 +51,17 @@ function saveCurrentBasket(basket) {
     } else {
         localStorage.setItem('selectedTicketsToBuy', JSON.stringify(basket));
     }
+}
+
+function getCurrentFavourites() {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    return loggedInUser ? loggedInUser.favourites || [] : [];
+}
+
+function saveCurrentFavourites(favourites) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    loggedInUser.favourites = [...new Set(favourites)];
+    localStorage.setItem('users', JSON.stringify(users));
 }
 
 // Validation functionality

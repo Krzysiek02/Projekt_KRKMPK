@@ -77,7 +77,10 @@ function registration(event) {
             expiry_date: document.querySelector('.expiry_date').value.trim(),
             csv: document.querySelector('.csv').value.trim(),
             is_logged_in: false,
-            basket: []
+            basket: [],
+            favourites: [],
+            my_file: [],
+            purchase_history: []
         };
         saveUser(user);
         alert('Rejestracja zakończona pomyślnie!');
