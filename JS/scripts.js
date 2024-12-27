@@ -66,6 +66,19 @@ function saveCurrentFavourites(favourites) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
+// Downloanding current history
+function getCurrentHistory() {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    return loggedInUser ? loggedInUser.history || [] : [];
+}
+
+// Saving current history
+function saveCurrentHistory(history) {
+    const loggedInUser = users.find(user => user.is_logged_in);
+    loggedInUser.history = [...new Set(history)];
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
 // Validation functionality
 function validation() {
     // Validation accounts
