@@ -16,11 +16,24 @@ function renderTickets(filteredTickets) {
             const name = first_letter + rest_of_text;
             const ticketElement = document.createElement('div');
             const currentCount = selectedTickets[ticket.id] || 0;
+            let ticketTimeLabel;
+            if (ticket.travel_time == 1440) {
+                ticketTimeLabel = '24 h';
+            } else if (ticket.travel_time == 2880) {
+                ticketTimeLabel = '48 h';
+            } else if (ticket.travel_time == 4320) {
+                ticketTimeLabel = '72 h';
+            } else if (ticket.travel_time == 10080) {
+                ticketTimeLabel = '7 dni';
+            } else {
+                ticketTimeLabel = `${ticket.travel_time} minut`;
+            }
             ticketElement.classList.add('ticket');
             ticketElement.innerHTML = `
                 <div class="ticket-info">
                     <p><strong>Bilet ${name}</strong></p>
-                    <p>Czas: ${ticket.travel_time === 1440 ? '24 godziny' : `${ticket.travel_time} minut`}</p>
+                    ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                    <p>Czas: ${ticketTimeLabel}</p>
                     <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
                     <p>Cena: ${ticket.price} zł</p>
                 </div>
@@ -70,7 +83,13 @@ function applyFilters() {
         if (filter.type === 'checkbox' && filter.checked) {
             const filterType = filter.dataset.filter;
             const filterValue = filter.value;
-            filteredTickets = filteredTickets.filter(ticket => ticket[filterType] === filterValue);
+            if (filterType === 'family') {
+                filteredTickets = filteredTickets.filter(ticket => 
+                    (filterValue === 'true' && ticket.family) || (filterValue === 'false' && !ticket.family)
+                );
+            } else {
+                filteredTickets = filteredTickets.filter(ticket => ticket[filterType] === filterValue);
+            }        
         }
 
         if (filter.type === 'select-one' && filter.value) {
@@ -118,10 +137,25 @@ addToCartButton.addEventListener('click', () => {
         .filter(([_, count]) => count > 0)
         .map(([id, count]) => {
             const ticket = tickets.find(t => t.id == id);
-            const firstLetter = ticket.client_type[0].toUpperCase();
-            const restOfText = ticket.client_type.slice(1);
+            let firstLetter = ticket.client_type[0].toUpperCase();
+            let restOfText = ticket.client_type.slice(1);
             const name = firstLetter + restOfText;
-            return `${name} - ${ticket.travel_time} min - ${ticket.price} zł - ${count} szt. - ${ticket.price * count} zł`;
+            firstLetter = ticket.quantity_type[0].toUpperCase();
+            restOfText = ticket.quantity_type.slice(1);
+            const type = firstLetter + restOfText;
+            let ticketTimeLabel;
+            if (ticket.travel_time == 1440) {
+                ticketTimeLabel = '24 h';
+            } else if (ticket.travel_time == 2880) {
+                ticketTimeLabel = '48 h';
+            } else if (ticket.travel_time == 4320) {
+                ticketTimeLabel = '72 h';
+            } else if (ticket.travel_time == 10080) {
+                ticketTimeLabel = '7 dni';
+            } else {
+                ticketTimeLabel = `${ticket.travel_time} minut`;
+            }
+            return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${count} szt. - ${ticket.price * count} zł`;
         }).join("\n");
     saveCurrentBasket(updatedBasket);
     alert(`Przechodzimy do koszyka z wybranymi biletami:\n${basketSummary}`);
@@ -148,10 +182,25 @@ proceedToPaymentButton.addEventListener('click', () => {
             return basket;
         }, [...currentBasket]);
     const basketSummary = updatedBasket.map(ticket => {
-        const first_letter = ticket.client_type[0].toUpperCase();
-        const rest_of_text = ticket.client_type.slice(1);
-        const name = first_letter + rest_of_text;
-        return `${name} - ${ticket.travel_time} min - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.sum_price} zł`;
+        let firstLetter = ticket.client_type[0].toUpperCase();
+        let restOfText = ticket.client_type.slice(1);
+        const name = firstLetter + restOfText;
+        firstLetter = ticket.quantity_type[0].toUpperCase();
+        restOfText = ticket.quantity_type.slice(1);
+        const type = firstLetter + restOfText;
+        let ticketTimeLabel;
+        if (ticket.travel_time == 1440) {
+            ticketTimeLabel = '24 h';
+        } else if (ticket.travel_time == 2880) {
+            ticketTimeLabel = '48 h';
+        } else if (ticket.travel_time == 4320) {
+            ticketTimeLabel = '72 h';
+        } else if (ticket.travel_time == 10080) {
+            ticketTimeLabel = '7 dni';
+        } else {
+            ticketTimeLabel = `${ticket.travel_time} minut`;
+        }
+        return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.sum_price} zł`;
     }).join("\n");
     const totalPrice = updatedBasket.reduce((sum, t) => sum + t.sum_price, 0);
     const totalNumber = updatedBasket.reduce((sum, t) => sum + t.quantity, 0);

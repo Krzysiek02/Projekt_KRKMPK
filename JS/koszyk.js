@@ -13,10 +13,23 @@ function renderTickets() {
         currentBasket.forEach(ticket => {
             const ticketElement = document.createElement('div');
             ticketElement.classList.add('ticket');
+            let ticketTimeLabel;
+            if (ticket.travel_time == 1440) {
+                ticketTimeLabel = '24 h';
+            } else if (ticket.travel_time == 2880) {
+                ticketTimeLabel = '48 h';
+            } else if (ticket.travel_time == 4320) {
+                ticketTimeLabel = '72 h';
+            } else if (ticket.travel_time == 10080) {
+                ticketTimeLabel = '7 dni';
+            } else {
+                ticketTimeLabel = `${ticket.travel_time} minut`;
+            }
             ticketElement.innerHTML = `
                 <div class="ticket-info">
                     <p><strong>Bilet ${ticket.client_type.toUpperCase()}</strong></p>
-                    <p>Czas: ${ticket.travel_time === 1440 ? '24 godziny' : `${ticket.travel_time} minut`}</p>
+                    ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                    <p>Czas: ${ticketTimeLabel}</p>
                     <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
                     <p>Cena: ${ticket.price} zł</p>
                 </div>
@@ -110,10 +123,25 @@ proceedToPaymentButton.addEventListener('click', () => {
     const selectedTicketsForBuy = summary_for_buying();
     saveCurrentBasket(selectedTicketsForBuy);
     const basketSummary = selectedTicketsForBuy.map(ticket => {
-        const firstLetter = ticket.client_type[0].toUpperCase();
-        const restOfText = ticket.client_type.slice(1);
+        let firstLetter = ticket.client_type[0].toUpperCase();
+        let restOfText = ticket.client_type.slice(1);
         const name = firstLetter + restOfText;
-        return `${name} - ${ticket.travel_time} min - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.sum_price} zł`;
+        firstLetter = ticket.quantity_type[0].toUpperCase();
+        restOfText = ticket.quantity_type.slice(1);
+        const type = firstLetter + restOfText;
+        let ticketTimeLabel;
+        if (ticket.travel_time == 1440) {
+            ticketTimeLabel = '24 h';
+        } else if (ticket.travel_time == 2880) {
+            ticketTimeLabel = '48 h';
+        } else if (ticket.travel_time == 4320) {
+            ticketTimeLabel = '72 h';
+        } else if (ticket.travel_time == 10080) {
+            ticketTimeLabel = '7 dni';
+        } else {
+            ticketTimeLabel = `${ticket.travel_time} minut`;
+        }
+        return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.sum_price} zł`;
     }).join("\n");
     const totalPrice = selectedTicketsForBuy.reduce((sum, t) => sum + t.sum_price, 0);
     const totalNumber = selectedTicketsForBuy.reduce((sum, t) => sum + t.quantity, 0);

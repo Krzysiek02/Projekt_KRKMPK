@@ -53,11 +53,13 @@ function saveCurrentBasket(basket) {
     }
 }
 
+// Downloanding current favourites
 function getCurrentFavourites() {
     const loggedInUser = users.find(user => user.is_logged_in);
     return loggedInUser ? loggedInUser.favourites || [] : [];
 }
 
+// Saving current favourites
 function saveCurrentFavourites(favourites) {
     const loggedInUser = users.find(user => user.is_logged_in);
     loggedInUser.favourites = [...new Set(favourites)];
