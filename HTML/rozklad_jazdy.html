@@ -40,7 +40,52 @@
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
-        
+        <!-- Filter Section -->
+        <div class="filter-container">
+          <label for="line-filter">Numer linii:</label>
+          <input type="text" id="line-filter" placeholder="Wpisz numer linii" />
+          <div class="vehicle-type">
+            <label>
+              <input type="radio" name="vehicle-type" value="tram" checked />
+              Tramwaj
+            </label>
+            <label>
+              <input type="radio" name="vehicle-type" value="bus" />
+              Autobus
+            </label>
+          </div>
+          <button id="reset-filters">Resetuj filtry</button>
+        </div>
+      
+        <!-- Stops Display Section -->
+        <div id="stops-container" class="stops-container"></div>
+      
+        <!-- Modal -->
+        <div id="modal" class="modal hidden">
+          <div class="modal-content">
+            <button id="close-modal" class="close-modal">X</button>
+            <div class="modal-body">
+              <h2 id="line-number"></h2>
+              <img id="vehicle-icon" src="" alt="Vehicle Icon" />
+              <div>
+                <button id="direction1" class="direction-btn"></button>
+                <button id="direction2" class="direction-btn"></button>
+              </div>
+              <div id="route-container">
+                <h3>Trasa:</h3>
+                <p id="route"></p>
+              </div>
+              <div id="timetable-container">
+                <h3>Rozkład jazdy:</h3>
+                <div id="timetable"></div>
+              </div>
+              <div id="stations-container">
+                <h3>Przystanki:</h3>
+                <div id="stations-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>    
       </div>
     </div>
     <!-- Stopka -->

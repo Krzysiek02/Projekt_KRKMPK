@@ -308,6 +308,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Wawel 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -331,6 +332,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Informatyczny 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -354,6 +356,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Salwator 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -384,6 +387,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Salwator 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -407,6 +411,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Informatyczny 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -430,6 +435,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Wawel 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -467,6 +473,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Mistrzejowice 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -490,6 +497,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Klawiaturowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -513,6 +521,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Nowa Huta 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -543,6 +552,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Nowa Huta 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -566,6 +576,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Klawiaturowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -589,6 +600,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Mistrzejowice 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -626,6 +638,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Kurdwanów 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -649,6 +662,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Monitorowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -672,6 +686,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Ruczaj 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -702,6 +717,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Ruczaj 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -725,6 +741,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Monitorowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -748,6 +765,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Kurdwanów 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -785,6 +803,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Balice Lotnisko 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -808,6 +827,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Kablowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -831,6 +851,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Wawel 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -861,6 +882,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Wawel 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -884,6 +906,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Kablowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -907,6 +930,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Balice Lotnisko 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -944,6 +968,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Bitowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -967,6 +992,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Klawiaturowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -990,6 +1016,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Graficzna 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1020,6 +1047,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Graficzna 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1043,6 +1071,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Klawiaturowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1066,6 +1095,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Bitowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1103,6 +1133,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Rondo Grzegórzeckie 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1126,6 +1157,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Klawiaturowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1149,6 +1181,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Salwator 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1179,6 +1212,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Salwator 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1202,6 +1236,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Klawiaturowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1225,6 +1260,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Rondo Grzegórzeckie 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1262,6 +1298,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Nowa Huta 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1285,6 +1322,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Graficzna 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1308,6 +1346,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Bitowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1338,6 +1377,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Bitowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1361,6 +1401,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Graficzna 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1384,6 +1425,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Nowa Huta 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1421,6 +1463,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Balice Lotnisko 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -1444,6 +1487,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Bitowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1467,6 +1511,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Krowodrza Górka 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1497,6 +1542,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Krowodrza Górka 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1520,6 +1566,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Bitowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1543,6 +1590,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Balice Lotnisko 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -1580,6 +1628,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Wieliczka 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -1603,6 +1652,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Graficzna 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1626,6 +1676,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Tyniec 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -1656,6 +1707,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Tyniec 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -1679,6 +1731,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Graficzna 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1702,6 +1755,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Wieliczka 01',
+                        zone: 'all',
                         time_table: [
                             {
                                 normal_days: [
@@ -1739,6 +1793,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Mogilska 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1762,6 +1817,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Nowa Huta 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1785,6 +1841,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Monitorowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1815,6 +1872,7 @@ const publicTransportLines = [
                     {
                         id: 1,
                         name_of_station: 'Monitorowa 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1838,6 +1896,7 @@ const publicTransportLines = [
                     {
                         id: 2,
                         name_of_station: 'Nowa Huta 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
@@ -1861,6 +1920,7 @@ const publicTransportLines = [
                     {
                         id: 3,
                         name_of_station: 'Mogilska 01',
+                        zone: 'first',
                         time_table: [
                             {
                                 normal_days: [
