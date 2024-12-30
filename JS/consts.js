@@ -293,6 +293,134 @@ const tickets = base_tickets.map(ticket => ({
 // Choosen tickets to buy
 const selectedTicketsToBuy = JSON.parse(localStorage.getItem('selectedTicketsToBuy')) || [];
 
+// Public transport lines shorted
+const shortPublicTransportLines = [ 'Wawel 01', 'Informatyczny 01', 'Salwator 01', 'Mistrzejowice 01', 'Klawiaturowa 01', 'Nowa Huta 01', 'Kurdwanów 01', 'Monitorowa 01', 'Ruczaj 01', 'Balice Lotnisko 01', 'Kablowa 01', 'Bitowa 01', 'Graficzna 01', 'Rondo Grzegórzeckie 01', 'Krowodrza Górka 01', 'Wieliczka 01', 'Tyniec 01', 'Mogilska 01' ]
+
+// Public available routes
+
+const routesPublicTransportLines = [ 
+    {
+        number_of_line: 1,
+        directions: 0,
+        vehicle_type: 'tram',
+        route: 'Wawel 01, Informatyczny 01, Salwator 01'
+    }, 
+    {
+        number_of_line: 1,
+        directions: 1,
+        vehicle_type: 'tram',
+        route: 'Salwator 01, Informatyczny 01, Wawel 01'
+    },
+    {
+        number_of_line: 2,
+        directions: 0,
+        vehicle_type: 'tram',
+        route: 'Mistrzejowice 01, Klawiaturowa 01, Nowa Huta 01'
+    },
+    {
+        number_of_line: 2,
+        directions: 1,
+        vehicle_type: 'tram',
+        route: 'Nowa Huta 01, Klawiaturowa 01, Mistrzejowice 01'
+    },
+    {
+        number_of_line: 3,
+        directions: 0,
+        vehicle_type: 'tram',
+        route: 'Kurdwanów 01, Monitorowa 01, Ruczaj 01'
+    }, 
+    {
+        number_of_line: 3,
+        directions: 1,
+        vehicle_type: 'tram',
+        route: 'Ruczaj 01 , Monitorowa 01, Kurdwanów 01'
+    },
+    {
+        number_of_line: 4,
+        directions: 0,
+        vehicle_type: 'tram',
+        route: 'Balice Lotnisko 01, Kablowa 01, Wawel 01',
+    },
+    {
+        number_of_line: 4,
+        directions: 1,
+        vehicle_type: 'tram',
+        route: 'Wawel 01, Kablowa 01, Balice Lotnisko 01'
+    },
+    {
+        number_of_line: 5,
+        directions: 0,
+        vehicle_type: 'tram',
+        route: 'Bitowa 01, Klawiaturowa 01, Graficzna 01'
+    },
+    {
+        number_of_line: 5,
+        directions: 1,
+        vehicle_type: 'tram',
+        route: 'Graficzna 01, Klawiaturowa 01, Bitowa 01'
+    },
+    {
+        number_of_line: 101,
+        directions: 0,
+        vehicle_type: 'bus',
+        route: 'Wawel 01, Informatyczny 01, Salwator 01'
+    }, 
+    {
+        number_of_line: 101,
+        directions: 1,
+        vehicle_type: 'bus',
+        route: 'Salwator 01, Informatyczny 01, Wawel 01'
+    },
+    {
+        number_of_line: 102,
+        directions: 0,
+        vehicle_type: 'bus',
+        route: 'Mistrzejowice 01, Klawiaturowa 01, Nowa Huta 01'
+    },
+    {
+        number_of_line: 102,
+        directions: 1,
+        vehicle_type: 'bus',
+        route: 'Nowa Huta 01, Klawiaturowa 01, Mistrzejowice 01'
+    },
+    {
+        number_of_line: 201,
+        directions: 0,
+        vehicle_type: 'bus',
+        route: 'Kurdwanów 01, Monitorowa 01, Ruczaj 01'
+    }, 
+    {
+        number_of_line: 201,
+        directions: 1,
+        vehicle_type: 'bus',
+        route: 'Ruczaj 01 , Monitorowa 01, Kurdwanów 01'
+    },
+    {
+        number_of_line: 301,
+        directions: 0,
+        vehicle_type: 'bus',
+        route: 'Rondo Grzegórzeckie 01, Klawiaturowa 01, Salwator 01',
+    },
+    {
+        number_of_line: 301,
+        directions: 1,
+        vehicle_type: 'bus',
+        route: 'Salwator 01, Klawiaturowa 01, Rondo Grzegórzeckie 01'
+    },
+    {
+        number_of_line: 302,
+        directions: 0,
+        vehicle_type: 'bus',
+        route: 'Mogilska 01, Nowa Huta 01, Monitorowa 01'
+    },
+    {
+        number_of_line: 302,
+        directions: 1,
+        vehicle_type: 'bus',
+        route: 'Monitorowa 01, Nowa Huta 01, Mogilska 01'
+    },
+];
+
 // Public transport lines
 const publicTransportLines = [
     {
@@ -303,7 +431,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Wawel - Salwator',
-                route: 'Wawel, Informatyczny, Salwator',
+                route: 'Wawel 01, Informatyczny 01, Salwator 01',
                 lines: [
                     {
                         id: 1,
@@ -382,7 +510,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Salwator - Wawel',
-                route: 'Salwator, Informatyczny, Wawel',
+                route: 'Salwator 01, Informatyczny 01, Wawel 01',
                 lines: [
                     {
                         id: 1,
@@ -468,7 +596,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Mistrzejowice - Nowa Huta',
-                route: 'Mistrzejowice, Klawiaturowa, Nowa Huta',
+                route: 'Mistrzejowice 01, Klawiaturowa 01, Nowa Huta 01',
                 lines: [
                     {
                         id: 1,
@@ -547,7 +675,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Nowa Huta - Mistrzejowice',
-                route: 'Nowa Huta, Klawiaturowa, Mistrzejowice',
+                route: 'Nowa Huta 01, Klawiaturowa 01, Mistrzejowice 01',
                 lines: [
                     {
                         id: 1,
@@ -633,7 +761,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Kurdwanów - Ruczaj',
-                route: 'Kurdwanów, Monitorowa, Ruczaj',
+                route: 'Kurdwanów 01, Monitorowa 01, Ruczaj 01',
                 lines: [
                     {
                         id: 1,
@@ -712,7 +840,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Ruczaj - Kurdwanów',
-                route: 'Ruczaj, Monitorowa, Kurdwanów',
+                route: 'Ruczaj 01, Monitorowa 01, Kurdwanów 01',
                 lines: [
                     {
                         id: 1,
@@ -798,7 +926,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Balice Lotnisko - Wawel',
-                route: 'Balice Lotnisko, Kablowa, Wawel',
+                route: 'Balice Lotnisko 01, Kablowa 01, Wawel 01',
                 lines: [
                     {
                         id: 1,
@@ -877,7 +1005,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Wawel - Balice Lotnisko',
-                route: 'Wawel, Kablowa, Balice Lotnisko',
+                route: 'Wawel 01, Kablowa 01, Balice Lotnisko 01',
                 lines: [
                     {
                         id: 1,
@@ -963,7 +1091,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Bitowa - Graficzna',
-                route: 'Bitowa, Klawiaturowa, Graficzna',
+                route: 'Bitowa 01, Klawiaturowa 01, Graficzna 01',
                 lines: [
                     {
                         id: 1,
@@ -1042,7 +1170,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Graficzna - Bitowa',
-                route: 'Graficzna, Klawiaturowa, Bitowa',
+                route: 'Graficzna 01, Klawiaturowa 01, Bitowa 01',
                 lines: [
                     {
                         id: 1,
@@ -1128,7 +1256,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Rondo Grzegórzeckie - Salwator',
-                route: 'Rondo Grzegórzeckie, Klawiaturowa, Salwator',
+                route: 'Rondo Grzegórzeckie 01, Klawiaturowa 01, Salwator 01',
                 lines: [
                     {
                         id: 1,
@@ -1207,7 +1335,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Salwator - Rondo Grzegórzeckie',
-                route: 'Salwator, Klawiaturowa, Rondo Grzegórzeckie',
+                route: 'Salwator 01, Klawiaturowa 01, Rondo Grzegórzeckie 01',
                 lines: [
                     {
                         id: 1,
@@ -1293,7 +1421,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Nowa Huta - Bitowa',
-                route: 'Nowa Huta, Graficzna, Bitowa',
+                route: 'Nowa Huta 01, Graficzna 01, Bitowa 01',
                 lines: [
                     {
                         id: 1,
@@ -1372,7 +1500,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Bitowa - Nowa Huta',
-                route: 'Bitowa, Graficzna, Nowa Huta',
+                route: 'Bitowa 01, Graficzna 01, Nowa Huta 01',
                 lines: [
                     {
                         id: 1,
@@ -1458,7 +1586,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Balice Lotnisko - Krowodrza Górka',
-                route: 'Balice Lotnisko, Bitowa, Krowodrza Górka',
+                route: 'Balice Lotnisko 01, Bitowa 01, Krowodrza Górka 01',
                 lines: [
                     {
                         id: 1,
@@ -1537,7 +1665,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Krowodrza Górka - Balice Lotnisko',
-                route: 'Krowodrza Górka, Bitowa, Balice Lotnisko',
+                route: 'Krowodrza Górka 01, Bitowa 01, Balice Lotnisko 01',
                 lines: [
                     {
                         id: 1,
@@ -1623,7 +1751,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Wieliczka - Tyniec',
-                route: 'Wielicka, Graficzna, Tyniec',
+                route: 'Wieliczka 01, Graficzna 01, Tyniec 01',
                 lines: [
                     {
                         id: 1,
@@ -1702,7 +1830,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Tyniec - Wieliczka',
-                route: 'Tyniec, Graficzna, Wieliczka',
+                route: 'Tyniec 01, Graficzna 01, Wieliczka 01',
                 lines: [
                     {
                         id: 1,
@@ -1788,7 +1916,7 @@ const publicTransportLines = [
             {
                 id: 1,
                 destination: 'Mogilska - Monitorowa',
-                route: 'Mogilska, Nowa Huta, Monitorowa',
+                route: 'Mogilska 01, Nowa Huta 01, Monitorowa 01',
                 lines: [
                     {
                         id: 1,
@@ -1867,7 +1995,7 @@ const publicTransportLines = [
             {
                 id: 2,
                 destination: 'Monitorowa - Mogilska',
-                route: 'Monitorowa, Nowa Huta, Mogilska',
+                route: 'Monitorowa 01, Nowa Huta 01, Mogilska 01',
                 lines: [
                     {
                         id: 1,
