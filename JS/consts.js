@@ -238,7 +238,7 @@ const base_tickets = [
     },
     {
         id: 24,
-        client_type: 'normalny',
+        client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
         family: false,
         ticket_type: 'MPK_KMŁ',
@@ -254,9 +254,9 @@ const base_tickets = [
         ticket_type: 'MPK',
         zone: 'all',
         travel_time: 4320,
-        price: 25,
+        price: 100,
     },
-]
+];
 
 function ticket_name_change(ticket_string) {
     const first_letter = ticket_string[0].toUpperCase();
@@ -297,7 +297,6 @@ const selectedTicketsToBuy = JSON.parse(localStorage.getItem('selectedTicketsToB
 const shortPublicTransportLines = [ 'Wawel 01', 'Informatyczny 01', 'Salwator 01', 'Mistrzejowice 01', 'Klawiaturowa 01', 'Nowa Huta 01', 'Kurdwanów 01', 'Monitorowa 01', 'Ruczaj 01', 'Balice Lotnisko 01', 'Kablowa 01', 'Bitowa 01', 'Graficzna 01', 'Rondo Grzegórzeckie 01', 'Krowodrza Górka 01', 'Wieliczka 01', 'Tyniec 01', 'Mogilska 01' ]
 
 // Public available routes
-
 const routesPublicTransportLines = [ 
     {
         number_of_line: 1,
@@ -493,8 +492,8 @@ const publicTransportLines = [
                                     { id: 3, hour: '16', minutes: [ '17', '27', '37', '47', '57' ] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '4', minutes: [ '22', '42', '02' ] },
-                                    { id: 2, hour: '11', minutes: [ '22', '42', '02' ] },
+                                    { id: 1, hour: '4', minutes: [ '22', '42', '59' ] },
+                                    { id: 2, hour: '11', minutes: [ '22', '42', '59' ] },
                                     { id: 3, hour: '16', minutes: [ '12', '32', '52' ] }
                                 ],
                                 sundays: [
@@ -578,7 +577,7 @@ const publicTransportLines = [
                                 ],
                                 sundays: [
                                     { id: 1, hour: '4', minutes: [ '22', '42' ] },
-                                    { id: 2, hour: '11', minutes: [ '02', '22', '42' ] },
+                                    { id: 2, hour: '11', minutes: [ '10', '30', '50' ] },
                                     { id: 3, hour: '16', minutes: [ '12', '32', '52' ] }
                                 ]
                             }
@@ -634,8 +633,8 @@ const publicTransportLines = [
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '6', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '14', minutes: ['05', '25', '45'] },
+                                    { id: 1, hour: '6', minutes: ['15', '35', '55'] },
+                                    { id: 2, hour: '14', minutes: ['25', '45', '45'] },
                                     { id: 3, hour: '21', minutes: ['20', '40', '00'] }
                                 ],
                                 sundays: [
@@ -694,7 +693,7 @@ const publicTransportLines = [
                                     { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '9', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '9', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '15', minutes: ['05', '25', '45'] },
                                     { id: 3, hour: '22', minutes: ['20', '40', '00'] }
                                 ]
@@ -718,7 +717,7 @@ const publicTransportLines = [
                                     { id: 3, hour: '21', minutes: ['20', '40', '00'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '9', minutes: ['00', '20', '40'] },
+                                    { id: 1, hour: '9', minutes: ['15', '35', '55'] },
                                     { id: 2, hour: '15', minutes: ['15', '35', '55'] },
                                     { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ]
