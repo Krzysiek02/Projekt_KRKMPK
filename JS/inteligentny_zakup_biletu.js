@@ -562,7 +562,7 @@ function showSummary(connection) {
                 ? '7 dni'
                 : `${ticket.ticket.travel_time} minut`;
 
-            return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} zł - ${ticket.ticket.quantity} szt. - ${ticket.ticket.sum_price} zł`;
+            return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} zł - ${ticket.count} szt. - ${ticket.count * ticket.ticket.price} zł`;
         }).join('\n');
         saveCurrentBasket(updatedBasket);
         alert(`Przechodzimy do koszyka z wybranymi biletami:\n${basketSummary}`);
