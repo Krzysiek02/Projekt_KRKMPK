@@ -296,10 +296,11 @@ function setupAutoComplete(input, suggestionsBox) {
                         <h2>Lista połączeń</h2>
                         <p>Data podróży: ${selectedDate}</p>
                         <div class="filters">
-                            <label><input type="radio" name="filter" id="quickest-filter" ${currentFilter === 'quickest-filter' ? 'checked' : ''}> Najszybszy</label>
-                            <label><input type="radio" name="filter" id="shortest-filter" ${currentFilter === 'shortest-filter' ? 'checked' : ''}> Najkrótszy</label>
-                            <label><input type="radio" name="filter" id="cheapest-filter" ${currentFilter === 'cheapest-filter' ? 'checked' : ''}> Najtańszy</label>
+                            <label class="radio"><input type="radio" name="filter" id="quickest-filter" ${currentFilter === 'quickest-filter' ? 'checked' : ''}> <span class="name">Najszybszy</span></label>
+                            <label class="radio"><input type="radio" name="filter" id="shortest-filter" ${currentFilter === 'shortest-filter' ? 'checked' : ''}> <span class="name">Najkrótszy</span></label>
+                            <label class="radio"><input type="radio" name="filter" id="cheapest-filter" ${currentFilter === 'cheapest-filter' ? 'checked' : ''}> <span class="name">Najtańszy</span></label>
                         </div>
+                        
                         <div id="connections">${generateConnectionsHTML(filteredConnections)}</div>
                     </div>
                     `;
@@ -499,10 +500,10 @@ function showSummary(connection) {
             <div class="ticket-row">
                 <span>${ticketType} - ${clientType}</span>
                 <span>${ticketTimeLabel}</span>
-                <span>Strefa: ${ticketZone}</span>
-                <span>Cena za szt.: ${ticket.price} zł</span>
-                <span>Ilość: ${count}</span>
-                <span>Suma: ${ticket.price * count} zł</span>
+                <span>${ticketZone}</span>
+                <span>${ticket.price} zł</span>
+                <span>${count}</span>
+                <span>${ticket.price * count} zł</span>
             </div>
         `;
     }).join('');
@@ -515,10 +516,18 @@ function showSummary(connection) {
         <div class="summary-container">
             <div class="summary-left">
                 <h3>Twoje wybrane bilety</h3>
-                ${ticketSummary}
-                <div class="total-price">Łączna cena: ${totalPrice} zł</div>
             </div>
             <div class="summary-right">
+                <div class="summary_opis">
+                    <div class="summary_opis_title">Opis</div>
+                    <div class="summary_opis_title">Czas</div>
+                    <div class="summary_opis_title">Strefa</div>
+                    <div class="summary_opis_title">Cena</div>
+                    <div class="summary_opis_title">Ilość</div>
+                    <div class="summary_opis_title">Suma</div>
+                </div>
+                ${ticketSummary}
+                <div class="total-price">Łączna cena: ${totalPrice} zł</div>
                 <button id="reselect-button">Ponowne Inteligentne Wybranie Biletu</button>
                 <button id="add-to-cart-button">Dodaj do Koszyka</button>
                 <button id="proceed-to-payment-button">Przejdź do Płatności</button>
