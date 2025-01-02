@@ -21,18 +21,23 @@ h2 {
   
   cursor: pointer;
   padding: 30px;
+  transition: all 0.3s ease;
+}
+.payment-button button:hover{
+    background-color: #f00645;
+    
+    
 }
 .div_content_container_platnosci{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     
+    margin-top: 20px;
     font-size: 50px;
     color:#740938;
     width:900px;
-    
 }
 .div_content_container{
     display: flex;
@@ -40,9 +45,22 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 40vw;
-    max-width: 500px;
+    max-width: 1500px;
     min-height: 300px;
     min-width: 500px;
     backdrop-filter: blur(5px);
     background-color: rgba(243, 245, 246, 0.856);
+}
+@media (max-width: 875px) {
+  .div_content_container_platnosci{
+    flex-direction: column;
+    font-size: 40px;
+    text-align: center;
+  }
+  .div_content_container{
+    min-width: 300px;
+  }
+  .payment-button button{
+    width:140px;
+  }
 }

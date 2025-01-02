@@ -42,19 +42,25 @@
       <div class="div_content_container">
         <!-- Filter Section -->
         <div class="filter-container">
-          <label for="line-filter">Numer linii:</label>
-          <input type="text" id="line-filter" placeholder="Wpisz numer linii" />
-          <div class="vehicle-type">
-            <label>
-              <input type="radio" name="vehicle-type" value="tram" checked />
-              Tramwaj
-            </label>
-            <label>
-              <input type="radio" name="vehicle-type" value="bus" />
-              Autobus
-            </label>
+          <div class="filter-container-left">
+            <label for="line-filter">Numer linii:</label>
+            <input type="text" id="line-filter" placeholder="Wpisz numer linii" />
           </div>
-          <button id="reset-filters">Resetuj filtry</button>
+          <div class="filter-container-right">
+            <div class="vehicle-type">
+              <label>
+                <input type="radio" name="vehicle-type" value="tram" checked />
+                <span>Tramwaj</span>
+              </label>
+              <label>
+                <input type="radio" name="vehicle-type" value="bus" />
+                <span>Autobus</span>
+              </label>
+              <span class="selection"></span>
+            </div>
+            <button id="reset-filters">Resetuj filtry</button>
+          </div>
+          
         </div>
       
         <!-- Stops Display Section -->

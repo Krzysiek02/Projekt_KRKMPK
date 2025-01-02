@@ -57,11 +57,12 @@
             <input type="text" id="end-station" name="end-station" autocomplete="off" placeholder="Wprowadź przystanek" />
             <ul class="suggestions" id="end-suggestions"></ul>
           </div>
-      
-          <button type="button" id="add-intermediate-station">Dodaj przystanek pośredni</button>
-          <button type="button" id="set-date">Data</button>
-          <button type="button" id="set-time">Godzina</button>
-      
+          <div id="buttons">
+            <button type="button" class="icon" id="add-intermediate-station">+</button>
+            <p>Dodaj<br>przystanek<br>pośredni</p>
+            <button type="button" id="set-date">Data</button>
+            <button type="button" id="set-time">Godzina</button>
+          </div>
           <div class="selected-values">
             <p id="selected-date">Data: Brak Wybranej Daty</p>
             <p id="selected-time">Godzina: Brak Wybranej Godziny</p>

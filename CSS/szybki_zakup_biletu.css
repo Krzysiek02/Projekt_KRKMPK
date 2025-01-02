@@ -110,7 +110,7 @@ h2, h3 {
 
 }
 .ticket-actions button {
-    line-height: 30px; /* Ustawienie line-height równe wysokości przycisku */
+    line-height: 30px; 
     text-align: center;
     background-color: transparent;
     border: none;
