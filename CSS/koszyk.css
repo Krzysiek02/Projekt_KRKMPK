@@ -126,3 +126,9 @@ h2, h3 {
     background-color: #d7ccc8;
     cursor: not-allowed;
 }
+@media(max-width:600px){
+    .ticket-purchase-container {
+        flex-direction: column-reverse;
+        
+    }
+}

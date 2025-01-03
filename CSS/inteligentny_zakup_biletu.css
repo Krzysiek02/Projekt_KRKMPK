@@ -13,7 +13,7 @@
   padding: 20px;
   width: 80vw;
   max-width: 1400px;
-  min-width: 370px;
+  min-width: 300px;
   height: 60vh;
   height:fit-content;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -32,8 +32,8 @@
 }
 #swap-stations{
   position: absolute;
-  right:-50px;
-  top:57px;
+  right:-30px;
+  top:66px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 50px;
@@ -56,14 +56,18 @@
   left: 70%;
   transform: translateX(-50%);
 }
-
+.station-input input{
+  margin-right:10px;
+}
 .station-input{
   max-width: 850px;
+  min-width: 250px;
   margin-top:40px;
   position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  
   width: 70vw;
   padding: 10px;
   font-size: 23px;
@@ -73,6 +77,20 @@
   color:#740938;
   background-color: white;
   height:45px;
+}
+.station-input .remove-station{
+  position: absolute;
+  width:15px;
+  height:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right:0;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 #start-station, #end-station, #between-station{
   
@@ -217,6 +235,7 @@ button:hover {
     backdrop-filter: blur(5px);
   width:60vw;
   max-width: 700px;
+  min-width:300px;
   height: 300px;
   font-size: 30px;
   color:#740938;
@@ -285,8 +304,12 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 @media (max-width: 800px) {
+  .station-input{
+    font-size: 13px;
+  }
   .ticket_selection{
-    height:500px;
+    height:750px;
+    flex-direction: column;
   }
   .ticket_right{
     flex-direction: column;
@@ -295,6 +318,13 @@ input[type="number"] {
   .ticket_left{
     width:10vw;
     font-size: 35px;
+    margin-bottom:30px;
+  }
+  #buttons button {
+    font-size: 11px;
+  }
+  #buttons p{
+    font-size: 10px;
   }
 }
 
@@ -431,7 +461,7 @@ input[type="number"] {
   font-weight: 600;
 }
 
-/* Mobilność */
+
 @media (max-width: 768px) {
   .connection {
       flex-direction: column;
@@ -472,7 +502,8 @@ input[type="number"] {
     backdrop-filter: blur(5px);
   width:60vw;
   max-width: 700px;
-  height: 300px;
+  min-height: 300px;
+  
   font-size:10px;
   color:#740938;
   
@@ -519,8 +550,7 @@ input[type="number"] {
   margin: 20px 0;
 }
 
-button {
-  
+.modal-content button, #reselect-button button, #add-to-cart-button button, #proceed-to-payment-button button {
   padding: 10px 20px;
   margin: 10px 5px;
   border: none;
@@ -553,6 +583,13 @@ button {
     font-size: 40px;
   }
   .summary-right{
+    margin-top:20px;
     width:85vw;
+  }
+  .ticket-row {
+    font-size: 9px;
+  }
+  .summary_opis_title{
+    font-size: 12px;
   }
 }

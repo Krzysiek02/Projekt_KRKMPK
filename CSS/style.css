@@ -42,6 +42,7 @@ nav {
 .nav_div_right .bucket img, .nav_div_right .language_change img{
   height: 25px;
   width: 35px;
+  margin:0;
 }
 
 .nav_div_right .logging button{
