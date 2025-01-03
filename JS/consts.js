@@ -308,6 +308,9 @@ const base_tickets = [
     },
 ];
 
+// Public transport lines shorted
+const shortPublicTransportLines = [ 'Wawel 01', 'Informatyczny 01', 'Salwator 01', 'Mistrzejowice 01', 'Klawiaturowa 01', 'Nowa Huta 01', 'Kurdwanów 01', 'Monitorowa 01', 'Ruczaj 01', 'Balice Lotnisko 01', 'Kablowa 01', 'Bitowa 01', 'Graficzna 01', 'Rondo Grzegórzeckie 01', 'Krowodrza Górka 01', 'Wieliczka 01', 'Tyniec 01', 'Mogilska 01' ];
+
 function ticket_name_change(ticket_string) {
     const first_letter = ticket_string[0].toUpperCase();
     const rest_of_text = ticket_string.slice(1);
@@ -323,11 +326,11 @@ function get_language() {
 }
 
 // Function to produce ticket names
-function ticket_name(ticket) {
-    const isPolish = get_language();
+function ticket_name(ticket, language) {
     let zone;
     let name;
     let quantity_type;
+    const isPolish = language === 'polish'
     if (isPolish) {
         zone = ticket.zone === 'first' ? 'Strefa 1' : 'Strefa 1 + 2 + 3';
         name = ticket_name_change(ticket.client_type);
@@ -363,7 +366,8 @@ function ticket_name(ticket) {
 // Update tickets with names
 const tickets = base_tickets.map(ticket => ({
     ...ticket,
-    name: ticket_name(ticket)
+    name: ticket_name(ticket, 'polish'),
+    name_ang: ticket_name(ticket, 'english'),
 }));
 
 // Choosen tickets to buy

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/koszyk.css" />
-  <title>KrakMPK - Koszyk</title>
+  <title>KrakMPK</title>
 </head>
 
 <body>
@@ -41,21 +41,7 @@
       <span class="back_arrow">&larr;</span>
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
-        <div class="ticket-purchase-container">
-          <div class="tickets-display">
-            <h2>Bilety w Koszyku</h2>
-            <div id="tickets-container" class="tickets-container"></div>
-          </div>
-          <div class="summary">
-            <h3>Podsumowanie</h3>
-            <div class="summary-section"></div>
-            <div class="action-buttons">
-              <button id="reset-filters">Wyczyść Bilety</button>
-              <button id="proceed-to-payment" disabled>Przejdź do Płatności</button>
-              <button id="go-to-buy" data-target="../HTML/inteligentny_zakup_biletu.html">Kontynuuj zakupy</button>
-            </div>
-          </div>
-        </div>
+        <!-- Główny content się pojawi tutaj dynamicznie -->
       </div>
     </div>
     <!-- Stopka -->
@@ -76,7 +62,9 @@
   
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
+  <script src="../JS/dynamiczny_content.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
+  <script src="../JS/language.js"></script>
   <script src="../JS/koszyk.js"></script>
 </body>
 

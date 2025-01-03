@@ -1,27 +1,52 @@
 // Dynamicly rendering logged user with tickets
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h2>Płatność kartą</h2>
-            <form id="payment-form">
-                <div class="payment_form_input">
-                    <label for="card-number">Numer karty</label>
-                    <input type="text" id="card-number" value="${user.card_number}" readonly />
-                </div>
-                <div class="payment_form_input">
-                    <label for="expiry-date">Data ważności</label>
-                    <input type="text" id="expiry-date" value="${user.expiry_date}" readonly />
-                </div>
-                <div class="payment_form_input">
-                    <label for="csv">CSV</label>
-                    <input type="text" id="csv" value="${user.csv}" readonly />
-                </div>
-                <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
-                <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
-            </form>
-        `;
-
+        if (isPolish) {
+            renderPolish();
+            contentContainer.innerHTML = `
+                <h2>Płatność kartą</h2>
+                <form id="payment-form">
+                    <div class="payment_form_input">
+                        <label for="card-number">Numer karty</label>
+                        <input type="text" id="card-number" value="${user.card_number}" readonly />
+                    </div>
+                    <div class="payment_form_input">
+                        <label for="expiry-date">Data ważności</label>
+                        <input type="text" id="expiry-date" value="${user.expiry_date}" readonly />
+                    </div>
+                    <div class="payment_form_input">
+                        <label for="csv">CSV</label>
+                        <input type="text" id="csv" value="${user.csv}" readonly />
+                    </div>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
+                    <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
+                </form>
+            `;
+        } else {
+            renderEnglish();
+            contentContainer.innerHTML = `
+                <h2>Card payment</h2>
+                <form id="payment-form">
+                    <div class="payment_form_input">
+                        <label for="card-number">Card number</label>
+                        <input type="text" id="card-number" value="${user.card_number}" readonly />
+                    </div>
+                    <div class="payment_form_input">
+                        <label for="expiry-date">Expiration date</label>
+                        <input type="text" id="expiry-date" value="${user.expiry_date}" readonly />
+                    </div>
+                    <div class="payment_form_input">
+                        <label for="csv">CSV</label>
+                        <input type="text" id="csv" value="${user.csv}" readonly />
+                    </div>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} zł</button>
+                    <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
+                </form>
+            `;
+        }
+        
         validateForm();
 
         const navigationButtons = document.querySelectorAll('[data-target]');
@@ -37,26 +62,51 @@ function renderAuthorized(user) {
 // Dynamicly rendering unlogged user with tickets
 function renderUnauthorizedWithTickets() {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h2>Płatność kartą</h2>
-            <form id="payment-form">
-                <div>
-                    <label for="card-number">Numer karty</label>
-                    <input type="text" id="card-number" placeholder="Wpisz numer karty" />
-                </div>
-                <div>
-                    <label for="expiry-date">Data ważności</label>
-                    <input type="text" id="expiry-date" placeholder="MM/YY" />
-                </div>
-                <div>
-                    <label for="csv">CSV</label>
-                    <input type="text" id="csv" placeholder="Wpisz kod CSV" />
-                </div>
-                <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()}</button>
-                <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
-            </form>
-        `;
+        if (isPolish) {
+            renderPolish();
+            contentContainer.innerHTML = `
+                <h2>Płatność kartą</h2>
+                <form id="payment-form">
+                    <div>
+                        <label for="card-number">Numer karty</label>
+                        <input type="text" id="card-number" placeholder="Wpisz numer karty" />
+                    </div>
+                    <div>
+                        <label for="expiry-date">Data ważności</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" />
+                    </div>
+                    <div>
+                        <label for="csv">CSV</label>
+                        <input type="text" id="csv" placeholder="Wpisz kod CSV" />
+                    </div>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()}</button>
+                    <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
+                </form>
+            `;    
+        } else {
+            renderEnglish();
+            contentContainer.innerHTML = `
+                <h2>Card payment</h2>
+                <form id="payment-form">
+                    <div>
+                        <label for="card-number">Card number</label>
+                        <input type="text" id="card-number" placeholder="Enter your card number" />
+                    </div>
+                    <div>
+                        <label for="expiry-date">Expiration date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" />
+                    </div>
+                    <div>
+                        <label for="csv">CSV</label>
+                        <input type="text" id="csv" placeholder="Enter CSV code" />
+                    </div>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()}</button>
+                    <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
+                </form>
+            `;        
+        }
 
         const form = document.getElementById('payment-form');
 

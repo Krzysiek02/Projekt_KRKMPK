@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/rejestracja.css" />
-  <title>KrakMPK - Rejestracja</title>
+  <title>KrakMPK</title>
 </head>
 
 <body>
@@ -25,34 +25,7 @@
     <!-- Główna zawartość tu bd wszystko-->
     <div class="content">
       <div class="register_box">
-        <p class="title">Utwórz swoje konto</p>
-        <!-- Tu ten prostokat na srodku -->
-        <div class="div_content_container_register">
-          <form class="registration_form">
-            <label for="firstName">Imię:</label>
-            <input id="firstName" type="text" class="first_name" name="firstName" autocomplete="given-name"><br>
-          
-            <label for="lastName">Nazwisko:</label>
-            <input id="lastName" type="text" class="last_name" name="lastName" autocomplete="family-name"><br>
-          
-            <label for="email">Email:</label>
-            <input id="email" type="email" class="email" name="email" autocomplete="email"><br>
-          
-            <label for="password">Hasło:</label>
-            <input id="password" type="password" class="password" name="password" autocomplete="new-password"><br>
-          
-            <label for="cardNumber">Numer Karty:</label>
-            <input id="cardNumber" type="text" class="card_number" name="cardNumber" autocomplete="cc-number"><br>
-          
-            <label for="expiryDate">Data Ważności (MM/YY):</label>
-            <input id="expiryDate" type="text" class="expiry_date" name="expiryDate" autocomplete="cc-exp"><br>
-          
-            <label for="csv">CSV:</label>
-            <input id="csv" type="text" class="csv" name="csv" autocomplete="cc-csc"><br>
-          
-            <button type="submit">Zarejestruj</button>
-          </form>          
-        </div>
+        <!-- Główny content się pojawi tutaj dynamicznie -->
       </div>
     </div>
     
@@ -74,6 +47,7 @@
 
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
+  <script src="../JS/dynamiczny_content.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
   <script src="../JS/rejestracja.js"></script>
 </body>

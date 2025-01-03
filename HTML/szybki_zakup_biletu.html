@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/szybki_zakup_biletu.css" />
-  <title>KrakMPK - Szybki Zakup Biletu</title>
+  <title>KrakMPK</title>
 </head>
 
 <body>
@@ -41,52 +41,7 @@
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
-        <div class="ticket-purchase-container">
-          <div class="tickets-display">
-            <h2>Dostępne Bilety</h2>
-            <div id="tickets-container" class="tickets-container"></div>
-          </div>
-          <div class="filters">
-            <h3>Filtry</h3>
-            <div class="filter-section">
-              <label><input type="checkbox" value="normalny" class="filter" data-filter="client_type"> Normalny</label>
-              <label><input type="checkbox" value="ulgowy" class="filter" data-filter="client_type"> Ulgowy</label>
-            </div>
-            <div class="filter-section">
-              <label><input type="checkbox" value="true" class="filter" data-filter="family"> Bilet Rodzinny</label>
-            </div>
-            <div class="filter-section">
-              <label><input type="checkbox" value="pojedynczy" class="filter" data-filter="quantity_type"> Pojedynczy</label>
-              <label><input type="checkbox" value="grupowy" class="filter" data-filter="quantity_type"> Grupowy</label>
-            </div>
-            <div class="filter-section">
-              <label><input type="checkbox" value="MPK" class="filter" data-filter="ticket_type"> MPK</label>
-              <label><input type="checkbox" value="MPK_KMŁ" class="filter" data-filter="ticket_type"> MPK + KMŁ</label>
-            </div>
-            <div class="filter-section">
-              <label><input type="checkbox" value="first" class="filter" data-filter="zone"> Strefa 1</label>
-              <label><input type="checkbox" value="all" class="filter" data-filter="zone"> Strefa 1 + 2 + 3</label>
-            </div>
-            <div class="filter-section">
-              <label>Czas Przejazdu:</label>
-              <select id="travel-time-filter" class="filter" data-filter="travel_time">
-                <option value="">Wszystkie</option>
-                <option value="20">20 minut</option>
-                <option value="60">60 minut</option>
-                <option value="90">90 minut</option>
-                <option value="1440">24 godziny</option>
-                <option value="2880">48 godziny</option>
-                <option value="4320">72 godziny</option>
-                <option value="10080">7 dni</option>
-              </select>
-            </div>
-            <div class="action-buttons">
-              <button id="reset-filters" disabled>Zresetuj Filtry</button>
-              <button id="add-to-cart" disabled>Dodaj do Koszyka</button>
-              <button id="proceed-to-payment" disabled>Przejdź do Płatności</button>
-            </div>
-          </div>
-        </div>
+        <!-- Główny content się pojawi tutaj dynamicznie -->
       </div>
     </div>
     <!-- Stopka -->
@@ -107,7 +62,9 @@
   
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
+  <script src="../JS/dynamiczny_content.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
+  <script src="../JS/language.js"></script>
   <script src="../JS/szybki_zakup_biletu.js"></script>
 </body>
 

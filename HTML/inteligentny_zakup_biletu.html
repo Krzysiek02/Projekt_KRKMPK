@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/inteligentny_zakup_biletu.css" />
-  <title>KrakMPK - Inteligentny zakup biletu</title>
+  <title>KrakMPK</title>
 </head>
 
 <body>
@@ -40,42 +40,13 @@
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
-        <form id="travel-form">
-          <div class="station-input">
-            <label for="start-station">Przystanek Początkowy:</label>
-            <input type="text" id="start-station" name="start-station" autocomplete="off" placeholder="Wprowadź przystanek" />
-            <button type="button" id="swap-stations">⟲</button>
-            <ul class="suggestions" id="start-suggestions"></ul>
-          </div>
-
-          <div id="intermediate-stations-container">
-            <!-- Intermediate stations will be added dynamically here -->
-          </div>
-      
-          <div class="station-input">
-            <label for="end-station">Przystanek Końcowy:</label>
-            <input type="text" id="end-station" name="end-station" autocomplete="off" placeholder="Wprowadź przystanek" />
-            <ul class="suggestions" id="end-suggestions"></ul>
-          </div>
-          <div id="buttons">
-            <button type="button" class="icon" id="add-intermediate-station">+</button>
-            <p>Dodaj<br>przystanek<br>pośredni</p>
-            <button type="button" id="set-date">Data</button>
-            <button type="button" id="set-time">Godzina</button>
-          </div>
-          <div class="selected-values">
-            <p id="selected-date">Data: Brak Wybranej Daty</p>
-            <p id="selected-time">Godzina: Brak Wybranej Godziny</p>
-          </div>
-      
-          <button type="submit" id="search_ticket_button">Wyszukaj Bilet</button>
-        </form>
+        <!-- Główny content się pojawi tutaj dynamicznie -->
       </div>
       
       <!-- Date Modal -->
       <div id="date-modal" class="modal">
         <div class="modal-content">
-          <h3>Wybierz Datę</h3>
+          <h3 id="date-modal-description">Wybierz Datę</h3>
           <input type="date" id="date-picker" />
           <button type="button" id="close-date-modal">Zamknij</button>
         </div>
@@ -84,7 +55,7 @@
       <!-- Time Modal -->
       <div id="time-modal" class="modal">
         <div class="modal-content">
-          <h3>Wybierz Godzinę</h3>
+          <h3 id="time-modal-description">Wybierz Godzinę</h3>
           <input type="time" id="time-picker" step="1" />
           <button type="button" id="close-time-modal">Zamknij</button>
         </div>
@@ -108,6 +79,7 @@
   
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
+  <script src="../JS/dynamiczny_content.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
   <script src="../JS/language.js"></script>
   <script src="../JS/inteligentny_zakup_biletu.js"></script>

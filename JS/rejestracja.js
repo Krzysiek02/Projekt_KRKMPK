@@ -1,14 +1,90 @@
+function renderContentPolish() {
+    const contentContainer = document.querySelector('.register_box');
+
+    if (contentContainer) {
+        contentContainer.innerHTML = `
+            <p class="title">Utwórz swoje konto</p>
+            <!-- Tu ten prostokat na srodku -->
+            <div class="div_content_container_register">
+                <form class="registration_form">
+                    <label for="firstName">Imię:</label>
+                    <input id="firstName" type="text" class="first_name" name="firstName" autocomplete="given-name"><br>
+                
+                    <label for="lastName">Nazwisko:</label>
+                    <input id="lastName" type="text" class="last_name" name="lastName" autocomplete="family-name"><br>
+                
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" class="email" name="email" autocomplete="email"><br>
+                
+                    <label for="password">Hasło:</label>
+                    <input id="password" type="password" class="password" name="password" autocomplete="new-password"><br>
+                
+                    <label for="cardNumber">Numer Karty:</label>
+                    <input id="cardNumber" type="text" class="card_number" name="cardNumber" autocomplete="cc-number"><br>
+                
+                    <label for="expiryDate">Data Ważności (MM/YY):</label>
+                    <input id="expiryDate" type="text" class="expiry_date" name="expiryDate" autocomplete="cc-exp"><br>
+                
+                    <label for="csv">CSV:</label>
+                    <input id="csv" type="text" class="csv" name="csv" autocomplete="cc-csc"><br>
+                
+                    <button type="submit">Zarejestruj</button>
+                </form>          
+            </div>
+        `;   
+    }
+}
+
+function renderContentEnglish() {
+    const contentContainer = document.querySelector('.register_box');
+
+    if (contentContainer) {
+        contentContainer.innerHTML = `
+            <p class="title">Create your account</p>
+            <!-- Tu ten prostokat na srodku -->
+            <div class="div_content_container_register">
+                <form class="registration_form">
+                    <label for="firstName">Name:</label>
+                    <input id="firstName" type="text" class="first_name" name="firstName" autocomplete="given-name"><br>
+                
+                    <label for="lastName">Last name:</label>
+                    <input id="lastName" type="text" class="last_name" name="lastName" autocomplete="family-name"><br>
+                
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" class="email" name="email" autocomplete="email"><br>
+                
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" class="password" name="password" autocomplete="new-password"><br>
+                
+                    <label for="cardNumber">Card Number:</label>
+                    <input id="cardNumber" type="text" class="card_number" name="cardNumber" autocomplete="cc-number"><br>
+                
+                    <label for="expiryDate">Expiration Date (MM/YY):</label>
+                    <input id="expiryDate" type="text" class="expiry_date" name="expiryDate" autocomplete="cc-exp"><br>
+                
+                    <label for="csv">CSV:</label>
+                    <input id="csv" type="text" class="csv" name="csv" autocomplete="cc-csc"><br>
+                
+                    <button type="submit">Register</button>
+                </form>          
+            </div>
+        `;   
+    }
+}
+
 // Function to validate form inputs
 function validateForm() {
     const fields = [
-        { class: 'first_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Imię może zawierać tylko litery i maksymalnie 50 znaków.' },
-        { class: 'last_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Nazwisko może zawierać tylko litery i maksymalnie 50 znaków.' },
-        { class: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, error: 'Wprowadź poprawny adres email.' },
-        { class: 'password', regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,100}$/, error: 'Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną cyfrę i jeden znak specjalny.' },
-        { class: 'card_number', regex: /^\d{4} ?\d{4} ?\d{4} ?\d{4}$/, error: 'Numer karty musi składać się z 16 cyfr, może zawierać spacje co 4 cyfry.' },
-        { class: 'expiry_date', regex: /^(0[1-9]|1[0-2])\/\d{2}$/, error: 'Data ważności w formacie MM/YY.' },
-        { class: 'csv', regex: /^\d{3}$/, error: 'CSV musi zawierać 3 cyfry.' }
+        { class: 'first_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Imię może zawierać tylko litery i maksymalnie 50 znaków.', errorANG: 'The name can contain only letters and a maximum of 50 characters.' },
+        { class: 'last_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Nazwisko może zawierać tylko litery i maksymalnie 50 znaków.', errorANG: 'The last name can contain only letters and a maximum of 50 characters.' },
+        { class: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, error: 'Wprowadź poprawny adres email.', errorANG: 'Please enter a valid email address.' },
+        { class: 'password', regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,100}$/, error: 'Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną cyfrę i jeden znak specjalny.', errorANG: 'Password must be at least 8 characters long, one uppercase letter, one number, and one special character.' },
+        { class: 'card_number', regex: /^\d{4} ?\d{4} ?\d{4} ?\d{4}$/, error: 'Numer karty musi składać się z 16 cyfr, może zawierać spacje co 4 cyfry.', errorANG: 'The card number must consist of 16 digits, it can contain spaces every 4 digits.' },
+        { class: 'expiry_date', regex: /^(0[1-9]|1[0-2])\/\d{2}$/, error: 'Data ważności w formacie MM/YY.', errorANG: 'Expiration date in format MM/YY.' },
+        { class: 'csv', regex: /^\d{3}$/, error: 'CSV musi zawierać 3 cyfry.', errorANG: 'CSV must contain 3 digits.' }
     ];
+
+    const isPolish = get_language();
 
     let isValid = true;
 
@@ -25,7 +101,12 @@ function validateForm() {
             const errorMessage = document.createElement('div');
             errorMessage.className = `${field.class}_error`;
             errorMessage.style.color = 'red';
-            errorMessage.textContent = field.error;
+
+            if (isPolish) {
+                errorMessage.textContent = field.error;
+            } else {
+                errorMessage.textContent = field.errorANG;
+            }
             input.insertAdjacentElement('afterend', errorMessage);
         }
 
@@ -42,7 +123,13 @@ function validateForm() {
                 const errorMessage = document.createElement('div');
                 errorMessage.className = `${field.class}-error`;
                 errorMessage.style.color = 'red';
-                errorMessage.textContent = 'Karta nieaktualna. Podaj poprawną datę ważności.';
+
+                if (isPolish) {
+                    errorMessage.textContent = 'Karta nieaktualna. Podaj poprawną datę ważności.';
+                } else {
+                    errorMessage.textContent = 'Card expired. Please provide correct expiration date.';
+                }
+
                 input.insertAdjacentElement('afterend', errorMessage);
             }
         }
@@ -77,8 +164,14 @@ function registration(event) {
 
     const emailInput = document.querySelector('.email').value.trim();
 
+    const isPolish = get_language();
+
     if (isEmailTaken(emailInput)) {
-        alert('Konto z tym adresem email już istnieje. Wybierz inny adres.');
+        if (isPolish) {
+            alert('Konto z tym adresem email już istnieje. Wybierz inny adres.');
+        } else {
+            alert('An account with this email address already exists. Please select a different address.');
+        }
         this.reset();
         return;
     }
@@ -104,11 +197,22 @@ function registration(event) {
             history: []
         };
         saveUser(user);
-        alert('Rejestracja zakończona pomyślnie!');
+
+        if(isPolish) {
+            alert('Rejestracja zakończona pomyślnie!');
+        } else {
+            alert('Registration completed successfully!');
+        }
         this.reset();
         window.location.href = '../HTML/logowanie.html';
     }
 }
 
-// Attach event listener to the form
-document.querySelector('.registration_form').addEventListener('submit', registration);
+document.addEventListener('DOMContentLoaded', () => {
+
+    updateContent();
+
+    // Attach event listener to the form
+    document.querySelector('.registration_form').addEventListener('submit', registration);
+
+});

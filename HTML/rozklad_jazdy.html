@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../IMAGES/favicon.png">
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/rozklad_jazdy.css" />
-  <title>KrakMPK - Rozkład Jazdy</title>
+  <title>KrakMPK</title>
 </head>
 
 <body>
@@ -40,58 +40,7 @@
     <div class="content">
       <!-- Tu ten prostokat na srodku -->
       <div class="div_content_container">
-        <!-- Filter Section -->
-        <div class="filter-container">
-          <div class="filter-container-left">
-            <label for="line-filter">Numer linii:</label>
-            <input type="text" id="line-filter" placeholder="Wpisz numer linii" />
-          </div>
-          <div class="filter-container-right">
-            <div class="vehicle-type">
-              <label>
-                <input type="radio" name="vehicle-type" value="tram" checked />
-                <span>Tramwaj</span>
-              </label>
-              <label>
-                <input type="radio" name="vehicle-type" value="bus" />
-                <span>Autobus</span>
-              </label>
-              <span class="selection"></span>
-            </div>
-            <button id="reset-filters">Resetuj filtry</button>
-          </div>
-          
-        </div>
-      
-        <!-- Stops Display Section -->
-        <div id="stops-container" class="stops-container"></div>
-      
-        <!-- Modal -->
-        <div id="modal" class="modal hidden">
-          <div class="modal-content">
-            <button id="close-modal" class="close-modal">X</button>
-            <div class="modal-body">
-              <h2 id="line-number"></h2>
-              <img id="vehicle-icon" src="" alt="Vehicle Icon" />
-              <div>
-                <button id="direction1" class="direction-btn"></button>
-                <button id="direction2" class="direction-btn"></button>
-              </div>
-              <div id="route-container">
-                <h3>Trasa:</h3>
-                <p id="route"></p>
-              </div>
-              <div id="timetable-container">
-                <h3>Rozkład jazdy:</h3>
-                <div id="timetable"></div>
-              </div>
-              <div id="stations-container">
-                <h3>Przystanki:</h3>
-                <div id="stations-list"></div>
-              </div>
-            </div>
-          </div>
-        </div>    
+        
       </div>
     </div>
     <!-- Stopka -->
@@ -112,7 +61,9 @@
 
   <script src="../JS/consts.js"></script>
   <script src="../JS/scripts.js"></script>
+  <script src="../JS/dynamiczny_content.js"></script>
   <script src="../JS/nawigacja_na_stronie.js"></script>
+  <script src="../JS/language.js"></script>
   <script src="../JS/rozklad_jazdy.js"></script>
 </body>
 

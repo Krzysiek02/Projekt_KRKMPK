@@ -1,3 +1,91 @@
+function renderContentPolish() {
+    const contentContainer = document.querySelector('.div_content_container');
+
+    if (contentContainer) {
+        contentContainer.innerHTML = `
+        <form id="travel-form">
+          <div class="station-input">
+            <label for="start-station">Przystanek Początkowy:</label>
+            <input type="text" id="start-station" name="start-station" autocomplete="off" placeholder="Wprowadź przystanek" />
+            <button type="button" id="swap-stations">⟲</button>
+            <ul class="suggestions" id="start-suggestions"></ul>
+          </div>
+
+          <div id="intermediate-stations-container">
+            <!-- Intermediate stations will be added dynamically here -->
+          </div>
+      
+          <div class="station-input">
+            <label for="end-station">Przystanek Końcowy:</label>
+            <input type="text" id="end-station" name="end-station" autocomplete="off" placeholder="Wprowadź przystanek" />
+            <ul class="suggestions" id="end-suggestions"></ul>
+          </div>
+          <div id="buttons">
+            <button type="button" class="icon" id="add-intermediate-station">+</button>
+            <p>Dodaj<br>przystanek<br>pośredni</p>
+            <button type="button" id="set-date">Data</button>
+            <button type="button" id="set-time">Godzina</button>
+          </div>
+          <div class="selected-values">
+            <p id="selected-date">Data: Brak Wybranej Daty</p>
+            <p id="selected-time">Godzina: Brak Wybranej Godziny</p>
+          </div>
+      
+          <button type="submit" id="search_ticket_button">Wyszukaj Bilet</button>
+        </form>
+        `;   
+
+        document.getElementById('date-modal-description').textContent = `Wybierz Datę`;
+        document.getElementById('close-date-modal').textContent = `Zamknij`;
+        document.getElementById('time-modal-description').textContent = `Wybierz Godzinę`;
+        document.getElementById('close-time-modal').textContent = `Zamknij`;
+    }
+}
+
+function renderContentEnglish() {
+    const contentContainer = document.querySelector('.div_content_container');
+
+    if (contentContainer) {
+        contentContainer.innerHTML = `
+        <form id="travel-form">
+          <div class="station-input">
+            <label for="start-station">Starting Stop:</label>
+            <input type="text" id="start-station" name="start-station" autocomplete="off" placeholder="Enter stop" />
+            <button type="button" id="swap-stations">⟲</button>
+            <ul class="suggestions" id="start-suggestions"></ul>
+          </div>
+
+          <div id="intermediate-stations-container">
+            <!-- Intermediate stations will be added dynamically here -->
+          </div>
+      
+          <div class="station-input">
+            <label for="end-station">Ending Stop:</label>
+            <input type="text" id="end-station" name="end-station" autocomplete="off" placeholder="Enter stop" />
+            <ul class="suggestions" id="end-suggestions"></ul>
+          </div>
+          <div id="buttons">
+            <button type="button" class="icon" id="add-intermediate-station">+</button>
+            <p>Add<br>intermediate<br>stop</p>
+            <button type="button" id="set-date">Date</button>
+            <button type="button" id="set-time">Hour</button>
+          </div>
+          <div class="selected-values">
+            <p id="selected-date">Date: No Selected Date</p>
+            <p id="selected-time">Hour: No Selected Hour</p>
+          </div>
+      
+          <button type="submit" id="search_ticket_button">Search Ticket</button>
+        </form>
+        `;
+        
+        document.getElementById('date-modal-description').textContent = `Pick Date`;
+        document.getElementById('close-date-modal').textContent = `Close`;
+        document.getElementById('time-modal-description').textContent = `Pick Hour`;
+        document.getElementById('close-time-modal').textContent = `Close`;
+    }
+}
+
 function setupAutoComplete(input, suggestionsBox) {
     input.addEventListener('input', () => {
       const query = input.value.toLowerCase();
@@ -39,13 +127,24 @@ function setupAutoComplete(input, suggestionsBox) {
   
     const div = document.createElement('div');
     div.className = 'station-input intermediate-station';
-    div.innerHTML = `
-      <label for="between-station">Przystanek Pośredni:</label>
-      <input type="text" id="between-station" name="between-station" placeholder="Wprowadź przystanek" autocomplete="off" />
-      <ul class="suggestions"></ul>
-      <button type="button" class="remove-station">X</button>
-    `;
-    container.appendChild(div);
+    const isPolish = get_language();
+    if (isPolish) {
+        div.innerHTML = `
+        <label for="between-station">Przystanek Pośredni:</label>
+        <input type="text" id="between-station" name="between-station" placeholder="Wprowadź przystanek" autocomplete="off" />
+        <ul class="suggestions"></ul>
+        <button type="button" class="remove-station">X</button>
+        `;
+        container.appendChild(div);
+    } else {
+        div.innerHTML = `
+        <label for="between-station">Intermediate Stop:</label>
+        <input type="text" id="between-station" name="between-station" placeholder="Enter stop" autocomplete="off" />
+        <ul class="suggestions"></ul>
+        <button type="button" class="remove-station">X</button>
+        `;
+        container.appendChild(div);
+    }
   
     const input = div.querySelector('input');
     const suggestionsBox = div.querySelector('.suggestions');
@@ -69,55 +168,80 @@ function setupAutoComplete(input, suggestionsBox) {
     const endStation = document.getElementById('end-station').value.trim();
     const date = document.getElementById('date-picker').value.trim();
     const time = document.getElementById('time-picker').value.trim();
+    const isPolish = get_language();
   
     if (!startStation || !endStation || !date || !time) {
-      alert('Wszystkie pola: przystanek początkowy, przystanek końcowy, data oraz godzina muszą być wypełnione!');
-      return false;
+      if (isPolish) {
+        alert('Wszystkie pola: przystanek początkowy, przystanek końcowy, data oraz godzina muszą być wypełnione!');
+        return false;
+      } else {
+        alert('All fields: start stop, end stop, date and time must be filled in!');
+        return false;
+      } 
     }
   
     const normalTickets = parseInt(document.querySelector('input[data-type="normal"]').value) || 0;
     const discountTickets = parseInt(document.querySelector('input[data-type="discount"]').value) || 0;
   
     if (normalTickets === 0 && discountTickets === 0) {
-      alert('Musisz wybrać przynajmniej jeden bilet!');
-      return false;
+      if (isPolish) {
+        alert('Musisz wybrać przynajmniej jeden bilet!');
+        return false;
+      } else {
+        alert('You must pick at least one ticket!');
+        return false;
+      }
     }
   
     return true;
   }
   
-  setupAutoComplete(document.getElementById('start-station'), document.getElementById('start-suggestions'));
-  setupAutoComplete(document.getElementById('end-station'), document.getElementById('end-suggestions'));
-  
-  document.getElementById('add-intermediate-station').addEventListener('click', () => {
-    addIntermediateStation(document.getElementById('intermediate-stations-container'));
-  });
-  
-  document.getElementById('swap-stations').addEventListener('click', swapStations);
-  
-  setupModal(
-    document.getElementById('set-date'),
-    document.getElementById('date-modal'),
-    document.getElementById('close-date-modal'),
-    () => {
-      const date = document.getElementById('date-picker').value;
-      document.getElementById('selected-date').textContent = `Data: ${date || 'Brak Wybranej Daty'}`;
-    }
-  );
-  
-  setupModal(
-    document.getElementById('set-time'),
-    document.getElementById('time-modal'),
-    document.getElementById('close-time-modal'),
-    () => {
-      const time = document.getElementById('time-picker').value;
-      document.getElementById('selected-time').textContent = `Godzina: ${time || 'Brak Wybranej Godziny'}`;
-    }
-  );
-  
   document.addEventListener('DOMContentLoaded', () => {
+
+    updateContent();
+
+    setupAutoComplete(document.getElementById('start-station'), document.getElementById('start-suggestions'));
+    setupAutoComplete(document.getElementById('end-station'), document.getElementById('end-suggestions'));
+    
+    document.getElementById('add-intermediate-station').addEventListener('click', () => {
+        addIntermediateStation(document.getElementById('intermediate-stations-container'));
+    });
+    
+    document.getElementById('swap-stations').addEventListener('click', swapStations);
+    
+    setupModal(
+        document.getElementById('set-date'),
+        document.getElementById('date-modal'),
+        document.getElementById('close-date-modal'),
+        () => {
+        const date = document.getElementById('date-picker').value;
+        const isPolish = get_language();
+        if (isPolish) {
+            document.getElementById('selected-date').textContent = `Data: ${date || 'Brak Wybranej Daty'}`;
+        } else {
+            document.getElementById('selected-date').textContent = `Date: ${date || 'No Selected Date'}`;
+        }
+        }
+    );
+    
+    setupModal(
+        document.getElementById('set-time'),
+        document.getElementById('time-modal'),
+        document.getElementById('close-time-modal'),
+        () => {
+        const time = document.getElementById('time-picker').value;
+        const isPolish = get_language();
+        if (isPolish) {
+            document.getElementById('selected-time').textContent = `Godzina: ${time || 'Brak Wybranej Godziny'}`;
+        } else {
+            document.getElementById('selected-time').textContent = `Hour: ${time || 'No Selected Hour'}`;
+        }
+        }
+    );
+
     const searchButton = document.querySelector('#search_ticket_button');
     const container = document.querySelector('.div_content_container');
+    const isPolish = get_language();
 
     const saveToLocalStorage = (data) => {
         localStorage.setItem('ticketData', JSON.stringify(data));
@@ -135,8 +259,13 @@ function setupAutoComplete(input, suggestionsBox) {
             .filter(value => value);
 
         if (!startPoint || !endPoint || !travelDate || !travelTime) {
-            alert("Proszę podać przystanek początkowy, przystanek końcowy, datę oraz godzinę.");
-            return;
+            if (isPolish) {
+                alert("Proszę podać przystanek początkowy, przystanek końcowy, datę oraz godzinę.");
+                return;
+            } else {
+                alert("Please provide the starting stop, ending stop, date and time.");
+                return;
+            }
         }
 
         const initialData = {
@@ -148,8 +277,9 @@ function setupAutoComplete(input, suggestionsBox) {
         };
 
         saveToLocalStorage(initialData);
-
-        container.innerHTML = `
+        
+        if (isPolish) {
+            container.innerHTML = `
             <div class="ticket_selection">
                 <div class="ticket_left">
                     <h2>Wybierz rodzaj oraz ilość biletów</h2>
@@ -174,7 +304,35 @@ function setupAutoComplete(input, suggestionsBox) {
                     <button class="next_button">Dalej</button>
                 </div>
             </div>
-        `;
+            `;
+        } else {
+            container.innerHTML = `
+            <div class="ticket_selection">
+                <div class="ticket_left">
+                    <h2>Select the type and number of tickets</h2>
+                </div>
+                <div class="ticket_right">
+                    <div class="ticket_type">
+                        <span>Standard ticket</span>
+                        <div class="ticket_counter">
+                            <button class="decrement" data-type="normal">-</button>
+                            <input type="number" class="ticket_input" data-type="normal" value="0" min="0" readonly />
+                            <button class="increment" data-type="normal">+</button>
+                        </div>
+                    </div>
+                    <div class="ticket_type">
+                        <span>Reduced Ticket</span>
+                        <div class="ticket_counter">
+                            <button class="decrement" data-type="discount">-</button>
+                            <input type="number" class="ticket_input" data-type="discount" value="0" min="0" readonly />
+                            <button class="increment" data-type="discount">+</button>
+                        </div>
+                    </div>
+                    <button class="next_button">Next</button>
+                </div>
+            </div>
+            `;
+        }
 
         const counters = container.querySelectorAll('.ticket_counter');
         counters.forEach(counter => {
@@ -199,8 +357,13 @@ function setupAutoComplete(input, suggestionsBox) {
             const discountTickets = parseInt(container.querySelector('input[data-type="discount"]').value) || 0;
 
             if (normalTickets === 0 && discountTickets === 0) {
-                alert('Musisz wybrać przynajmniej jeden bilet!');
-                return;
+                if (isPolish) {
+                    alert('Musisz wybrać przynajmniej jeden bilet!');
+                    return;
+                } else {
+                    alert('You must select at least one ticket!');
+                    return;
+                }
             }
 
             const updatedData = {
@@ -212,8 +375,13 @@ function setupAutoComplete(input, suggestionsBox) {
             saveToLocalStorage(updatedData);
 
             const ticketData = JSON.parse(localStorage.getItem('ticketData'));
-            const selectedDate = ticketData ? ticketData.travelDate : 'Brak wybranej daty';
+            let selectedDate;
+            if (isPolish) {
+                selectedDate = ticketData ? ticketData.travelDate : 'Brak wybranej daty';
+            } else {
+                selectedDate = ticketData ? ticketData.travelDate : 'No date selected';
 
+            }
             const travelDate = new Date(ticketData.travelDate);
             const dayOfWeek = travelDate.getDay();
             let dayType = 'normal_days';
@@ -290,28 +458,55 @@ function setupAutoComplete(input, suggestionsBox) {
             let currentFilter = 'quickest-filter';
 
             function showResult(filteredConnections = availableConnections) {
+                const isPolish = get_language();
                 if (filteredConnections.length > 0) {
-                    container.innerHTML = `
-                    <div class="connections-list">
-                        <h2>Lista połączeń</h2>
-                        <p>Data podróży: ${selectedDate}</p>
-                        <div class="filters">
-                            <label class="radio"><input type="radio" name="filter" id="quickest-filter" ${currentFilter === 'quickest-filter' ? 'checked' : ''}> <span class="name">Najszybszy</span></label>
-                            <label class="radio"><input type="radio" name="filter" id="shortest-filter" ${currentFilter === 'shortest-filter' ? 'checked' : ''}> <span class="name">Najkrótszy</span></label>
-                            <label class="radio"><input type="radio" name="filter" id="cheapest-filter" ${currentFilter === 'cheapest-filter' ? 'checked' : ''}> <span class="name">Najtańszy</span></label>
+                    if (isPolish) {
+                        container.innerHTML = `
+                        <div class="connections-list">
+                            <h2>Lista połączeń</h2>
+                            <p>Data podróży: ${selectedDate}</p>
+                            <div class="filters">
+                                <label class="radio"><input type="radio" name="filter" id="quickest-filter" ${currentFilter === 'quickest-filter' ? 'checked' : ''}> <span class="name">Najszybszy</span></label>
+                                <label class="radio"><input type="radio" name="filter" id="shortest-filter" ${currentFilter === 'shortest-filter' ? 'checked' : ''}> <span class="name">Najkrótszy</span></label>
+                                <label class="radio"><input type="radio" name="filter" id="cheapest-filter" ${currentFilter === 'cheapest-filter' ? 'checked' : ''}> <span class="name">Najtańszy</span></label>
+                            </div>
+                            
+                            <div id="connections">${generateConnectionsHTML(filteredConnections)}</div>
                         </div>
-                        
-                        <div id="connections">${generateConnectionsHTML(filteredConnections)}</div>
-                    </div>
-                    `;
+                        `;
+                    } else {
+                        container.innerHTML = `
+                        <div class="connections-list">
+                            <h2>List of public transport connections</h2>
+                            <p>Travel date: ${selectedDate}</p>
+                            <div class="filters">
+                                <label class="radio"><input type="radio" name="filter" id="quickest-filter" ${currentFilter === 'quickest-filter' ? 'checked' : ''}> <span class="name">The quickest</span></label>
+                                <label class="radio"><input type="radio" name="filter" id="shortest-filter" ${currentFilter === 'shortest-filter' ? 'checked' : ''}> <span class="name">The shortest</span></label>
+                                <label class="radio"><input type="radio" name="filter" id="cheapest-filter" ${currentFilter === 'cheapest-filter' ? 'checked' : ''}> <span class="name">The cheapest</span></label>
+                            </div>
+                            
+                            <div id="connections">${generateConnectionsHTML(filteredConnections)}</div>
+                        </div>
+                        `;
+                    }
                 } else {
-                    container.innerHTML = `
-                    <div class="connections-list">
-                        <h2>Lista połączeń</h2>
-                        <p>Data podróży: ${selectedDate}</p>
-                        <p id="no-connections">Brak dostępnych połączeń dla wybranych przystanków.</p>
-                    </div>
-                    `;
+                    if (isPolish) {
+                        container.innerHTML = `
+                        <div class="connections-list">
+                            <h2>Lista połączeń</h2>
+                            <p>Data podróży: ${selectedDate}</p>
+                            <p id="no-connections">Brak dostępnych połączeń dla wybranych przystanków.</p>
+                        </div>
+                        `;
+                    } else {
+                        container.innerHTML = `
+                        <div class="connections-list">
+                            <h2>List of public transport connections</h2>
+                            <p>Travel date: ${selectedDate}</p>
+                            <p id="no-connections">No connections available for the selected stops.</p>
+                        </div>
+                        `;
+                    }
                 }
 
                 document.querySelectorAll('input[name="filter"]').forEach(button => {
@@ -322,7 +517,7 @@ function setupAutoComplete(input, suggestionsBox) {
                 connectionElements.forEach((connectionElement, index) => {
                     connectionElement.addEventListener('click', () => {
                         const selectedConnection = filteredConnections[index];
-                        showSummary(selectedConnection);  // Wywołanie showSummary z wybranym połączeniem
+                        showSummary(selectedConnection);
                     });
                 });
             }
@@ -357,20 +552,38 @@ function setupAutoComplete(input, suggestionsBox) {
         function generateConnectionsHTML(connections) {
             return connections.map(connection => {
                 const vehicleImage = connection.vehicleType === 'bus' ? '../IMAGES/bus_image.png' : '../IMAGES/tram_image.png';
-                const ticketDetails = connection.bestTicket.tickets.map(ticket => 
-                    `${ticket.count} x ${ticket.ticket.client_type} (${ticket.ticket.quantity_type}) - ${ticket.ticket.price * ticket.count} PLN`
-                ).join('<br>');
-        
-                return `
-                <div class="connection">
-                    <p>Odjazd: ${connection.departure}</p>
-                    <p>Przyjazd: ${connection.arrival}</p>
-                    <p>Linia: ${connection.lineNumber} <img src="${vehicleImage}" alt="${connection.vehicleType}" class="vehicle-image" /></p>
-                    <p>Trasa: ${connection.route}</p>
-                    <p>Najlepszy bilet/ty:<br>${ticketDetails}</p>
-                    <p>Łączny koszt: ${connection.bestTicket.totalCost} PLN</p>
-                </div>
-                `;
+                const isPolish = get_language();
+                let result = ``;
+                if (isPolish) {
+                    const ticketDetails = connection.bestTicket.tickets.map(ticket => 
+                        `${ticket.count} x ${ticket.ticket.client_type} (${ticket.ticket.quantity_type}) - ${ticket.ticket.price * ticket.count} zł`
+                    ).join('<br>');
+                    result = `
+                    <div class="connection">
+                        <p>Odjazd: ${connection.departure}</p>
+                        <p>Przyjazd: ${connection.arrival}</p>
+                        <p>Linia: ${connection.lineNumber} <img src="${vehicleImage}" alt="${connection.vehicleType}" class="vehicle-image" /></p>
+                        <p>Trasa: ${connection.route}</p>
+                        <p>Najlepszy bilet/ty:<br>${ticketDetails}</p>
+                        <p>Łączny koszt: ${connection.bestTicket.totalCost} zł</p>
+                    </div>
+                    `;
+                } else {
+                    const ticketDetails = connection.bestTicket.tickets.map(ticket => 
+                        `${ticket.count} x ${ticket.ticket.client_type_ang} (${ticket.ticket.quantity_type_ang}) - ${ticket.ticket.price * ticket.count} zł`
+                    ).join('<br>');
+                    result = `
+                    <div class="connection">
+                        <p>Departure: ${connection.departure}</p>
+                        <p>Arrival: ${connection.arrival}</p>
+                        <p>Line: ${connection.lineNumber} <img src="${vehicleImage}" alt="${connection.vehicleType}" class="vehicle-image" /></p>
+                        <p>Route: ${connection.route}</p>
+                        <p>The best ticket/s:<br>${ticketDetails}</p>
+                        <p>Total cost: ${connection.bestTicket.totalCost} zł</p>
+                    </div>
+                    `;
+                }
+                return result;
             }).join('');
         }
 
@@ -477,25 +690,43 @@ function setupAutoComplete(input, suggestionsBox) {
 function showSummary(connection) {
     const container = document.querySelector('.div_content_container');
     const selectedTickets = connection.bestTicket.tickets;
-    console.log(selectedTickets);
+    const isPolish = get_language();
     const ticketSummary = selectedTickets.map(ticketInfo => {
         const ticket = ticketInfo.ticket;
         const count = ticketInfo.count;
+        let clientType;
+        let ticketType;
+        let ticketTimeLabel;
+        let ticketZone;
+        if (isPolish) {
+            clientType = ticket.client_type.charAt(0).toUpperCase() + ticket.client_type.slice(1);
+            ticketType = ticket.quantity_type.charAt(0).toUpperCase() + ticket.quantity_type.slice(1);
+            ticketTimeLabel = ticket.travel_time === 1440
+                ? '24 h'
+                : ticket.travel_time === 2880
+                ? '48 h'
+                : ticket.travel_time === 4320
+                ? '72 h'
+                : ticket.travel_time === 10080
+                ? '7 dni'
+                : `${ticket.travel_time} minut`;
 
-        const clientType = ticket.client_type.charAt(0).toUpperCase() + ticket.client_type.slice(1);
-        const ticketType = ticket.quantity_type.charAt(0).toUpperCase() + ticket.quantity_type.slice(1);
-        const ticketTimeLabel = ticket.travel_time === 1440
-            ? '24 h'
-            : ticket.travel_time === 2880
-            ? '48 h'
-            : ticket.travel_time === 4320
-            ? '72 h'
-            : ticket.travel_time === 10080
-            ? '7 dni'
-            : `${ticket.travel_time} minut`;
+            ticketZone = ticket.zone === 'all' ? 'Strefa I + II + III' : 'Strefa I';
+        } else {
+            clientType = ticket.client_type_ang.charAt(0).toUpperCase() + ticket.client_type_ang.slice(1);
+            ticketType = ticket.quantity_type_ang.charAt(0).toUpperCase() + ticket.quantity_type_ang.slice(1);
+            ticketTimeLabel = ticket.travel_time === 1440
+                ? '24 h'
+                : ticket.travel_time === 2880
+                ? '48 h'
+                : ticket.travel_time === 4320
+                ? '72 h'
+                : ticket.travel_time === 10080
+                ? '7 days'
+                : `${ticket.travel_time} minutes`;
 
-        const ticketZone = ticket.zone === 'all' ? 'Strefa I + II + III' : 'Strefa I';
-
+            ticketZone = ticket.zone === 'all' ? 'Zone I + II + III' : 'Zone I';
+        }
         return `
             <div class="ticket-row">
                 <span>${ticketType} - ${clientType}</span>
@@ -511,29 +742,54 @@ function showSummary(connection) {
     const totalPrice = selectedTickets.reduce((sum, ticketInfo) => {
         return sum + (ticketInfo.ticket.price * ticketInfo.count);
     }, 0);
-    
-    container.innerHTML = `
-        <div class="summary-container">
-            <div class="summary-left">
-                <h3>Twoje wybrane bilety</h3>
-            </div>
-            <div class="summary-right">
-                <div class="summary_opis">
-                    <div class="summary_opis_title">Opis</div>
-                    <div class="summary_opis_title">Czas</div>
-                    <div class="summary_opis_title">Strefa</div>
-                    <div class="summary_opis_title">Cena</div>
-                    <div class="summary_opis_title">Ilość</div>
-                    <div class="summary_opis_title">Suma</div>
+
+    if (isPolish) {
+        container.innerHTML = `
+            <div class="summary-container">
+                <div class="summary-left">
+                    <h3>Twoje wybrane bilety</h3>
                 </div>
-                ${ticketSummary}
-                <div class="total-price">Łączna cena: ${totalPrice} zł</div>
-                <button id="reselect-button">Ponowne Inteligentne Wybranie Biletu</button>
-                <button id="add-to-cart-button">Dodaj do Koszyka</button>
-                <button id="proceed-to-payment-button">Przejdź do Płatności</button>
+                <div class="summary-right">
+                    <div class="summary_opis">
+                        <div class="summary_opis_title">Opis</div>
+                        <div class="summary_opis_title">Czas</div>
+                        <div class="summary_opis_title">Strefa</div>
+                        <div class="summary_opis_title">Cena</div>
+                        <div class="summary_opis_title">Ilość</div>
+                        <div class="summary_opis_title">Suma</div>
+                    </div>
+                    ${ticketSummary}
+                    <div class="total-price">Łączna cena: ${totalPrice} zł</div>
+                    <button id="reselect-button">Ponowne Inteligentne Wybranie Biletu</button>
+                    <button id="add-to-cart-button">Dodaj do Koszyka</button>
+                    <button id="proceed-to-payment-button">Przejdź do Płatności</button>
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    } else {
+        container.innerHTML = `
+            <div class="summary-container">
+                <div class="summary-left">
+                    <h3>Your selected tickets</h3>
+                </div>
+                <div class="summary-right">
+                    <div class="summary_opis">
+                        <div class="summary_opis_title">Description</div>
+                        <div class="summary_opis_title">Time</div>
+                        <div class="summary_opis_title">Zone</div>
+                        <div class="summary_opis_title">Price</div>
+                        <div class="summary_opis_title">Amount</div>
+                        <div class="summary_opis_title">Sum</div>
+                    </div>
+                    ${ticketSummary}
+                    <div class="total-price">Total price: ${totalPrice} zł</div>
+                    <button id="reselect-button">Smart Ticket Reselection</button>
+                    <button id="add-to-cart-button">Add to Cart</button>
+                    <button id="proceed-to-payment-button">Go to Payments</button>
+                </div>
+            </div>
+        `;
+    }
 
     document.getElementById('reselect-button').addEventListener('click', () => {
         location.reload();
@@ -559,22 +815,46 @@ function showSummary(connection) {
             return basket;
         }, [...currentBasket]);
         const basketSummary = connection.bestTicket.tickets.map(ticket => {
-            const clientType = ticket.ticket.client_type.charAt(0).toUpperCase() + ticket.ticket.client_type.slice(1);
-            const ticketType = ticket.ticket.quantity_type.charAt(0).toUpperCase() + ticket.ticket.quantity_type.slice(1);
-            const ticketTimeLabel = ticket.ticket.travel_time === 1440
-                ? '24 h'
-                : ticket.ticket.travel_time === 2880
-                ? '48 h'
-                : ticket.ticket.travel_time === 4320
-                ? '72 h'
-                : ticket.ticket.travel_time === 10080
-                ? '7 dni'
-                : `${ticket.ticket.travel_time} minut`;
+            const isPolish = get_language();
+            let clientType;
+            let ticketType;
+            let ticketTimeLabel;
+            if (isPolish) {
+                clientType = ticket.ticket.client_type.charAt(0).toUpperCase() + ticket.ticket.client_type.slice(1);
+                ticketType = ticket.ticket.quantity_type.charAt(0).toUpperCase() + ticket.ticket.quantity_type.slice(1);
+                ticketTimeLabel = ticket.ticket.travel_time === 1440
+                    ? '24 h'
+                    : ticket.ticket.travel_time === 2880
+                    ? '48 h'
+                    : ticket.ticket.travel_time === 4320
+                    ? '72 h'
+                    : ticket.ticket.travel_time === 10080
+                    ? '7 dni'
+                    : `${ticket.ticket.travel_time} minut`;
 
-            return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} zł - ${ticket.count} szt. - ${ticket.count * ticket.ticket.price} zł`;
+                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} zł - ${ticket.count} szt. - ${ticket.count * ticket.ticket.price} zł`;
+            } else {
+                clientType = ticket.ticket.client_type_ang.charAt(0).toUpperCase() + ticket.ticket.client_type_ang.slice(1);
+                ticketType = ticket.ticket.quantity_type_ang.charAt(0).toUpperCase() + ticket.ticket.quantity_type_ang.slice(1);
+                ticketTimeLabel = ticket.ticket.travel_time === 1440
+                    ? '24 h'
+                    : ticket.ticket.travel_time === 2880
+                    ? '48 h'
+                    : ticket.ticket.travel_time === 4320
+                    ? '72 h'
+                    : ticket.ticket.travel_time === 10080
+                    ? '7 days'
+                    : `${ticket.ticket.travel_time} minutes`;
+
+                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} zł - ${ticket.count} piece. - ${ticket.count * ticket.ticket.price} zł`;
+            }
         }).join('\n');
         saveCurrentBasket(updatedBasket);
-        alert(`Przechodzimy do koszyka z wybranymi biletami:\n${basketSummary}`);
+        if (isPolish) {
+            alert(`Przechodzimy do koszyka z wybranymi biletami:\n${basketSummary}`);
+        } else {
+            alert(`We go to the basket with selected tickets:\n${basketSummary}`);
+        }
         window.location.href = './koszyk.html';
     });
 
@@ -598,27 +878,50 @@ function showSummary(connection) {
             return basket;
         }, [...currentBasket]);
         const basketSummary = updatedBasket.map(ticket => {
-            const clientType = ticket.client_type.charAt(0).toUpperCase() + ticket.client_type.slice(1);
-            const ticketType = ticket.quantity_type.charAt(0).toUpperCase() + ticket.quantity_type.slice(1);
-            const ticketTimeLabel = ticket.travel_time === 1440
-                ? '24 h'
-                : ticket.travel_time === 2880
-                ? '48 h'
-                : ticket.travel_time === 4320
-                ? '72 h'
-                : ticket.travel_time === 10080
-                ? '7 dni'
-                : `${ticket.travel_time} minut`;
+            const isPolish = get_language();
+            let clientType;
+            let ticketType;
+            let ticketTimeLabel;
+            if (isPolish) {
+                clientType = ticket.client_type.charAt(0).toUpperCase() + ticket.client_type.slice(1);
+                ticketType = ticket.quantity_type.charAt(0).toUpperCase() + ticket.quantity_type.slice(1);
+                ticketTimeLabel = ticket.travel_time === 1440
+                    ? '24 h'
+                    : ticket.travel_time === 2880
+                    ? '48 h'
+                    : ticket.travel_time === 4320
+                    ? '72 h'
+                    : ticket.travel_time === 10080
+                    ? '7 dni'
+                    : `${ticket.travel_time} minut`;
 
-            return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.sum_price} zł`;
+                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.quantity * ticket.price} zł`;
+            } else {
+                clientType = ticket.client_type_ang.charAt(0).toUpperCase() + ticket.client_type_ang.slice(1);
+                ticketType = ticket.quantity_type_ang.charAt(0).toUpperCase() + ticket.quantity_type_ang.slice(1);
+                ticketTimeLabel = ticket.travel_time === 1440
+                    ? '24 h'
+                    : ticket.travel_time === 2880
+                    ? '48 h'
+                    : ticket.travel_time === 4320
+                    ? '72 h'
+                    : ticket.travel_time === 10080
+                    ? '7 days'
+                    : `${ticket.travel_time} minutes`;
+
+                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} piece. - ${ticket.quantity * ticket.price} zł`;
+            }
         }).join('\n');
         const totalPrice = updatedBasket.reduce((sum, t) => sum + t.sum_price, 0);
         const totalNumber = updatedBasket.reduce((sum, t) => sum + t.quantity, 0);
         saveCurrentBasket(updatedBasket);
-        alert(`Przechodzimy do płatności z wybranymi biletami:\n${basketSummary}\nŁączna cena: ${totalPrice} zł\nIlość wybranych biletów: ${totalNumber}`);
+        if (isPolish) {
+            alert(`Przechodzimy do płatności z wybranymi biletami:\n${basketSummary}\nŁączna cena: ${totalPrice} zł\nIlość wybranych biletów: ${totalNumber}`);
+        } else {
+            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} zł\nNumber of selected tickets: ${totalNumber}`);
+        }
         window.location.href = './platnosci.html';
     });
 }
-
 
   

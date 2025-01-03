@@ -8,13 +8,35 @@ function handleNavigation(event) {
     }
 }
 
-// Update the navigation dynamically based on user login status
+// Update the navigation dynamically based on user login status and language
 function updateNavigation() {
     const currentUser = users.find(user => user.is_logged_in);
     const loggingDiv = document.querySelector('.logging');
+    const isPolish = get_language();
+
+    const navigationLinks = document.querySelector(".nav_links");
+
+    if (navigationLinks) {
+        if (isPolish) {
+            navigationLinks.innerHTML = `
+                <a href="./inteligentny_zakup_biletu.html">Inteligentny zakup biletu</a>
+                <a href="./szybki_zakup_biletu.html">Szybki zakup biletu</a>
+                <a href="./mapy_schematy.html">Mapy i schematy Krakowa</a>
+                <a href="./rozklad_jazdy.html">Rozkład jazdy</a>
+            `;
+        } else {
+            navigationLinks.innerHTML = `
+                <a href="./inteligentny_zakup_biletu.html">Smart ticket purchase</a>
+                <a href="./szybki_zakup_biletu.html">Quick ticket purchase</a>
+                <a href="./mapy_schematy.html">Maps and diagrams of Krakow</a>
+                <a href="./rozklad_jazdy.html">Schedule</a>
+            `;
+        }
+    }
 
     if (currentUser && loggingDiv) {
-        loggingDiv.innerHTML = `
+        if (isPolish) {
+            loggingDiv.innerHTML = `
             <div class="user_menu">
                 <button class="toggle_menu_button">&darr;</button>
                 <span class="user_name">${currentUser.first_name} ${currentUser.last_name}</span>
@@ -26,6 +48,20 @@ function updateNavigation() {
                     <button class="logout_button">WYLOGUJ</button>
                 </div>
             </div>`;
+        } else {
+            loggingDiv.innerHTML = `
+            <div class="user_menu">
+                <button class="toggle_menu_button">&darr;</button>
+                <span class="user_name">${currentUser.first_name} ${currentUser.last_name}</span>
+                <div class="menu_options" style="display: none;">
+                    <button data-target="../HTML/moje_konto.html">My account</button>
+                    <button data-target="../HTML/ulubione.html">Favorite</button>
+                    <button data-target="../HTML/historia_zakupow.html">Purchase history</button>
+                    <button data-target="../HTML/moja_teczka.html">My briefcase</button>
+                    <button class="logout_button">LOG OUT</button>
+                </div>
+            </div>`;
+        }
 
         const toggleMenuButton = document.querySelector('.toggle_menu_button');
         const menuOptions = document.querySelector('.menu_options');
@@ -42,15 +78,26 @@ function updateNavigation() {
         logoutButton.addEventListener('click', () => {
             currentUser.is_logged_in = false;
             localStorage.setItem('users', JSON.stringify(users));
-            alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.first_name} ${currentUser.last_name}`)
+            if (isPolish) {
+                alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.first_name} ${currentUser.last_name}`)
+            } else {
+                alert(`You have successfully logged out, See you soon ${currentUser.first_name} ${currentUser.last_name}`)
+            }
             location.reload();
         });
 
     } else if (loggingDiv) {
-        loggingDiv.innerHTML = `
+        if (isPolish) {
+            loggingDiv.innerHTML = `
             <button data-target="../HTML/rejestracja.html">Zarejestruj się</button>
             <button data-target="../HTML/logowanie.html">Zaloguj się</button>
-        `;
+            `;
+        } else {
+            loggingDiv.innerHTML = `
+            <button data-target="../HTML/rejestracja.html">Sign up</button>
+            <button data-target="../HTML/logowanie.html">Log in</button>
+            `;
+        }  
     }
 
     const navigationButtons = document.querySelectorAll('[data-target]');

@@ -1,23 +1,44 @@
 // Dynamicly rendering logged user
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
+
     if (contentContainer) {
-        contentContainer.innerHTML = `
-        <div class="ticket-file-container">
-          <div class="not-active-section">
-            <h3>Nieaktywne</h3>
-            <div class="tickets-display">
-                <div id="tickets-container1" class="tickets-container"></div>
-            </div>
-          </div>
-          <div class="active-section">
-            <h3>Aktywne</h3>
-            <div class="tickets-display">
-                <div id="tickets-container2" class="tickets-container"></div>
-            </div>
-          </div>
-        </div>
-        `;   
+        if (isPolish) {
+            contentContainer.innerHTML = `
+                <div class="ticket-file-container">
+                    <div class="not-active-section">
+                        <h3>Nieaktywne</h3>
+                        <div class="tickets-display">
+                            <div id="tickets-container1" class="tickets-container"></div>
+                        </div>
+                    </div>
+                    <div class="active-section">
+                        <h3>Aktywne</h3>
+                        <div class="tickets-display">
+                            <div id="tickets-container2" class="tickets-container"></div>
+                        </div>
+                    </div>
+                </div>
+            `;   
+        } else {
+            contentContainer.innerHTML = `
+                <div class="ticket-file-container">
+                    <div class="not-active-section">
+                        <h3>Inactive</h3>
+                        <div class="tickets-display">
+                            <div id="tickets-container1" class="tickets-container"></div>
+                        </div>
+                    </div>
+                    <div class="active-section">
+                        <h3>Active</h3>
+                        <div class="tickets-display">
+                            <div id="tickets-container2" class="tickets-container"></div>
+                        </div>
+                    </div>
+                </div>
+            `;   
+        }
     }
 
     let notActiveTickets = user.not_active_file || [];
@@ -30,11 +51,22 @@ function renderTickets(my_file_tickets, isActive, user) {
     let ticketsContainer = document.getElementById(isActive ? 'tickets-container2' : 'tickets-container1');
     ticketsContainer.innerHTML = '';
 
+    const isPolish = get_language();
+
     if (my_file_tickets.length > 0) {
         my_file_tickets.forEach((ticket, index) => {
             const ticketElement = document.createElement('div');
-            const first_letter = ticket.client_type[0].toUpperCase();
-            const rest_of_text = ticket.client_type.slice(1);
+            let first_letter;
+            let rest_of_text;
+
+            if (isPolish) {
+                first_letter = ticket.client_type[0].toUpperCase();
+                rest_of_text = ticket.client_type.slice(1);
+            } else {
+                first_letter = ticket.client_type_ang[0].toUpperCase();
+                rest_of_text = ticket.client_type_ang.slice(1);
+            }
+            
             const name = first_letter + rest_of_text;
             const currentCount = ticket.quantity || 0;
 
@@ -46,28 +78,56 @@ function renderTickets(my_file_tickets, isActive, user) {
             } else if (ticket.travel_time == 2880) {
                 ticketTimeLabel = '72 h';
             } else if (ticket.travel_time == 10080) {
-                ticketTimeLabel = '7 dni';
+                if (isPolish) {
+                    ticketTimeLabel = '7 dni';
+                } else {
+                    ticketTimeLabel = '7 days';
+                }
             } else {
-                ticketTimeLabel = `${ticket.travel_time} minut`;
+                if (isPolish) {
+                    ticketTimeLabel = `${ticket.travel_time} minut`;
+                } else {
+                    ticketTimeLabel = `${ticket.travel_time} minutes`;
+                }
             }
 
             ticketElement.classList.add('ticket');
-            ticketElement.innerHTML = `
-                <div class="ticket-info">
-                    <p><strong>Bilet ${name}</strong></p>
-                    ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
-                    <p>Czas: ${ticketTimeLabel}</p>
-                    <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
-                    <p>Cena: ${ticket.price} zł</p>
-                    <p>Ilość: ${currentCount}</p>
-                    ${isActive ? `<div class="timer" id="timer-${index}"></div>` : ''}
-                </div>
-                <div class="ticket-buttons">
-                    ${!isActive ? `<button class="active-button" data-index="${index}">Aktywuj</button>` : ''}
-                    ${isActive ? `<button class="view-button" data-index="${index}">Podgląd</button>` : ''}
-                    ${isActive ? `<button class="download-button" data-index="${index}">Pobierz</button>` : ''}
-                </div>
-            `;
+
+            if (isPolish) {
+                ticketElement.innerHTML = `
+                    <div class="ticket-info">
+                        <p><strong>Bilet ${name}</strong></p>
+                        ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                        <p>Czas: ${ticketTimeLabel}</p>
+                        <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
+                        <p>Cena: ${ticket.price} zł</p>
+                        <p>Ilość: ${currentCount}</p>
+                        ${isActive ? `<div class="timer" id="timer-${index}"></div>` : ''}
+                    </div>
+                    <div class="ticket-buttons">
+                        ${!isActive ? `<button class="active-button" data-index="${index}">Aktywuj</button>` : ''}
+                        ${isActive ? `<button class="view-button" data-index="${index}">Podgląd</button>` : ''}
+                        ${isActive ? `<button class="download-button" data-index="${index}">Pobierz</button>` : ''}
+                    </div>
+                `;
+            } else {
+                ticketElement.innerHTML = `
+                    <div class="ticket-info">
+                        <p><strong>Ticket ${name}</strong></p>
+                        ${ticket.family ? '<p>Family Ticket</p>' : ''}
+                        <p>Time: ${ticketTimeLabel}</p>
+                        <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
+                        <p>Price: ${ticket.price} zł</p>
+                        <p>Amount: ${currentCount}</p>
+                        ${isActive ? `<div class="timer" id="timer-${index}"></div>` : ''}
+                    </div>
+                    <div class="ticket-buttons">
+                        ${!isActive ? `<button class="active-button" data-index="${index}">Activate</button>` : ''}
+                        ${isActive ? `<button class="view-button" data-index="${index}">Preview</button>` : ''}
+                        ${isActive ? `<button class="download-button" data-index="${index}">Download</button>` : ''}
+                    </div>
+                `;
+            }
 
             ticketsContainer.appendChild(ticketElement);
 
@@ -89,11 +149,19 @@ function renderTickets(my_file_tickets, isActive, user) {
         });
     } else {
         const element = document.createElement('div');
-        element.innerHTML = `  
-            <div class="ticket-info">
-                <p><strong>Brak Biletów</strong></p>
-            </div>
-        `;
+        if (isPolish) {
+            element.innerHTML = `  
+                <div class="ticket-info">
+                    <p><strong>Brak Biletów</strong></p>
+                </div>
+            `;
+        } else {
+            element.innerHTML = `  
+                <div class="ticket-info">
+                    <p><strong>No Tickets</strong></p>
+                </div>
+            `;
+        }
         ticketsContainer.appendChild(element);
     }
 }
@@ -102,20 +170,42 @@ function showActivationModal(index, ticket, user) {
     const contentContainer = document.querySelector('.div_content_container');
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
-    modal.innerHTML = `
-        <div class="modal">
-            <h2>Ile biletów aktywować?</h2>
-            <div class="quantity-selector">
-                <button id="decrement">-</button>
-                <input type="number" id="quantity" value="1" min="1" max="${ticket.quantity}" readonly>
-                <button id="increment">+</button>
+    modal.innerHTML = ``;
+
+    const isPolish = get_language();
+
+    if (isPolish) {
+        modal.innerHTML = `
+            <div class="modal">
+                <h2>Ile biletów aktywować?</h2>
+                <div class="quantity-selector">
+                    <button id="decrement">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="${ticket.quantity}" readonly>
+                    <button id="increment">+</button>
+                </div>
+                <div class="modal-buttons">
+                    <button id="confirm">Potwierdź</button>
+                    <button id="cancel">Anuluj</button>
+                </div>
             </div>
-            <div class="modal-buttons">
-                <button id="confirm">Potwierdź</button>
-                <button id="cancel">Anuluj</button>
+        `;
+    } else {
+        modal.innerHTML = `
+            <div class="modal">
+                <h2>How many tickets to activate?</h2>
+                <div class="quantity-selector">
+                    <button id="decrement">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="${ticket.quantity}" readonly>
+                    <button id="increment">+</button>
+                </div>
+                <div class="modal-buttons">
+                    <button id="confirm">Confirm</button>
+                    <button id="cancel">Cancel</button>
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
+
     contentContainer.appendChild(modal);
     modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     const quantityInput = modal.querySelector('#quantity');
@@ -174,6 +264,8 @@ function startTimer(ticket, index, user) {
     const travelTimeMs = ticket.travel_time * 60 * 1000;
     const expirationTime = activationDate.getTime() + travelTimeMs;
 
+    const isPolish = get_language();
+
     let timerInterval;
     let expired = false;
 
@@ -183,7 +275,13 @@ function startTimer(ticket, index, user) {
 
         if (remainingTime <= 0 && !expired) {
             expired = true;
-            alert(`Bilet nr. ${index} wygasł.`);
+
+            if (isPolish) {
+                alert(`Bilet nr. ${index} wygasł.`);
+            } else {
+                alert(`Ticket nr. ${index} has just expired.`);
+            }
+
             const activeTickets = user.active_file || [];
             const activeTicketsFilter = activeTickets.filter(t => t !== ticket);
             saveCurrentActiveFileMyFile(activeTicketsFilter);
@@ -213,13 +311,26 @@ function viewTicket(index, ticket, user) {
             <button class="close-modal">X</button>
         </div>
     `;
+
+    const isPolish = get_language();
+
     contentContainer.appendChild(modal);
 
-    const qrContent = `Bilet: ${ticket.client_type}, Czas: ${ticket.travel_time} minut, Strefa: ${ticket.zone}, Data: ${ticket.activation_date}, Godzina: ${ticket.activation_time}`;
+    let qrContent = `Bilet`;
+
+    if (isPolish) {
+        qrContent = `Bilet: ${ticket.client_type}, Czas: ${ticket.travel_time} minut, Strefa: ${ticket.zone}, Data: ${ticket.activation_date}, Godzina: ${ticket.activation_time}`;
+    } else {
+        qrContent = `Ticket: ${ticket.client_type_ang}, Time: ${ticket.travel_time} minutes, Zone: ${ticket.zone}, Date: ${ticket.activation_date}, Hour: ${ticket.activation_time}`;
+    }
 
     QRCode.toDataURL(qrContent, { width: 200, height: 200 }, (err, url) => {
         if (err) {
-            console.error('Błąd generowania kodu QR:', err);
+            if (isPolish) {
+                console.error('Błąd generowania kodu QR:', err);
+            } else {
+                console.error('QR code generation error:', err);
+            }
             return;
         }
         const qrImage = new Image();
@@ -233,16 +344,32 @@ function viewTicket(index, ticket, user) {
 }
 
 function downloadTicket(index, ticket, user) {
-    const qrContent = `Bilet: ${ticket.client_type}, Czas: ${ticket.travel_time} minut, Strefa: ${ticket.zone}, Data: ${ticket.activation_date}, Godzina: ${ticket.activation_time}`;
+    const isPolish = get_language();
+
+    let qrContent = `Bilet`;
+
+    if (isPolish) {
+        qrContent = `Bilet: ${ticket.client_type}, Czas: ${ticket.travel_time} minut, Strefa: ${ticket.zone}, Data: ${ticket.activation_date}, Godzina: ${ticket.activation_time}`;
+    } else {
+        qrContent = `Ticket: ${ticket.client_type_ang}, Time: ${ticket.travel_time} minutes, Zone: ${ticket.zone}, Date: ${ticket.activation_date}, Hour: ${ticket.activation_time}`;
+    }
 
     QRCode.toDataURL(qrContent, { width: 200, height: 200 }, (err, url) => {
         if (err) {
-            console.error('Błąd generowania kodu QR:', err);
+            if (isPolish) {
+                console.error('Błąd generowania kodu QR:', err);
+            } else {
+                console.error('QR code generation error:', err);
+            }
             return;
         }
         const link = document.createElement('a');
         link.href = url;
-        link.download = `bilet_${index + 1}.png`;
+        if (isPolish) {
+            link.download = `bilet_${index + 1}.png`;
+        } else {
+            link.download = `ticket_${index + 1}.png`;
+        }
         link.click();
     });
 }

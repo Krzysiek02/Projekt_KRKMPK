@@ -18,8 +18,5 @@ document.addEventListener("DOMContentLoaded", () => {
         location.reload();
     });
 
-    const isPolish = localStorage.getItem("language") === "true";
-
     updateLanguageIcon();
-    language_validation(isPolish);
 });
