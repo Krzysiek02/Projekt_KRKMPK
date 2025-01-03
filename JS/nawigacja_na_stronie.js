@@ -8,11 +8,31 @@ function handleNavigation(event) {
     }
 }
 
-// Update the navigation dynamically based on user login status
+// Update the navigation dynamically based on user login status and language
 function updateNavigation() {
     const currentUser = users.find(user => user.is_logged_in);
     const loggingDiv = document.querySelector('.logging');
     const isPolish = get_language();
+
+    const navigationLinks = document.querySelector(".nav_links");
+
+    if (navigationLinks) {
+        if (isPolish) {
+            navigationLinks.innerHTML = `
+                <a href="./inteligentny_zakup_biletu.html">Inteligentny zakup biletu</a>
+                <a href="./szybki_zakup_biletu.html">Szybki zakup biletu</a>
+                <a href="./mapy_schematy.html">Mapy i schematy Krakowa</a>
+                <a href="./rozklad_jazdy.html">Rozkład jazdy</a>
+            `;
+        } else {
+            navigationLinks.innerHTML = `
+                <a href="./inteligentny_zakup_biletu.html">Smart ticket purchase</a>
+                <a href="./szybki_zakup_biletu.html">Quick ticket purchase</a>
+                <a href="./mapy_schematy.html">Maps and diagrams of Krakow</a>
+                <a href="./rozklad_jazdy.html">Schedule</a>
+            `;
+        }
+    }
 
     if (currentUser && loggingDiv) {
         if (isPolish) {

@@ -1,16 +1,29 @@
 // Dynamicly rendering logged user with tickets
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h3>Dziękujemy za dokonanie płatności!</h3>
-            <p>Twoje bilety zostały zakupione. Wybierz, czy chcesz je dodać do swojej teczki, czy bezpośrednio aktywować:</p>
-            <div class="div_buttons">
-                <button id="addToFolderButton" data-target="../HTML/moja_teczka.html">Dodaj do teczki</button>
-                <button id="downloadButton" data-target="../HTML/inteligentny_zakup_biletu.html">Pobierz</button>
-            </div>
-            
-        `;
+        if (isPolish) {
+            renderPolish();
+            contentContainer.innerHTML = `
+                <h3>Dziękujemy za dokonanie płatności!</h3>
+                <p>Twoje bilety zostały zakupione. Wybierz, czy chcesz je dodać do swojej teczki, czy bezpośrednio aktywować:</p>
+                <div class="div_buttons">
+                    <button id="addToFolderButton" data-target="../HTML/moja_teczka.html">Dodaj do teczki</button>
+                    <button id="downloadButton" data-target="../HTML/inteligentny_zakup_biletu.html">Pobierz</button>
+                </div>
+            `;
+        } else {
+            renderEnglish();
+            contentContainer.innerHTML = `
+                <h3>Thank you for making the payment!</h3>
+                <p>Your tickets have been purchased. Choose whether you want to add them to your portfolio or activate them directly:</p>
+                <div class="div_buttons">
+                    <button id="addToFolderButton" data-target="../HTML/moja_teczka.html">Add to folder</button>
+                    <button id="downloadButton" data-target="../HTML/inteligentny_zakup_biletu.html">Download</button>
+                </div>
+            `;
+        }
 
         let currentBasket = getCurrentBasket();
         let qrContent = "";
@@ -19,7 +32,11 @@ function renderAuthorized(user) {
             const now = new Date();
             const purchaseDate = now.toLocaleDateString('pl-PL');
             const purchaseHistory = currentBasket.map(ticket => {
-                qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
+                if (isPolish) {
+                    qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
+                } else {
+                    qrContent += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}, Purchase Date: ${purchaseDate}\n`;
+                }
                 return {
                     ...ticket,
                     purchase_date: purchaseDate
@@ -34,7 +51,11 @@ function renderAuthorized(user) {
 
         QRCode.toDataURL(qrContent, { width: 200, height: 200 }, (err, url) => {
             if (err) {
-                console.error('Błąd generowania kodu QR:', err);
+                if (isPolish) {
+                    console.error('Błąd generowania kodu QR:', err);
+                } else {
+                    console.error('QR code generation error:', err);
+                }
                 return;
             }
 
@@ -47,10 +68,18 @@ function renderAuthorized(user) {
             const downloadButton = document.getElementById('downloadButton');
             if (downloadButton) {
                 downloadButton.addEventListener('click', () => {
-                    alert("Bilety zostały pobrane.");
+                    if (isPolish) {
+                        alert("Bilety zostały pobrane.");
+                    } else {
+                        alert("Tickets have been downloaded.");
+                    }
                     const link = document.createElement('a');
                     link.href = url;
-                    link.download = "bilety_qr.png";
+                    if (isPolish) {
+                        link.download = "bilety_qr.png";
+                    } else {
+                        link.download = "tickets_qr.png";
+                    }
                     link.click();
                     const now = new Date();
                     const activationDate = now.toLocaleDateString('pl-PL');
@@ -70,7 +99,11 @@ function renderAuthorized(user) {
         const addToFolderButton = document.getElementById('addToFolderButton');
         if (addToFolderButton) {
             addToFolderButton.addEventListener('click', () => {
-                alert("Bilety zostały dodane do teczki.");
+                if (isPolish) {
+                    alert("Bilety zostały dodane do teczki.");
+                } else {
+                    alert("Tickets have been added to your folder.");
+                }
                 const myNotActiveFile = currentBasket.map(ticket => {
                     return {
                         ...ticket,
@@ -97,13 +130,22 @@ function renderAuthorized(user) {
 // Dynamicly rendering unlogged user with tickets
 function renderUnauthorizedWithTickets() {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h3>Dziękujemy za dokonanie płatności!</h3>
-            <p>Twoje bilety zostały zakupione.</p>
-            <button id="downloadButton" data-target="../HTML/inteligentny_zakup_biletu.html">Pobierz</button>
-        `;
-
+        if (isPolish) {
+            contentContainer.innerHTML = `
+                <h3>Dziękujemy za dokonanie płatności!</h3>
+                <p>Twoje bilety zostały zakupione.</p>
+                <button id="downloadButton" data-target="../HTML/inteligentny_zakup_biletu.html">Pobierz</button>
+            `;
+        } else {
+            contentContainer.innerHTML = `
+                <h3>Thank you for making the payment!</h3>
+                <p>Your tickets have been purchased.</p>
+                <button id="downloadButton" data-target="../HTML/inteligentny_zakup_biletu.html">Download</button>
+            `;
+        }
+        
         let currentBasket = getCurrentBasket();
         let qrContent = "";
         const now = new Date();
@@ -111,7 +153,11 @@ function renderUnauthorizedWithTickets() {
 
         if (currentBasket.length > 0) {
             currentBasket.forEach(ticket => {
-                qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
+                if (isPolish) {
+                    qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
+                } else {
+                    qrContent += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}, Purchase Date: ${purchaseDate}\n`;
+                }
                 ticket.quantity = 0;
                 ticket.sum_price = 0;
             });
@@ -125,7 +171,11 @@ function renderUnauthorizedWithTickets() {
 
         QRCode.toDataURL(qrContent, { width: 200, height: 200 }, (err, url) => {
             if (err) {
-                console.error('Błąd generowania kodu QR:', err);
+                if (isPolish) {
+                    console.error('Błąd generowania kodu QR:', err);
+                } else {
+                    console.error('QR code generation error:', err);
+                }
                 return;
             }
 
@@ -138,7 +188,11 @@ function renderUnauthorizedWithTickets() {
             const downloadButton = document.getElementById('downloadButton');
             if (downloadButton) {
                 downloadButton.addEventListener('click', () => {
-                    alert("Bilety zostały pobrane.");
+                    if (isPolish) {
+                        alert("Bilety zostały pobrane.");
+                    } else {
+                        alert("Tickets have been downloaded.");
+                    }
                     const link = document.createElement('a');
                     link.href = url;
                     link.download = "bilety_qr.png";

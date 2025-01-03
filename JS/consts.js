@@ -326,11 +326,11 @@ function get_language() {
 }
 
 // Function to produce ticket names
-function ticket_name(ticket) {
-    const isPolish = get_language();
+function ticket_name(ticket, language) {
     let zone;
     let name;
     let quantity_type;
+    const isPolish = language === 'polish'
     if (isPolish) {
         zone = ticket.zone === 'first' ? 'Strefa 1' : 'Strefa 1 + 2 + 3';
         name = ticket_name_change(ticket.client_type);
@@ -366,7 +366,8 @@ function ticket_name(ticket) {
 // Update tickets with names
 const tickets = base_tickets.map(ticket => ({
     ...ticket,
-    name: ticket_name(ticket)
+    name: ticket_name(ticket, 'polish'),
+    name_ang: ticket_name(ticket, 'english'),
 }));
 
 // Choosen tickets to buy

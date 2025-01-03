@@ -27,6 +27,8 @@ function addEventListeners(user) {
     const cancelButton = document.querySelector('.cancel_button');
     const fields = ['email', 'card_number', 'expiry_date', 'csv'];
 
+    const isPolish = get_language();
+
     editButton.addEventListener('click', () => {
         fields.forEach(field => {
             const element = document.querySelector(`.${field}`);
@@ -48,7 +50,11 @@ function addEventListeners(user) {
             const input = document.querySelector(`.${field}_input`);
             const value = input.value;
             if (!validateInput(field, value)) {
-                alert(`Nieprawidłowe dane dla ${field.replace('_', ' ')}`);
+                if (isPolish) {
+                    alert(`Nieprawidłowe dane dla ${field.replace('_', ' ')}`);
+                } else {
+                    alert(`Incorrect data for ${field.replace('_', ' ')}`);
+                }
                 isValid = false;
                 return;
             }
@@ -64,7 +70,11 @@ function addEventListeners(user) {
                 user[field] = input.value;
             });
             localStorage.setItem('users', JSON.stringify(users));
-            alert('Dane zapisany w sposób prawidłowy');
+            if (isPolish) {
+                alert('Dane zapisany w sposób prawidłowy.');
+            } else {
+                alert('Data recorded correctly.');
+            }
             editButton.style.display = 'inline';
             saveButton.style.display = 'none';
             cancelButton.style.display = 'none';
@@ -80,7 +90,11 @@ function addEventListeners(user) {
             span.textContent = user[field];
             input.replaceWith(span);
         });
-        alert('Brak zapisu danych');
+        if (isPolish) {
+            alert('Brak zapisu danych.');
+        } else {
+            alert('No data saved.');
+        }
         editButton.style.display = 'inline';
         saveButton.style.display = 'none';
         cancelButton.style.display = 'none';
@@ -90,37 +104,73 @@ function addEventListeners(user) {
 // Dynamicly rendering logged user
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
-    if (contentContainer) {
-        contentContainer.innerHTML = `
-            <div class="user_section">
-                <h2><span>Moje konto</span></h2>
-                <div class="form">
-                    <div class="left_side">
-                        <p id="firstName">Imię: </p>
-                        <p id="lastName">Nazwisko: </p>
-                        <p id="email">Email: </p>
-                        <p id="cardNumber">Numer karty: </p>
-                        <p class="short" id="expiryDate">Data ważności: </p>
-                        <p class="short" id="csv">CSV: </p>
+    const isPolish = get_language();
+
+    if (isPolish) {
+        if (contentContainer) {
+            contentContainer.innerHTML = `
+                <div class="user_section">
+                    <h2><span>Moje konto</span></h2>
+                    <div class="form">
+                        <div class="left_side">
+                            <p id="firstName">Imię: </p>
+                            <p id="lastName">Nazwisko: </p>
+                            <p id="email">Email: </p>
+                            <p id="cardNumber">Numer karty: </p>
+                            <p class="short" id="expiryDate">Data ważności: </p>
+                            <p class="short" id="csv">CSV: </p>
+                        </div>
+                        <div class="right">
+                            <span class="first_name">${user.first_name}</span>
+                            <span class="last_name">${user.last_name}</span>
+                            <span class="email">${user.email}</span>
+                            <span class="card_number">${user.card_number}</span>
+                            <span class="expiry_date">${user.expiry_date}</span>
+                            <span class="csv">${user.csv}</span>
+                        </div>
                     </div>
-                    <div class="right">
-                        <span class="first_name">${user.first_name}</span>
-                        <span class="last_name">${user.last_name}</span>
-                        <span class="email">${user.email}</span>
-                        <span class="card_number">${user.card_number}</span>
-                        <span class="expiry_date">${user.expiry_date}</span>
-                        <span class="csv">${user.csv}</span>
+                    <div class="buttons">
+                    <button class="edit_button">Edytuj</button>
+                    <button class="cancel_button" style="display: none;">Cofnij</button>
+                    <button class="save_button" style="display: none; margin-left: 10px;" >Zapisz</button>
                     </div>
                 </div>
-                <div class="buttons">
-                <button class="edit_button">Edytuj</button>
-                <button class="cancel_button" style="display: none;">Cofnij</button>
-                <button class="save_button" style="display: none; margin-left: 10px;" >Zapisz</button>
+            `;
+        }
+    } else {
+        if (contentContainer) {
+            contentContainer.innerHTML = `
+                <div class="user_section">
+                    <h2><span>My account</span></h2>
+                    <div class="form">
+                        <div class="left_side">
+                            <p id="firstName">Name: </p>
+                            <p id="lastName">Last name: </p>
+                            <p id="email">Email: </p>
+                            <p id="cardNumber">Card number: </p>
+                            <p class="short" id="expiryDate">Expiration date: </p>
+                            <p class="short" id="csv">CSV: </p>
+                        </div>
+                        <div class="right">
+                            <span class="first_name">${user.first_name}</span>
+                            <span class="last_name">${user.last_name}</span>
+                            <span class="email">${user.email}</span>
+                            <span class="card_number">${user.card_number}</span>
+                            <span class="expiry_date">${user.expiry_date}</span>
+                            <span class="csv">${user.csv}</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                    <button class="edit_button">Edit</button>
+                    <button class="cancel_button" style="display: none;">Undo</button>
+                    <button class="save_button" style="display: none; margin-left: 10px;" >Save</button>
+                    </div>
                 </div>
-            </div>
-        `;
-        addEventListeners(user);
+            `;
+        }
     }
+
+    addEventListeners(user);
 };
 
 // Add dynamicly loading content od the page

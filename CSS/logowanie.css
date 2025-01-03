@@ -43,11 +43,6 @@
   /* border: 2px black dotted; */
   display:inline-flex;
 }
-  .title::after { 
-    position: absolute;
-    content: "się"; 
-    margin-top: 80px;
-}
 .login_box {
   /* border: 2px black dotted; */
   width: 55vw;

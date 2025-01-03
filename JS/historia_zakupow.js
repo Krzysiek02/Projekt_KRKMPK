@@ -5,44 +5,49 @@ function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
     const isPolish = get_language();
 
-    if (contentContainer && isPolish) {
-        contentContainer.innerHTML = `
-        <div class="ticket-favourite-container">
-          <div class="description-section">
-            <h3>Historia Zakupów</h3>
-            <div class="action-buttons">
-              <button id="reset-purchase-history" disabled>Zresetuj Historię Zakupów</button>
+    if (contentContainer) {
+        if (isPolish) {
+            renderPolish();
+            contentContainer.innerHTML = `
+            <div class="ticket-favourite-container">
+                <div class="description-section">
+                    <h3>Historia Zakupów</h3>
+                    <div class="action-buttons">
+                    <button id="reset-purchase-history" disabled>Zresetuj Historię Zakupów</button>
+                    </div>
+                </div>
+                <div class="tickets-display">
+                    <div id="tickets-container" class="tickets-container"></div>
+                    <div class="action-buttons">
+                    <button id="reset-tickets" disabled>Zresetuj Zaznaczone Bilety</button>
+                    <button id="add-to-cart" disabled>Dodaj do Koszyka</button>
+                    <button id="proceed-to-payment" disabled>Przejdź do Płatności</button>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="tickets-display">
-            <div id="tickets-container" class="tickets-container"></div>
-            <div class="action-buttons">
-              <button id="reset-tickets" disabled>Zresetuj Zaznaczone Bilety</button>
-              <button id="add-to-cart" disabled>Dodaj do Koszyka</button>
-              <button id="proceed-to-payment" disabled>Przejdź do Płatności</button>
+            `;   
+        } else {
+            renderEnglish();
+            contentContainer.innerHTML = `
+            <div class="ticket-favourite-container">
+                <div class="description-section">
+                    <h3>Purchase History</h3>
+                    <div class="action-buttons">
+                    <button id="reset-purchase-history" disabled>Reset Purchase History</button>
+                    </div>
+                </div>
+                <div class="tickets-display">
+                    <div id="tickets-container" class="tickets-container"></div>
+                    <div class="action-buttons">
+                    <button id="reset-tickets" disabled>Reset Selected Tickets</button>
+                    <button id="add-to-cart" disabled>Add to Cart</button>
+                    <button id="proceed-to-payment" disabled>Go to Payments</button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        `;   
-    } else if (contentContainer && !isPolish) {
-        contentContainer.innerHTML = `
-        <div class="ticket-favourite-container">
-          <div class="description-section">
-            <h3>Purchase History</h3>
-            <div class="action-buttons">
-              <button id="reset-purchase-history" disabled>Reset Purchase History</button>
-            </div>
-          </div>
-          <div class="tickets-display">
-            <div id="tickets-container" class="tickets-container"></div>
-            <div class="action-buttons">
-              <button id="reset-tickets" disabled>Reset Selected Tickets</button>
-              <button id="add-to-cart" disabled>Add to Cart</button>
-              <button id="proceed-to-payment" disabled>Go to Payments</button>
-            </div>
-          </div>
-        </div>
-        `;   
+            `;   
+        }
+        
     }
 
     let historyTickets = user.history || [];
@@ -73,6 +78,12 @@ function renderAuthorized(user) {
             selectedTickets[ticketId] = 0;
             document.getElementById(`ticket-count-${ticketId}`).innerText = selectedTickets[ticketId];
         });
+
+        if (isPolish) {
+            alert("Zaznaczone bilety zostały usunięte.");
+        } else {
+            alert("The selected tickets have been deleted.");
+        }
     
         addToCartButton.disabled = true;
         proceedToPaymentButton.disabled = true;
@@ -182,10 +193,7 @@ function renderAuthorized(user) {
             }, [...currentBasket]);
         let basketSummary;
         if (isPolish) {
-            basketSummary = Object.entries(selectedTickets)
-            .filter(([_, count]) => count > 0)
-            .map(([id, count]) => {
-                const ticket = tickets.find(t => t.id == id);
+            basketSummary = updatedBasket.map(ticket => {
                 let firstLetter = ticket.client_type[0].toUpperCase();
                 let restOfText = ticket.client_type.slice(1);
                 const name = firstLetter + restOfText;
@@ -204,13 +212,10 @@ function renderAuthorized(user) {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minut`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${count} szt. - ${ticket.price * count} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} szt. - ${ticket.price * ticket.quantity} zł`;
             }).join("\n");
         } else {
-            basketSummary = Object.entries(selectedTickets)
-            .filter(([_, count]) => count > 0)
-            .map(([id, count]) => {
-                const ticket = tickets.find(t => t.id == id);
+            basketSummary = updatedBasket.map(ticket => {
                 let firstLetter = ticket.client_type_ang[0].toUpperCase();
                 let restOfText = ticket.client_type_ang.slice(1);
                 const name = firstLetter + restOfText;
@@ -229,7 +234,7 @@ function renderAuthorized(user) {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minutes`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${count} piece - ${ticket.price * count} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} piece - ${ticket.price * ticket.quantity} zł`;
             }).join("\n");
         }
         const totalPrice = updatedBasket.reduce((sum, t) => sum + t.sum_price, 0);

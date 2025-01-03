@@ -1,9 +1,12 @@
 // Dynamicly rendering logged user with tickets
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h2>Płatność kartą</h2>
+        if (isPolish) {
+            renderPolish();
+            contentContainer.innerHTML = `
+            <h2>Płatność Blik</h2>
             <form id="payment-form">
                 <div class="payment_form_input">
                     <label for="blik-number">Numer blik</label>
@@ -12,7 +15,22 @@ function renderAuthorized(user) {
                 <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
                 <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
             </form>
-        `;
+            `;
+        } else {
+            renderEnglish();
+            contentContainer.innerHTML = `
+            <h2>Blik payment</h2>
+            <form id="payment-form">
+                <div class="payment_form_input">
+                    <label for="blik-number">Blik number</label>
+                    <input type="text" id="blik-number" value="" />
+                </div>
+                <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} zł</button>
+                <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
+            </form>
+            `;
+        }
+        
 
         const form = document.getElementById('payment-form');
 
@@ -33,18 +51,33 @@ function renderAuthorized(user) {
 // Dynamicly rendering unlogged user with tickets
 function renderUnauthorizedWithTickets() {
     const contentContainer = document.querySelector('.div_content_container');
+    const isPolish = get_language();
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h2>Płatność kartą</h2>
+        if (isPolish) {
+            contentContainer.innerHTML = `
+            <h2>Płatność Blik</h2>
             <form id="payment-form">
-                <div>
+                <div class="payment_form_input">
                     <label for="blik-number">Numer blik</label>
                     <input type="text" id="blik-number" value="" />
                 </div>
                 <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
                 <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
             </form>
-        `;
+            `;
+        } else {
+            contentContainer.innerHTML = `
+            <h2>Blik payment</h2>
+            <form id="payment-form">
+                <div class="payment_form_input">
+                    <label for="blik-number">Blik number</label>
+                    <input type="text" id="blik-number" value="" />
+                </div>
+                <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} zł</button>
+                <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
+            </form>
+            `;
+        }
 
         const form = document.getElementById('payment-form');
 

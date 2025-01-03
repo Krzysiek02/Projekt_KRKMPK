@@ -1,19 +1,34 @@
 // Dynamicly rendering logged user with tickets
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container_platnosci');
+    const isPolish = get_language();
+
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <h2>Wybierz metodę płatności</h2>
-            <div class="div_content_container">
-                
-                <div class="payment-button">
-                    <button data-target="../HTML/blik.html"">Płatność BLIK</button>
+        if (isPolish) {
+            contentContainer.innerHTML = `
+                <h2>Wybierz metodę płatności</h2>
+                <div class="div_content_container">
+                    <div class="payment-button">
+                        <button data-target="../HTML/blik.html"">Płatność BLIK</button>
+                    </div>
+                    <div class="payment-button">
+                        <button data-target="../HTML/karta.html">Płatność kartą</button>
+                    </div>
                 </div>
-                <div class="payment-button">
-                    <button data-target="../HTML/karta.html">Płatność kartą</button>
+            `;
+        } else {
+            contentContainer.innerHTML = `
+                <h2>Select payment method</h2>
+                <div class="div_content_container">
+                    <div class="payment-button">
+                        <button data-target="../HTML/blik.html"">Payment with BLIK</button>
+                    </div>
+                    <div class="payment-button">
+                        <button data-target="../HTML/karta.html">Payment by card</button>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
 
         const navigationButtons = document.querySelectorAll('[data-target]');
 
@@ -28,18 +43,34 @@ function renderAuthorized(user) {
 // Dynamicly rendering unlogged user with tickets
 function renderUnauthorizedWithTickets() {
     const contentContainer = document.querySelector('.div_content_container_platnosci');
+    const isPolish = get_language();
+
     if (contentContainer) {
-        contentContainer.innerHTML = `
-            <div class="div_content_container">
+        if (isPolish) {
+            contentContainer.innerHTML = `
                 <h2>Wybierz metodę płatności</h2>
-                <div class="payment-button">
-                    <button data-target="../HTML/blik.html"">Płatność BLIK</button>
+                <div class="div_content_container">
+                    <div class="payment-button">
+                        <button data-target="../HTML/blik.html"">Płatność BLIK</button>
+                    </div>
+                    <div class="payment-button">
+                        <button data-target="../HTML/karta.html">Płatność kartą</button>
+                    </div>
                 </div>
-                <div class="payment-button">
-                    <button data-target="../HTML/karta.html">Płatność kartą</button>
+            `;
+        } else {
+            contentContainer.innerHTML = `
+                <h2>Select payment method</h2>
+                <div class="div_content_container">
+                    <div class="payment-button">
+                        <button data-target="../HTML/blik.html"">Payment by BLIK</button>
+                    </div>
+                    <div class="payment-button">
+                        <button data-target="../HTML/karta.html">Payment by card</button>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
 
         const navigationButtons = document.querySelectorAll('[data-target]');
 
