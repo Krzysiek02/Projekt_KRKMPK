@@ -10,6 +10,8 @@ const base_tickets = [
         id: 1,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -20,6 +22,8 @@ const base_tickets = [
         id: 2,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -30,6 +34,8 @@ const base_tickets = [
         id: 3,
         client_type: 'normalny',
         quantity_type: 'grupowy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'group',
         family: false,
         ticket_type: 'MPK',
         zone: 'first',
@@ -40,6 +46,8 @@ const base_tickets = [
         id: 4,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -50,6 +58,8 @@ const base_tickets = [
         id: 5,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -60,6 +70,8 @@ const base_tickets = [
         id: 6,
         client_type: 'ulgowy',
         quantity_type: 'grupowy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'group',
         family: false,
         ticket_type: 'MPK',
         zone: 'first',
@@ -70,6 +82,8 @@ const base_tickets = [
         id: 7,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -80,6 +94,8 @@ const base_tickets = [
         id: 8,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -90,6 +106,8 @@ const base_tickets = [
         id: 9,
         client_type: 'normalny',
         quantity_type: 'grupowy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'group',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -100,6 +118,8 @@ const base_tickets = [
         id: 10,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'first',
@@ -110,6 +130,8 @@ const base_tickets = [
         id: 11,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'first',
@@ -120,6 +142,8 @@ const base_tickets = [
         id: 12,
         client_type: 'ulgowy',
         quantity_type: 'grupowy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'group',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -130,6 +154,8 @@ const base_tickets = [
         id: 13,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -140,6 +166,8 @@ const base_tickets = [
         id: 14,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -150,6 +178,8 @@ const base_tickets = [
         id: 15,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK_KMŁ',
         zone: 'all',
@@ -160,6 +190,8 @@ const base_tickets = [
         id: 16,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -170,6 +202,8 @@ const base_tickets = [
         id: 17,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -180,6 +214,8 @@ const base_tickets = [
         id: 18,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -190,6 +226,8 @@ const base_tickets = [
         id: 19,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -200,6 +238,8 @@ const base_tickets = [
         id: 20,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'first',
@@ -210,6 +250,8 @@ const base_tickets = [
         id: 21,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'first',
@@ -220,6 +262,8 @@ const base_tickets = [
         id: 22,
         client_type: 'normalny',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -230,6 +274,8 @@ const base_tickets = [
         id: 23,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK',
         zone: 'all',
@@ -240,6 +286,8 @@ const base_tickets = [
         id: 24,
         client_type: 'ulgowy',
         quantity_type: 'pojedynczy',
+        client_type_ang: 'reduced',
+        quantity_type_ang: 'single',
         family: false,
         ticket_type: 'MPK_KMŁ',
         zone: 'all',
@@ -250,6 +298,8 @@ const base_tickets = [
         id: 25,
         client_type: 'normalny',
         quantity_type: 'grupowy',
+        client_type_ang: 'regular',
+        quantity_type_ang: 'group',
         family: true,
         ticket_type: 'MPK',
         zone: 'all',
@@ -264,9 +314,29 @@ function ticket_name_change(ticket_string) {
     return first_letter + rest_of_text; 
 }
 
+// Downloanding current language
+function get_language() {
+    if (localStorage.getItem("language") === null) {
+        localStorage.setItem("language", "true");
+    }
+    return localStorage.getItem("language") === "true";
+}
+
 // Function to produce ticket names
 function ticket_name(ticket) {
-    const name = ticket_name_change(ticket.client_type);
+    const isPolish = get_language();
+    let zone;
+    let name;
+    let quantity_type;
+    if (isPolish) {
+        zone = ticket.zone === 'first' ? 'Strefa 1' : 'Strefa 1 + 2 + 3';
+        name = ticket_name_change(ticket.client_type);
+        quantity_type = ticket_name_change(ticket.quantity_type);
+    } else {
+        zone = ticket.zone === 'first' ? 'Zone 1' : 'Zone 1 + 2 + 3';
+        name = ticket_name_change(ticket.client_type_ang);
+        quantity_type = ticket_name_change(ticket.quantity_type_ang);
+    }
     let time;
     if (ticket.travel_time == 1440) {
         time = '24 h';
@@ -275,12 +345,18 @@ function ticket_name(ticket) {
     } else if (ticket.travel_time == 4320) {
         time = '72 h';
     } else if (ticket.travel_time == 10080) {
-        time = '7 dni';
+        if (isPolish) {
+            time = '7 dni';
+        } else {
+            time = '7 days';
+        }
     } else {
-        time = `${ticket.travel_time} minut`;
+        if (isPolish) {
+            time = `${ticket.travel_time} minut`;
+        } else {
+            time = `${ticket.travel_time} minutes`;
+        }
     }
-    const zone = ticket.zone === 'first' ? 'Strefa 1' : 'Strefa 1 + 2 + 3'
-    const quantity_type = ticket_name_change(ticket.quantity_type);
     return `${name} ${time} ${zone} ${quantity_type}`;
 }
 
@@ -292,133 +368,6 @@ const tickets = base_tickets.map(ticket => ({
 
 // Choosen tickets to buy
 const selectedTicketsToBuy = JSON.parse(localStorage.getItem('selectedTicketsToBuy')) || [];
-
-// Public transport lines shorted
-const shortPublicTransportLines = [ 'Wawel 01', 'Informatyczny 01', 'Salwator 01', 'Mistrzejowice 01', 'Klawiaturowa 01', 'Nowa Huta 01', 'Kurdwanów 01', 'Monitorowa 01', 'Ruczaj 01', 'Balice Lotnisko 01', 'Kablowa 01', 'Bitowa 01', 'Graficzna 01', 'Rondo Grzegórzeckie 01', 'Krowodrza Górka 01', 'Wieliczka 01', 'Tyniec 01', 'Mogilska 01' ]
-
-// Public available routes
-const routesPublicTransportLines = [ 
-    {
-        number_of_line: 1,
-        directions: 0,
-        vehicle_type: 'tram',
-        route: 'Wawel 01, Informatyczny 01, Salwator 01'
-    }, 
-    {
-        number_of_line: 1,
-        directions: 1,
-        vehicle_type: 'tram',
-        route: 'Salwator 01, Informatyczny 01, Wawel 01'
-    },
-    {
-        number_of_line: 2,
-        directions: 0,
-        vehicle_type: 'tram',
-        route: 'Mistrzejowice 01, Klawiaturowa 01, Nowa Huta 01'
-    },
-    {
-        number_of_line: 2,
-        directions: 1,
-        vehicle_type: 'tram',
-        route: 'Nowa Huta 01, Klawiaturowa 01, Mistrzejowice 01'
-    },
-    {
-        number_of_line: 3,
-        directions: 0,
-        vehicle_type: 'tram',
-        route: 'Kurdwanów 01, Monitorowa 01, Ruczaj 01'
-    }, 
-    {
-        number_of_line: 3,
-        directions: 1,
-        vehicle_type: 'tram',
-        route: 'Ruczaj 01 , Monitorowa 01, Kurdwanów 01'
-    },
-    {
-        number_of_line: 4,
-        directions: 0,
-        vehicle_type: 'tram',
-        route: 'Balice Lotnisko 01, Kablowa 01, Wawel 01',
-    },
-    {
-        number_of_line: 4,
-        directions: 1,
-        vehicle_type: 'tram',
-        route: 'Wawel 01, Kablowa 01, Balice Lotnisko 01'
-    },
-    {
-        number_of_line: 5,
-        directions: 0,
-        vehicle_type: 'tram',
-        route: 'Bitowa 01, Klawiaturowa 01, Graficzna 01'
-    },
-    {
-        number_of_line: 5,
-        directions: 1,
-        vehicle_type: 'tram',
-        route: 'Graficzna 01, Klawiaturowa 01, Bitowa 01'
-    },
-    {
-        number_of_line: 101,
-        directions: 0,
-        vehicle_type: 'bus',
-        route: 'Wawel 01, Informatyczny 01, Salwator 01'
-    }, 
-    {
-        number_of_line: 101,
-        directions: 1,
-        vehicle_type: 'bus',
-        route: 'Salwator 01, Informatyczny 01, Wawel 01'
-    },
-    {
-        number_of_line: 102,
-        directions: 0,
-        vehicle_type: 'bus',
-        route: 'Mistrzejowice 01, Klawiaturowa 01, Nowa Huta 01'
-    },
-    {
-        number_of_line: 102,
-        directions: 1,
-        vehicle_type: 'bus',
-        route: 'Nowa Huta 01, Klawiaturowa 01, Mistrzejowice 01'
-    },
-    {
-        number_of_line: 201,
-        directions: 0,
-        vehicle_type: 'bus',
-        route: 'Kurdwanów 01, Monitorowa 01, Ruczaj 01'
-    }, 
-    {
-        number_of_line: 201,
-        directions: 1,
-        vehicle_type: 'bus',
-        route: 'Ruczaj 01 , Monitorowa 01, Kurdwanów 01'
-    },
-    {
-        number_of_line: 301,
-        directions: 0,
-        vehicle_type: 'bus',
-        route: 'Rondo Grzegórzeckie 01, Klawiaturowa 01, Salwator 01',
-    },
-    {
-        number_of_line: 301,
-        directions: 1,
-        vehicle_type: 'bus',
-        route: 'Salwator 01, Klawiaturowa 01, Rondo Grzegórzeckie 01'
-    },
-    {
-        number_of_line: 302,
-        directions: 0,
-        vehicle_type: 'bus',
-        route: 'Mogilska 01, Nowa Huta 01, Monitorowa 01'
-    },
-    {
-        number_of_line: 302,
-        directions: 1,
-        vehicle_type: 'bus',
-        route: 'Monitorowa 01, Nowa Huta 01, Mogilska 01'
-    },
-];
 
 // Public transport lines
 const publicTransportLines = [

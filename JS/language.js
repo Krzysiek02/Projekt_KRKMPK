@@ -7,27 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const updateLanguageIcon = () => {
-        const isEnglish = localStorage.getItem("language") === "true";
-        const imagePath = isEnglish ? "../IMAGES/flaga_UK.png" : "../IMAGES/flaga_PL.png";
+        const isPolish = localStorage.getItem("language") === "true";
+        const imagePath = isPolish ? "../IMAGES/flaga_UK.png" : "../IMAGES/flaga_PL.png";
         languageChangeButton.innerHTML = `<img src="${imagePath}" alt="Flag Icon" class="flag_uk"/>`;
     };
 
     languageChangeButton.addEventListener("click", () => {
-        const isEnglish = localStorage.getItem("language") === "true";
-        localStorage.setItem("language", (!isEnglish).toString());
+        const isPolish = localStorage.getItem("language") === "true";
+        localStorage.setItem("language", (!isPolish).toString());
         location.reload();
     });
 
-    updateLanguageIcon();
-    validation();
-});
+    const isPolish = localStorage.getItem("language") === "true";
 
-function validation() {
-    const isEnglish = localStorage.getItem("language") === "true";
-    if (isEnglish) {
-        console.log('Aktualny język strony: Angielski');
-    } else {
-        console.log('Aktualny język strony: Polski');
-    }
-    
-}
+    updateLanguageIcon();
+    language_validation(isPolish);
+});

@@ -119,6 +119,16 @@ function validation() {
     console.log(JSON.parse(localStorage.getItem('selectedTicketsToBuy')));
 }
 
+// Language validation
+function language_validation(language) {
+    if (language) {
+        console.log('Aktualny język strony: Polski');
+    } else {
+        console.log('Aktualny język strony: Angielski');
+    }
+    
+}
+
 // Add default user on page load
 document.addEventListener('DOMContentLoaded', addDefaultUser);
 
