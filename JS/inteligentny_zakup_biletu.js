@@ -40,8 +40,8 @@ function setupAutoComplete(input, suggestionsBox) {
     const div = document.createElement('div');
     div.className = 'station-input intermediate-station';
     div.innerHTML = `
-      <label for="between-station-${container.childElementCount + 1}">Przystanek Pośredni ${container.childElementCount + 1}:</label>
-      <input type="text" id="between-station-${container.childElementCount + 1}" name="between-station-${container.childElementCount + 1}" placeholder="Wprowadź przystanek" autocomplete="off" />
+      <label for="between-station">Przystanek Pośredni:</label>
+      <input type="text" id="between-station" name="between-station" placeholder="Wprowadź przystanek" autocomplete="off" />
       <ul class="suggestions"></ul>
       <button type="button" class="remove-station">X</button>
     `;
