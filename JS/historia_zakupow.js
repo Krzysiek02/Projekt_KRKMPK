@@ -276,15 +276,28 @@ function renderTickets(historyTickets) {
                 }
                 ticketElement.classList.add('ticket');
                 ticketElement.innerHTML = `
+                    <div class="ticket-header">
+                        <p class="ticket-date">${ticket.purchase_date}</p>
+                        
+                    </div>
+                    
                     <div class="ticket-info">
-                        <p><strong>Bilet ${name}</strong></p>
-                        ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
-                        <p>Czas: ${ticketTimeLabel}</p>
-                        <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
-                        <p>Data Zakupu: ${ticket.purchase_date}</p>
-                        <p>Ilość zakupionych biletów: ${ticket.quantity}</p>
-                        <p>Cena za jeden bilet: ${ticket.price} zł</p>
-                        ${ticket.sum_price != ticket.price ? `<p>Cena za wszystkie bilety: ${ticket.sum_price} zł</p>` : ''}
+                        <div class="ticket-description">
+                            <p><strong>Bilet ${name}</strong></p>
+                            ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                            <p>Czas: ${ticketTimeLabel}</p>
+                            <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
+                        </div>
+                        
+                        <div class="ticket-quantity">
+                            <p>${ticket.quantity} szt.</p>
+                        </div>
+                        <div class="ticket-price">
+                            <p>Cena za 1szt.<br>${ticket.price} zł</p>
+                        </div>
+                        <div class="ticket-sum-price">
+                            ${ticket.sum_price != ticket.price ? `<p>Łącznie<br>${ticket.sum_price} zł</p>` : ''}
+                        </div>
                     </div>
                     <div class="ticket-actions">
                         <button onclick="updateTicketCount(${ticket.id}, -1)">-</button>
@@ -314,22 +327,33 @@ function renderTickets(historyTickets) {
                 }
                 ticketElement.classList.add('ticket');
                 ticketElement.innerHTML = `
+                    <div class="ticket-header">
+                        <p class="ticket-date">${ticket.purchase_date}</p>
+                    </div>
                     <div class="ticket-info">
-                        <p><strong>Ticket ${name}</strong></p>
-                        ${ticket.family ? '<p>Familly Ticket</p>' : ''}
-                        <p>Time: ${ticketTimeLabel}</p>
-                        <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
-                        <p>Day of purchase: ${ticket.purchase_date}</p>
-                        <p>Number of purchased tickets: ${ticket.quantity}</p>
-                        <p>Price for one ticket: ${ticket.price} zł</p>
-                        ${ticket.sum_price != ticket.price ? `<p>Price for all tickets: ${ticket.sum_price} zł</p>` : ''}
+                        <div class="ticket-description">
+                            <p><strong>Ticket ${name}</strong></p>
+                            ${ticket.family ? '<p>Familly Ticket</p>' : ''}
+                            <p>Time: ${ticketTimeLabel}</p>
+                            <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
+                        </div>
+                        
+                        <div class="ticket-quantity">
+                            <p>${ticket.quantity} pcs.</p>
+                        </div>
+                        <div class="ticket-price">
+                            <p>Price for one ticket: <br>${ticket.price} zł</p>
+                        </div>
+                        <div class="ticket-sum-price">
+                            ${ticket.sum_price != ticket.price ? `<p>Sum<br>${ticket.sum_price} zł</p>` : ''}
+                        </div>
                     </div>
                     <div class="ticket-actions">
                         <button onclick="updateTicketCount(${ticket.id}, -1)">-</button>
                         <span id="ticket-count-${ticket.id}">${currentCount}</span>
                         <button onclick="updateTicketCount(${ticket.id}, 1)">+</button>
                     </div>
-                `;
+                `;   
                 ticketsContainer.appendChild(ticketElement);
                 selectedTickets[ticket.id] = currentCount;
             }

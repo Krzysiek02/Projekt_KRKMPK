@@ -88,3 +88,9 @@
 .image_modal .close_button:hover {
   background: #c9302c;
 }
+
+@media(max-width: 800px) {
+  .image_item {
+    width: 300px;
+  }
+}
