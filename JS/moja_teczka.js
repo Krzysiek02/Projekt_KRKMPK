@@ -168,10 +168,9 @@ function activateTickets(index, ticket, user, quantity) {
 
 function startTimer(ticket, index, user) {
     const timerElement = document.getElementById(`timer-${index}`);
-    const activationDateParts = ticket.activation_date.split('.');
-    const activationTimeParts = ticket.activation_time.split(':');
-    const activationDateString = `${activationDateParts[2]}-${activationDateParts[1]}-${activationDateParts[0]}T${activationTimeParts[0]}:${activationTimeParts[1]}:${activationTimeParts[2]}`;
-    const activationDate = new Date(activationDateString);
+    const [day, month, year] = ticket.activation_date.split('.');
+    const [hours, minutes, seconds] = ticket.activation_time.split(':');
+    const activationDate = new Date(year, month - 1, day, hours, minutes, seconds);
     const travelTimeMs = ticket.travel_time * 60 * 1000;
     const expirationTime = activationDate.getTime() + travelTimeMs;
 
