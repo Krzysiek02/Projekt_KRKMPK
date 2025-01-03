@@ -308,6 +308,9 @@ const base_tickets = [
     },
 ];
 
+// Public transport lines shorted
+const shortPublicTransportLines = [ 'Wawel 01', 'Informatyczny 01', 'Salwator 01', 'Mistrzejowice 01', 'Klawiaturowa 01', 'Nowa Huta 01', 'Kurdwanów 01', 'Monitorowa 01', 'Ruczaj 01', 'Balice Lotnisko 01', 'Kablowa 01', 'Bitowa 01', 'Graficzna 01', 'Rondo Grzegórzeckie 01', 'Krowodrza Górka 01', 'Wieliczka 01', 'Tyniec 01', 'Mogilska 01' ];
+
 function ticket_name_change(ticket_string) {
     const first_letter = ticket_string[0].toUpperCase();
     const rest_of_text = ticket_string.slice(1);

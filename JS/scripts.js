@@ -126,7 +126,6 @@ function language_validation(language) {
     } else {
         console.log('Aktualny język strony: Angielski');
     }
-    
 }
 
 // Add default user on page load

@@ -4,7 +4,6 @@ let selectedTickets = [];
 function renderAuthorized(user) {
     const contentContainer = document.querySelector('.div_content_container');
     const isPolish = get_language();
-    language_validation(isPolish);
 
     if (contentContainer && isPolish) {
         contentContainer.innerHTML = `

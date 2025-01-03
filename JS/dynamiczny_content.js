@@ -3,6 +3,8 @@ function renderUnauthorized() {
     const contentContainer = document.querySelector('.div_content_container');
     const contentContainerPlatnosci = document.querySelector('.div_content_container_platnosci');
     const isPolish = get_language();
+    language_validation(isPolish);
+
 
     if (contentContainer && isPolish) {
         contentContainer.innerHTML = `
@@ -29,13 +31,13 @@ function renderUnauthorized() {
         </div>`
         ;
     }
-
-    language_validation(isPolish);
 };
 
 // Dynamicly rendering whether user is logged 
 function updateContentLogin() {
     const loggedInUser = users.find(user => user.is_logged_in);
+    const isPolish = get_language();
+    language_validation(isPolish);
     if (loggedInUser) {
         renderAuthorized(loggedInUser);
     } else {
@@ -47,6 +49,8 @@ function updateContentLogin() {
 function updateContentBacket() {
     const loggedInUser = users.find(user => user.is_logged_in);
     const currentBasket = getCurrentBasket();
+    const isPolish = get_language();
+    language_validation(isPolish);
     if (currentBasket.length > 0) {
         if (loggedInUser) {
             renderAuthorized(loggedInUser);
@@ -56,5 +60,15 @@ function updateContentBacket() {
         }
     } else {
         renderUnauthorized();
+    }
+}
+
+function updateContent() {
+    const isPolish = get_language();
+    language_validation(isPolish);
+    if (isPolish) {
+        renderContentPolish();
+    } else {
+        renderContentEnglish();
     }
 }
