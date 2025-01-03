@@ -278,7 +278,6 @@ function renderTickets(historyTickets) {
                 ticketElement.innerHTML = `
                     <div class="ticket-header">
                         <p class="ticket-date">${ticket.purchase_date}</p>
-                        
                     </div>
                     
                     <div class="ticket-info">
