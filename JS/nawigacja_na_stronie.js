@@ -12,9 +12,11 @@ function handleNavigation(event) {
 function updateNavigation() {
     const currentUser = users.find(user => user.is_logged_in);
     const loggingDiv = document.querySelector('.logging');
+    const isPolish = get_language();
 
     if (currentUser && loggingDiv) {
-        loggingDiv.innerHTML = `
+        if (isPolish) {
+            loggingDiv.innerHTML = `
             <div class="user_menu">
                 <button class="toggle_menu_button">&darr;</button>
                 <span class="user_name">${currentUser.first_name} ${currentUser.last_name}</span>
@@ -26,6 +28,20 @@ function updateNavigation() {
                     <button class="logout_button">WYLOGUJ</button>
                 </div>
             </div>`;
+        } else {
+            loggingDiv.innerHTML = `
+            <div class="user_menu">
+                <button class="toggle_menu_button">&darr;</button>
+                <span class="user_name">${currentUser.first_name} ${currentUser.last_name}</span>
+                <div class="menu_options" style="display: none;">
+                    <button data-target="../HTML/moje_konto.html">My account</button>
+                    <button data-target="../HTML/ulubione.html">Favorite</button>
+                    <button data-target="../HTML/historia_zakupow.html">Purchase history</button>
+                    <button data-target="../HTML/moja_teczka.html">My briefcase</button>
+                    <button class="logout_button">LOG OUT</button>
+                </div>
+            </div>`;
+        }
 
         const toggleMenuButton = document.querySelector('.toggle_menu_button');
         const menuOptions = document.querySelector('.menu_options');
@@ -42,15 +58,26 @@ function updateNavigation() {
         logoutButton.addEventListener('click', () => {
             currentUser.is_logged_in = false;
             localStorage.setItem('users', JSON.stringify(users));
-            alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.first_name} ${currentUser.last_name}`)
+            if (isPolish) {
+                alert(`Wylogowano poprawnie, Do zobaczenia ${currentUser.first_name} ${currentUser.last_name}`)
+            } else {
+                alert(`You have successfully logged out, See you soon ${currentUser.first_name} ${currentUser.last_name}`)
+            }
             location.reload();
         });
 
     } else if (loggingDiv) {
-        loggingDiv.innerHTML = `
+        if (isPolish) {
+            loggingDiv.innerHTML = `
             <button data-target="../HTML/rejestracja.html">Zarejestruj się</button>
             <button data-target="../HTML/logowanie.html">Zaloguj się</button>
-        `;
+            `;
+        } else {
+            loggingDiv.innerHTML = `
+            <button data-target="../HTML/rejestracja.html">Sign up</button>
+            <button data-target="../HTML/logowanie.html">Log in</button>
+            `;
+        }  
     }
 
     const navigationButtons = document.querySelectorAll('[data-target]');

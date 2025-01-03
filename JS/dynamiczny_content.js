@@ -68,7 +68,93 @@ function updateContent() {
     language_validation(isPolish);
     if (isPolish) {
         renderContentPolish();
+        renderPolish();
     } else {
         renderContentEnglish();
+        renderEnglish();
+    }
+}
+
+function renderPolish() {
+    const navigationLinks = document.querySelector(".nav_links");
+
+    if (navigationLinks) {
+        navigationLinks.innerHTML = `
+            <a href="./inteligentny_zakup_biletu.html">Inteligentny zakup biletu</a>
+            <a href="./szybki_zakup_biletu.html">Szybki zakup biletu</a>
+            <a href="./mapy_schematy.html">Mapy i schematy Krakowa</a>
+            <a href="./rozklad_jazdy.html">Rozkład jazdy</a>
+        `;
+    }
+
+    const loggingDiv = document.querySelector('.logging');
+
+    if (loggingDiv) {
+        loggingDiv.innerHTML = `
+            <button data-target="../HTML/rejestracja.html">Zarejestruj się</button>
+            <button data-target="../HTML/logowanie.html">Zaloguj się</button>
+        `;
+    }
+
+    const footerSocial = document.querySelector(".social");
+
+    if (footerSocial) {
+        footerSocial.innerHTML = `
+            <a href="./polityka_prywatnosci.html">Polityka prywatności</a>
+            <a href="./skontaktuj_sie_z_nami.html">Skontaktuj się z nami</a>
+            <a href="https://x.com/?lang=pl&mx=2" class="icons" target="_blank"><img src="../IMAGES/twitter.png" alt="X" class="flag_uk" /></a>
+            <a href="https://www.instagram.com/" class="icons" target="_blank"><img src="../IMAGES/instagram.png" alt="Instagram" class="flag_uk" /></a>
+            <a href="https://www.facebook.com/" class="icons" target="_blank" target="_blank"><img src="../IMAGES/facebook.png" alt="Facebook" class="flag_uk" /></a>
+        `;
+    }
+
+    const navigationButtons = document.querySelectorAll('[data-target]');
+
+    if (navigationButtons) {
+        navigationButtons.forEach(button => {
+            button.addEventListener('click', handleNavigation);
+        });
+    }
+}
+
+function renderEnglish() {
+    const navigationLinks = document.querySelector(".nav_links");
+
+    if (navigationLinks) {
+        navigationLinks.innerHTML = `
+            <a href="./inteligentny_zakup_biletu.html">Smart ticket purchase</a>
+            <a href="./szybki_zakup_biletu.html">Quick ticket purchase</a>
+            <a href="./mapy_schematy.html">Maps and diagrams of Krakow</a>
+            <a href="./rozklad_jazdy.html">Schedule</a>
+        `;
+    }
+
+    const loggingDiv = document.querySelector('.logging');
+
+    if (loggingDiv) {
+        loggingDiv.innerHTML = `
+            <button class="registration" data-target="../HTML/rejestracja.html" >Sign up</button>
+            <button class="login" data-target="../HTML/logowanie.html">Log in</button>
+        `;
+    }
+
+    const footerSocial = document.querySelector(".social");
+
+    if (footerSocial) {
+        footerSocial.innerHTML = `
+            <a href="./polityka_prywatnosci.html">Privacy Policy</a>
+            <a href="./skontaktuj_sie_z_nami.html">Contact us</a>
+            <a href="https://x.com/?lang=pl&mx=2" class="icons" target="_blank"><img src="../IMAGES/twitter.png" alt="X" class="flag_uk" /></a>
+            <a href="https://www.instagram.com/" class="icons" target="_blank"><img src="../IMAGES/instagram.png" alt="Instagram" class="flag_uk" /></a>
+            <a href="https://www.facebook.com/" class="icons" target="_blank" target="_blank"><img src="../IMAGES/facebook.png" alt="Facebook" class="flag_uk" /></a>
+        `;
+    }
+
+    const navigationButtons = document.querySelectorAll('[data-target]');
+
+    if (navigationButtons) {
+        navigationButtons.forEach(button => {
+            button.addEventListener('click', handleNavigation);
+        });
     }
 }
