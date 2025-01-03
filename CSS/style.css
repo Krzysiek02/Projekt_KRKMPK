@@ -55,9 +55,11 @@ nav {
   background: #740938;
   color: white;
   cursor: pointer;
-  margin-right: 10px;
+  
 }
-
+.toggle_menu_button{
+  margin-right:10px;
+}
 .nav_div_right .logging button:hover {
   background: #d80665!important;
 }
@@ -227,8 +229,9 @@ nav {
 /* Style for the dropdown button */
 .user_menu {
   position: relative;
-  display: inline-block;
+  display: flex;
   margin-left: 14px;
+  
 }
 .user_menu span{
   color:white;
@@ -250,7 +253,7 @@ nav {
   z-index: 1;
   width: 200px;
   border-radius: 10px;
-  margin-top: 18px;
+  margin-top: 48px;
 }
 
 
@@ -323,5 +326,30 @@ nav {
   }
   .social{
     align-self: center;
+  }
+  
+}
+@media(max-width: 510px){
+  .logo, .logo_MPK {
+    font-size: 18px;
+  }
+  .nav_div_right .bucket img, .nav_div_right .language_change img{
+    height: 17px;
+    width: 20px;
+    margin:0;
+  }
+  .nav_div_right .logging button{
+    font-size:10px;
+    padding:10px;
+  }
+  .hamburger_menu {
+    font-size: 20px;
+    margin-right: 4px;
+  }
+  .user_menu span{
+    padding:8px;
+  }
+  .nav_div_right .logging .menu_options {
+    margin-top: 35px;
   }
 }
