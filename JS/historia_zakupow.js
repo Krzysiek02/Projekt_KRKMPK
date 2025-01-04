@@ -249,7 +249,7 @@ function renderAuthorized(user) {
     });    
 };
 
-const displayedTicketCounts = {}; // Nowy obiekt do przechowywania liczby wyświetlanej dla biletów
+const displayedTicketCounts = {};
 
 function renderTickets(historyTickets) {
     const ticketsContainer = document.getElementById('tickets-container');
@@ -258,7 +258,7 @@ function renderTickets(historyTickets) {
 
     if (historyTickets.length > 0) {
         historyTickets.forEach((ticket, index) => {
-            const uniqueKey = `${ticket.id}-${index}`; // Tworzenie unikalnego klucza dla każdego biletu
+            const uniqueKey = `${ticket.id}-${index}`;
             const currentCount = selectedTickets[ticket.id] || 0;
             if (!displayedTicketCounts[uniqueKey]) {
                 displayedTicketCounts[uniqueKey] = currentCount;
