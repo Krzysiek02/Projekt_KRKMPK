@@ -74,10 +74,10 @@ function renderAuthorized(user) {
     });
 
     resetTicketsButton.addEventListener("click", () => {
-        Object.keys(selectedTickets).forEach(ticketId => {
-            selectedTickets[ticketId] = 0;
-            document.getElementById(`ticket-count-${ticketId}`).innerText = selectedTickets[ticketId];
-        });
+        // Object.keys(selectedTickets).forEach(ticketId => {
+        //     selectedTickets[ticketId] = 0;
+        //     document.getElementById(`ticket-count-${ticketId}`).innerText = selectedTickets[ticketId];
+        // });
 
         if (isPolish) {
             alert("Zaznaczone bilety zostały usunięte.");
@@ -249,147 +249,99 @@ function renderAuthorized(user) {
     });    
 };
 
+const displayedTicketCounts = {}; // Nowy obiekt do przechowywania liczby wyświetlanej dla biletów
+
 function renderTickets(historyTickets) {
     const ticketsContainer = document.getElementById('tickets-container');
     const isPolish = get_language();
     ticketsContainer.innerHTML = '';
 
     if (historyTickets.length > 0) {
-        historyTickets.forEach(ticket => {
-            if (isPolish) {
-                const first_letter = ticket.client_type[0].toUpperCase();
-                const rest_of_text = ticket.client_type.slice(1);
-                const name = first_letter + rest_of_text;
-                const ticketElement = document.createElement('div');
-                const currentCount = selectedTickets[ticket.id] || 0;
-                let ticketTimeLabel;
-                if (ticket.travel_time == 1440) {
-                    ticketTimeLabel = '24 h';
-                } else if (ticket.travel_time == 2440) {
-                    ticketTimeLabel = '48 h';
-                } else if (ticket.travel_time == 2880) {
-                    ticketTimeLabel = '72 h';
-                } else if (ticket.travel_time == 10080) {
-                    ticketTimeLabel = '7 dni';
-                } else {
-                    ticketTimeLabel = `${ticket.travel_time} minut`;
-                }
-                ticketElement.classList.add('ticket');
-                ticketElement.innerHTML = `
-                    <div class="ticket-header">
-                        <p class="ticket-date">${ticket.purchase_date}</p>
+        historyTickets.forEach((ticket, index) => {
+            const uniqueKey = `${ticket.id}-${index}`; // Tworzenie unikalnego klucza dla każdego biletu
+            const currentCount = selectedTickets[ticket.id] || 0;
+            if (!displayedTicketCounts[uniqueKey]) {
+                displayedTicketCounts[uniqueKey] = currentCount;
+            }
+
+            const firstLetter = (isPolish ? ticket.client_type : ticket.client_type_ang)[0].toUpperCase();
+            const restOfText = (isPolish ? ticket.client_type : ticket.client_type_ang).slice(1);
+            const name = firstLetter + restOfText;
+            const ticketTimeLabel = formatTicketTime(ticket.travel_time, isPolish);
+            
+            const ticketElement = document.createElement('div');
+            ticketElement.classList.add('ticket');
+            ticketElement.innerHTML = `
+                <div class="ticket-header">
+                    <p class="ticket-date">${ticket.purchase_date}</p>
+                </div>
+                
+                <div class="ticket-info">
+                    <div class="ticket-description">
+                        <p><strong>${isPolish ? 'Bilet' : 'Ticket'} ${name}</strong></p>
+                        ${ticket.family ? `<p>${isPolish ? 'Bilet Rodzinny' : 'Family Ticket'}</p>` : ''}
+                        <p>${isPolish ? 'Czas' : 'Time'}: ${ticketTimeLabel}</p>
+                        <p>${isPolish ? 'Strefa' : 'Zone'}: ${ticket.zone === 'first' ? 
+                            (isPolish ? '1 Strefa' : '1 Zone') : 
+                            (isPolish ? '1 + 2 + 3 Strefa' : '1 + 2 + 3 Zone')}
+                        </p>
                     </div>
                     
-                    <div class="ticket-info">
-                        <div class="ticket-description">
-                            <p><strong>Bilet ${name}</strong></p>
-                            ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
-                            <p>Czas: ${ticketTimeLabel}</p>
-                            <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
-                        </div>
-                        
-                        <div class="ticket-quantity">
-                            <p>${ticket.quantity} szt.</p>
-                        </div>
-                        <div class="ticket-price">
-                            <p>Cena za 1szt.<br>${ticket.price} zł</p>
-                        </div>
-                        <div class="ticket-sum-price">
-                            ${ticket.sum_price != ticket.price ? `<p>Łącznie<br>${ticket.sum_price} zł</p>` : ''}
-                        </div>
+                    <div class="ticket-quantity">
+                        <p>${ticket.quantity} ${isPolish ? 'szt.' : 'pcs.'}</p>
                     </div>
-                    <div class="ticket-actions">
-                        <button onclick="updateTicketCount(${ticket.id}, -1)">-</button>
-                        <span id="ticket-count-${ticket.id}">${currentCount}</span>
-                        <button onclick="updateTicketCount(${ticket.id}, 1)">+</button>
+                    <div class="ticket-price">
+                        <p>${isPolish ? 'Cena za 1szt.' : 'Price for one ticket'}<br>${ticket.price} zł</p>
                     </div>
-                `;   
-                ticketsContainer.appendChild(ticketElement);
-                selectedTickets[ticket.id] = currentCount;
-            } else {
-                const first_letter = ticket.client_type_ang[0].toUpperCase();
-                const rest_of_text = ticket.client_type_ang.slice(1);
-                const name = first_letter + rest_of_text;
-                const ticketElement = document.createElement('div');
-                const currentCount = selectedTickets[ticket.id] || 0;
-                let ticketTimeLabel;
-                if (ticket.travel_time == 1440) {
-                    ticketTimeLabel = '24 h';
-                } else if (ticket.travel_time == 2440) {
-                    ticketTimeLabel = '48 h';
-                } else if (ticket.travel_time == 2880) {
-                    ticketTimeLabel = '72 h';
-                } else if (ticket.travel_time == 10080) {
-                    ticketTimeLabel = '7 days';
-                } else {
-                    ticketTimeLabel = `${ticket.travel_time} minutes`;
-                }
-                ticketElement.classList.add('ticket');
-                ticketElement.innerHTML = `
-                    <div class="ticket-header">
-                        <p class="ticket-date">${ticket.purchase_date}</p>
+                    <div class="ticket-sum-price">
+                        ${ticket.sum_price !== ticket.price ? 
+                            `<p>${isPolish ? 'Łącznie' : 'Sum'}<br>${ticket.sum_price} zł</p>` : ''}
                     </div>
-                    <div class="ticket-info">
-                        <div class="ticket-description">
-                            <p><strong>Ticket ${name}</strong></p>
-                            ${ticket.family ? '<p>Familly Ticket</p>' : ''}
-                            <p>Time: ${ticketTimeLabel}</p>
-                            <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
-                        </div>
-                        
-                        <div class="ticket-quantity">
-                            <p>${ticket.quantity} pcs.</p>
-                        </div>
-                        <div class="ticket-price">
-                            <p>Price for one ticket: <br>${ticket.price} zł</p>
-                        </div>
-                        <div class="ticket-sum-price">
-                            ${ticket.sum_price != ticket.price ? `<p>Sum<br>${ticket.sum_price} zł</p>` : ''}
-                        </div>
-                    </div>
-                    <div class="ticket-actions">
-                        <button onclick="updateTicketCount(${ticket.id}, -1)">-</button>
-                        <span id="ticket-count-${ticket.id}">${currentCount}</span>
-                        <button onclick="updateTicketCount(${ticket.id}, 1)">+</button>
-                    </div>
-                `;   
-                ticketsContainer.appendChild(ticketElement);
-                selectedTickets[ticket.id] = currentCount;
-            }
+                </div>
+                <div class="ticket-actions">
+                    <button onclick="updateTicketCount('${uniqueKey}', ${ticket.id}, -1)">-</button>
+                    <span id="ticket-display-count-${uniqueKey}">${displayedTicketCounts[uniqueKey]}</span>
+                    <button onclick="updateTicketCount('${uniqueKey}', ${ticket.id}, 1)">+</button>
+                </div>
+            `;
+            ticketsContainer.appendChild(ticketElement);
         });
     } else {
-        const element = document.createElement('div');
-        if (isPolish) {
-            element.innerHTML = `
+        const noTicketsElement = document.createElement('div');
+        noTicketsElement.innerHTML = `
             <div class="ticket-info">
-                <p><strong>Brak Ulubionych Biletów</strong></p>
+                <p><strong>${isPolish ? 'Brak Ulubionych Biletów' : 'No favorite tickets'}</strong></p>
             </div>
-            `;
-        } else {
-            element.innerHTML = `
-            <div class="ticket-info">
-                <p><strong>No favorite tickets</strong></p>
-            </div>
-            `;
-        }
-        ticketsContainer.appendChild(element);
+        `;
+        ticketsContainer.appendChild(noTicketsElement);
     }
 }
 
-function updateTicketCount(ticketId, change) {
+function updateTicketCount(uniqueKey, ticketId, change) {
     const resetTicketsButton = document.getElementById("reset-tickets");
     const addToCartButton = document.getElementById('add-to-cart');
 
     if (!selectedTickets[ticketId]) selectedTickets[ticketId] = 0;
     selectedTickets[ticketId] = Math.max(0, selectedTickets[ticketId] + change);
+    displayedTicketCounts[uniqueKey] = Math.max(0, (displayedTicketCounts[uniqueKey] || 0) + change);
 
-    document.getElementById(`ticket-count-${ticketId}`).innerText = selectedTickets[ticketId];
+    document.getElementById(`ticket-display-count-${uniqueKey}`).innerText = displayedTicketCounts[uniqueKey];
 
     const totalSelected = Object.values(selectedTickets).reduce((sum, count) => sum + count, 0);
-
     resetTicketsButton.disabled = totalSelected === 0;
     addToCartButton.disabled = totalSelected === 0;
+
     updateProceedToPaymentButton();
+}
+
+function formatTicketTime(travelTime, isPolish) {
+    switch (travelTime) {
+        case 1440: return '24 h';
+        case 2440: return '48 h';
+        case 2880: return '72 h';
+        case 10080: return isPolish ? '7 dni' : '7 days';
+        default: return `${travelTime} ${isPolish ? 'minut' : 'minutes'}`;
+    }
 }
 
 function updateProceedToPaymentButton() {
