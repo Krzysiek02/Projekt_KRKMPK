@@ -63,7 +63,7 @@ function renderUnauthorizedWithTickets() {
                 <h2>Select payment method</h2>
                 <div class="div_content_container">
                     <div class="payment-button">
-                        <button data-target="../HTML/blik.html"">Payment by BLIK</button>
+                        <button data-target="../HTML/blik.html"">Payment with BLIK</button>
                     </div>
                     <div class="payment-button">
                         <button data-target="../HTML/karta.html">Payment by card</button>

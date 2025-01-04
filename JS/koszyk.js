@@ -116,7 +116,7 @@ function renderTickets() {
                         ${ticket.family ? '<p>Family Ticket</p>' : ''}
                         <p>Time: ${ticketTimeLabel}</p>
                         <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
-                        <p>Price: ${ticket.price} zł</p>
+                        <p>Price: ${ticket.price} PLN</p>
                     </div>
                     <div class="ticket-actions">
                         <button onclick="updateTicketCount(${ticket.id}, -1)">-</button>
@@ -194,7 +194,7 @@ function updateSummary(currentBasket) {
         `;
     } else {
         summarySection.innerHTML = `
-            <p>Ticket Value: ${totalPrice} zł</p>
+            <p>Ticket Value: ${totalPrice} PLN</p>
             <p>Number of tickets: ${totalCount}</p>
         `;
     }
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minutes`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} piece. - ${ticket.sum_price} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} PLN - ${ticket.quantity} pcs. - ${ticket.sum_price} PLN`;
             }).join("\n");
         }
         const totalPrice = selectedTicketsForBuy.reduce((sum, t) => sum + t.sum_price, 0);
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isPolish) {
             alert(`Przechodzimy do płatności z wybranymi biletami:\n${basketSummary}\nŁączna cena: ${totalPrice} zł\nIlość wybranych biletów: ${totalNumber}`);
         } else {
-            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} zł\nNumber of selected tickets: ${totalNumber}`);
+            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} PLN\nNumber of selected tickets: ${totalNumber}`);
         }
         window.location.href = './platnosci.html';
     });

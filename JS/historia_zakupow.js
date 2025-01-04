@@ -160,7 +160,7 @@ function renderAuthorized(user) {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minutes`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${count} piece - ${ticket.price * count} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} PLN - ${count} pcs. - ${ticket.price * count} PLN`;
             }).join("\n");
         }
         saveCurrentBasket(updatedBasket);
@@ -234,7 +234,7 @@ function renderAuthorized(user) {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minutes`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} piece - ${ticket.price * ticket.quantity} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} PLN - ${ticket.quantity} pcs. - ${ticket.price * ticket.quantity} PLN`;
             }).join("\n");
         }
         const totalPrice = updatedBasket.reduce((sum, t) => sum + t.sum_price, 0);
@@ -243,7 +243,7 @@ function renderAuthorized(user) {
         if (isPolish) {
             alert(`Przechodzimy do płatności z wybranymi biletami:\n${basketSummary}\nŁączna cena: ${totalPrice} zł\nIlość wybranych biletów: ${totalNumber}`);
         } else {
-            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} zł\nNumber of selected tickets: ${totalNumber}`);
+            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} PLN\nNumber of selected tickets: ${totalNumber}`);
         }
         window.location.href = './platnosci.html';
     });    
@@ -282,8 +282,8 @@ function renderTickets(historyTickets) {
                         ${ticket.family ? `<p>${isPolish ? 'Bilet Rodzinny' : 'Family Ticket'}</p>` : ''}
                         <p>${isPolish ? 'Czas' : 'Time'}: ${ticketTimeLabel}</p>
                         <p>${isPolish ? 'Strefa' : 'Zone'}: ${ticket.zone === 'first' ? 
-                            (isPolish ? '1 Strefa' : '1 Zone') : 
-                            (isPolish ? '1 + 2 + 3 Strefa' : '1 + 2 + 3 Zone')}
+                            (isPolish ? '1' : '1') : 
+                            (isPolish ? '1 + 2 + 3' : '1 + 2 + 3')}
                         </p>
                     </div>
                     
@@ -295,7 +295,7 @@ function renderTickets(historyTickets) {
                     </div>
                     <div class="ticket-sum-price">
                         ${ticket.sum_price !== ticket.price ? 
-                            `<p>${isPolish ? 'Łącznie' : 'Sum'}<br>${ticket.sum_price} zł</p>` : ''}
+                            `<p>${isPolish ? 'Łącznie' : 'Sum'}<br>${ticket.sum_price} ${isPolish ? 'zł' : 'PLN'}</p>` : ''}
                     </div>
                 </div>
                 <div class="ticket-actions">
@@ -310,7 +310,7 @@ function renderTickets(historyTickets) {
         const noTicketsElement = document.createElement('div');
         noTicketsElement.innerHTML = `
             <div class="ticket-info">
-                <p><strong>${isPolish ? 'Brak Ulubionych Biletów' : 'No favorite tickets'}</strong></p>
+                <p><strong>${isPolish ? 'Brak biletów w historii zakupów.' : 'No tickets in purchase history.'}</strong></p>
             </div>
         `;
         ticketsContainer.appendChild(noTicketsElement);
@@ -338,7 +338,7 @@ function formatTicketTime(travelTime, isPolish) {
     switch (travelTime) {
         case 1440: return '24 h';
         case 2440: return '48 h';
-        case 2880: return '72 h';
+        case 4320: return '72 h';
         case 10080: return isPolish ? '7 dni' : '7 days';
         default: return `${travelTime} ${isPolish ? 'minut' : 'minutes'}`;
     }

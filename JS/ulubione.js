@@ -175,7 +175,7 @@ function renderAuthorized(user) {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minutes`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${count} piece - ${ticket.price * count} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} PLN - ${count} pcs. - ${ticket.price * count} PLN`;
             }).join("\n");
         }
         saveCurrentBasket(updatedBasket);
@@ -249,7 +249,7 @@ function renderAuthorized(user) {
                 } else {
                     ticketTimeLabel = `${ticket.travel_time} minutes`;
                 }
-                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} piece - ${ticket.price * ticket.quantity} zł`;
+                return `${type} - ${name} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} pcs. - ${ticket.price * ticket.quantity} PLN`;
             }).join("\n");
         }
         const totalPrice = updatedBasket.reduce((sum, t) => sum + t.sum_price, 0);
@@ -258,7 +258,7 @@ function renderAuthorized(user) {
         if (isPolish) {
             alert(`Przechodzimy do płatności z wybranymi biletami:\n${basketSummary}\nŁączna cena: ${totalPrice} zł\nIlość wybranych biletów: ${totalNumber}`);
         } else {
-            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} zł\nNumber of selected tickets: ${totalNumber}`);
+            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} PLN\nNumber of selected tickets: ${totalNumber}`);
         }
         window.location.href = './platnosci.html';
     });    
@@ -282,7 +282,7 @@ function renderTickets(favouriteTickets) {
                     ticketTimeLabel = '24 h';
                 } else if (ticket.travel_time == 2440) {
                     ticketTimeLabel = '48 h';
-                } else if (ticket.travel_time == 2880) {
+                } else if (ticket.travel_time == 4320) {
                     ticketTimeLabel = '72 h';
                 } else if (ticket.travel_time == 10080) {
                     ticketTimeLabel = '7 dni';
@@ -295,7 +295,7 @@ function renderTickets(favouriteTickets) {
                         <p><strong>Bilet ${name}</strong></p>
                         ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
                         <p>Czas: ${ticketTimeLabel}</p>
-                        <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
+                        <p>Strefa: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
                         <p>Cena: ${ticket.price} zł</p>
                     </div>
                     <div class="ticket-actions">
@@ -317,7 +317,7 @@ function renderTickets(favouriteTickets) {
                     ticketTimeLabel = '24 h';
                 } else if (ticket.travel_time == 2440) {
                     ticketTimeLabel = '48 h';
-                } else if (ticket.travel_time == 2880) {
+                } else if (ticket.travel_time == 4320) {
                     ticketTimeLabel = '72 h';
                 } else if (ticket.travel_time == 10080) {
                     ticketTimeLabel = '7 days';
@@ -330,8 +330,8 @@ function renderTickets(favouriteTickets) {
                         <p><strong>Ticket ${name}</strong></p>
                         ${ticket.family ? '<p>Family Ticket</p>' : ''}
                         <p>Time: ${ticketTimeLabel}</p>
-                        <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
-                        <p>Price: ${ticket.price} zł</p>
+                        <p>Zone: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
+                        <p>Price: ${ticket.price} PLN</p>
                     </div>
                     <div class="ticket-actions">
                         <button onclick="updateTicketCount(${ticket.id}, -1)">-</button>

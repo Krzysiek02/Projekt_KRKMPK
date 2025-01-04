@@ -23,12 +23,12 @@ function renderContentPolish() {
           <div id="buttons">
             <button type="button" class="icon" id="add-intermediate-station">+</button>
             <p>Dodaj<br>przystanek<br>pośredni</p>
-            <button type="button" id="set-date">Data</button>
-            <button type="button" id="set-time">Godzina</button>
+            <button type="button" id="set-date">Wybierz Datę</button>
+            <button type="button" id="set-time">Wybierz Godzinę</button>
           </div>
           <div class="selected-values">
-            <p id="selected-date">Data: Brak Wybranej Daty</p>
-            <p id="selected-time">Godzina: Brak Wybranej Godziny</p>
+            <p id="selected-date">Wybrana Data: Brak Wybranej Daty</p>
+            <p id="selected-time">Wybrana Godzina: Brak Wybranej Godziny</p>
           </div>
       
           <button type="submit" id="search_ticket_button">Wyszukaj Bilet</button>
@@ -67,12 +67,12 @@ function renderContentEnglish() {
           <div id="buttons">
             <button type="button" class="icon" id="add-intermediate-station">+</button>
             <p>Add<br>intermediate<br>stop</p>
-            <button type="button" id="set-date">Date</button>
-            <button type="button" id="set-time">Hour</button>
+            <button type="button" id="set-date">Select Date</button>
+            <button type="button" id="set-time">Select Hour</button>
           </div>
           <div class="selected-values">
-            <p id="selected-date">Date: No Selected Date</p>
-            <p id="selected-time">Hour: No Selected Hour</p>
+            <p id="selected-date">Selected Date: No Selected Date</p>
+            <p id="selected-time">Selected Hour: No Selected Hour</p>
           </div>
       
           <button type="submit" id="search_ticket_button">Search Ticket</button>
@@ -162,43 +162,34 @@ function setupAutoComplete(input, suggestionsBox) {
     startInput.value = endInput.value;
     endInput.value = temp;
   }
-
-  function validateForm() {
-    const startStation = document.getElementById('start-station').value.trim();
-    const endStation = document.getElementById('end-station').value.trim();
-    const date = document.getElementById('date-picker').value.trim();
-    const time = document.getElementById('time-picker').value.trim();
-    const isPolish = get_language();
-  
-    if (!startStation || !endStation || !date || !time) {
-      if (isPolish) {
-        alert('Wszystkie pola: przystanek początkowy, przystanek końcowy, data oraz godzina muszą być wypełnione!');
-        return false;
-      } else {
-        alert('All fields: start stop, end stop, date and time must be filled in!');
-        return false;
-      } 
-    }
-  
-    const normalTickets = parseInt(document.querySelector('input[data-type="normal"]').value) || 0;
-    const discountTickets = parseInt(document.querySelector('input[data-type="discount"]').value) || 0;
-  
-    if (normalTickets === 0 && discountTickets === 0) {
-      if (isPolish) {
-        alert('Musisz wybrać przynajmniej jeden bilet!');
-        return false;
-      } else {
-        alert('You must pick at least one ticket!');
-        return false;
-      }
-    }
-  
-    return true;
-  }
   
   document.addEventListener('DOMContentLoaded', () => {
 
     updateContent();
+
+    let finalTime;
+    let finalDate;
+
+    const setDefaultDateTime = () => {
+        const now = new Date();
+        const formattedDate = now.toISOString().split('T')[0];
+        const formattedTime = now.toTimeString().slice(0, 8);
+
+        const isPolish = get_language();
+
+        finalDate = formattedDate;
+        finalTime = formattedTime;
+
+        if (isPolish) {
+            document.getElementById('selected-date').textContent = `Wybrana Data: ${formattedDate}`;
+            document.getElementById('selected-time').textContent = `Wybrana Godzina: ${formattedTime}`;
+        } else {
+            document.getElementById('selected-date').textContent = `Selected Date: ${formattedDate}`;
+            document.getElementById('selected-time').textContent = `Selected Hour: ${formattedTime}`;
+        }
+    };
+
+    setDefaultDateTime();
 
     setupAutoComplete(document.getElementById('start-station'), document.getElementById('start-suggestions'));
     setupAutoComplete(document.getElementById('end-station'), document.getElementById('end-suggestions'));
@@ -214,13 +205,18 @@ function setupAutoComplete(input, suggestionsBox) {
         document.getElementById('date-modal'),
         document.getElementById('close-date-modal'),
         () => {
-        const date = document.getElementById('date-picker').value;
-        const isPolish = get_language();
-        if (isPolish) {
-            document.getElementById('selected-date').textContent = `Data: ${date || 'Brak Wybranej Daty'}`;
-        } else {
-            document.getElementById('selected-date').textContent = `Date: ${date || 'No Selected Date'}`;
-        }
+            const date = document.getElementById('date-picker').value;
+            const isPolish = get_language();
+            if (isPolish) {
+                if (date) {
+                    finalDate = date;
+                    document.getElementById('selected-date').textContent = `Data: ${date}`;
+                }
+            } else {
+                if (date) {
+                    document.getElementById('selected-date').textContent = `Date: ${date}`;
+                }
+            }
         }
     );
     
@@ -229,13 +225,18 @@ function setupAutoComplete(input, suggestionsBox) {
         document.getElementById('time-modal'),
         document.getElementById('close-time-modal'),
         () => {
-        const time = document.getElementById('time-picker').value;
-        const isPolish = get_language();
-        if (isPolish) {
-            document.getElementById('selected-time').textContent = `Godzina: ${time || 'Brak Wybranej Godziny'}`;
-        } else {
-            document.getElementById('selected-time').textContent = `Hour: ${time || 'No Selected Hour'}`;
-        }
+            const time = document.getElementById('time-picker').value;
+            const isPolish = get_language();
+            if (isPolish) {
+                if (time) {
+                    document.getElementById('selected-time').textContent = `Godzina: ${time || 'Brak Wybranej Godziny'}`;
+                }
+            } else {
+                if (time) {
+                    finalTime = time;
+                    document.getElementById('selected-time').textContent = `Hour: ${time || 'No Selected Hour'}`;
+                }
+            }
         }
     );
 
@@ -251,8 +252,8 @@ function setupAutoComplete(input, suggestionsBox) {
         event.preventDefault();
         const startPoint = document.querySelector('#start-station').value || '';
         const endPoint = document.querySelector('#end-station').value || '';
-        const travelDate = document.querySelector('#date-picker').value || '';
-        const travelTime = document.querySelector('#time-picker').value || '';
+        const travelDate = finalDate;
+        const travelTime = finalTime;
         
         const intermediateStops = Array.from(document.querySelectorAll('.intermediate-station input'))
             .map(input => input.value)
@@ -496,6 +497,7 @@ function setupAutoComplete(input, suggestionsBox) {
                             <h2>Lista połączeń</h2>
                             <p>Data podróży: ${selectedDate}</p>
                             <p id="no-connections">Brak dostępnych połączeń dla wybranych przystanków.</p>
+                            <button id="reset-webpage">Wyszukaj Ponownie</button>
                         </div>
                         `;
                     } else {
@@ -504,8 +506,17 @@ function setupAutoComplete(input, suggestionsBox) {
                             <h2>List of public transport connections</h2>
                             <p>Travel date: ${selectedDate}</p>
                             <p id="no-connections">No connections available for the selected stops.</p>
+                            <button id="reset-webpage">Search Again</button>
                         </div>
                         `;
+                    }
+
+                    const resetButton = document.getElementById('reset-webpage');
+
+                    if (resetButton) {
+                        resetButton.addEventListener('click', () => {
+                            location.reload();
+                        });
                     }
                 }
 
@@ -570,7 +581,7 @@ function setupAutoComplete(input, suggestionsBox) {
                     `;
                 } else {
                     const ticketDetails = connection.bestTicket.tickets.map(ticket => 
-                        `${ticket.count} x ${ticket.ticket.client_type_ang} (${ticket.ticket.quantity_type_ang}) - ${ticket.ticket.price * ticket.count} zł`
+                        `${ticket.count} x ${ticket.ticket.client_type_ang} (${ticket.ticket.quantity_type_ang}) - ${ticket.ticket.price * ticket.count} PLN`
                     ).join('<br>');
                     result = `
                     <div class="connection">
@@ -579,7 +590,7 @@ function setupAutoComplete(input, suggestionsBox) {
                         <p>Line: ${connection.lineNumber} <img src="${vehicleImage}" alt="${connection.vehicleType}" class="vehicle-image" /></p>
                         <p>Route: ${connection.route}</p>
                         <p>The best ticket/s:<br>${ticketDetails}</p>
-                        <p>Total cost: ${connection.bestTicket.totalCost} zł</p>
+                        <p>Total cost: ${connection.bestTicket.totalCost} PLN</p>
                     </div>
                     `;
                 }
@@ -732,9 +743,9 @@ function showSummary(connection) {
                 <span>${ticketType} - ${clientType}</span>
                 <span>${ticketTimeLabel}</span>
                 <span>${ticketZone}</span>
-                <span>${ticket.price} zł</span>
+                <span>${ticket.price} PLN</span>
                 <span>${count}</span>
-                <span>${ticket.price * count} zł</span>
+                <span>${ticket.price * count} PLN</span>
             </div>
         `;
     }).join('');
@@ -782,7 +793,7 @@ function showSummary(connection) {
                         <div class="summary_opis_title">Sum</div>
                     </div>
                     ${ticketSummary}
-                    <div class="total-price">Total price: ${totalPrice} zł</div>
+                    <div class="total-price">Total price: ${totalPrice} PLN</div>
                     <button id="reselect-button">Smart Ticket Reselection</button>
                     <button id="add-to-cart-button">Add to Cart</button>
                     <button id="proceed-to-payment-button">Go to Payments</button>
@@ -846,7 +857,7 @@ function showSummary(connection) {
                     ? '7 days'
                     : `${ticket.ticket.travel_time} minutes`;
 
-                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} zł - ${ticket.count} piece. - ${ticket.count * ticket.ticket.price} zł`;
+                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.ticket.price} PLN - ${ticket.count} pcs. - ${ticket.count * ticket.ticket.price} PLN`;
             }
         }).join('\n');
         saveCurrentBasket(updatedBasket);
@@ -909,7 +920,7 @@ function showSummary(connection) {
                     ? '7 days'
                     : `${ticket.travel_time} minutes`;
 
-                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.price} zł - ${ticket.quantity} piece. - ${ticket.quantity * ticket.price} zł`;
+                return `${ticketType} - ${clientType} - ${ticketTimeLabel} - ${ticket.price} PLN - ${ticket.quantity} pcs. - ${ticket.quantity * ticket.price} PLN`;
             }
         }).join('\n');
         const totalPrice = updatedBasket.reduce((sum, t) => sum + t.sum_price, 0);
@@ -918,7 +929,7 @@ function showSummary(connection) {
         if (isPolish) {
             alert(`Przechodzimy do płatności z wybranymi biletami:\n${basketSummary}\nŁączna cena: ${totalPrice} zł\nIlość wybranych biletów: ${totalNumber}`);
         } else {
-            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} zł\nNumber of selected tickets: ${totalNumber}`);
+            alert(`We proceed to payment with selected tickets:\n${basketSummary}\nTotal price: ${totalPrice} PLN\nNumber of selected tickets: ${totalNumber}`);
         }
         window.location.href = './platnosci.html';
     });

@@ -123,6 +123,12 @@ function renderStops(filter = "", vehicleType = "tram") {
   const noResultsMessage = document.createElement("p");
   const isPolish = get_language();
 
+  if (isPolish) {
+    noResultsMessage.innerText = "Brak lini o wskazanych kryteriach!";
+  } else {
+    noResultsMessage.innerText = "There are no lines with the specified criteria!";
+  }
+
   stopsContainer.innerHTML = "";
   const filteredLines = publicTransportLines.filter(
     (line) =>
@@ -148,6 +154,7 @@ function renderStops(filter = "", vehicleType = "tram") {
     button.addEventListener("click", () => showModal(line));
     stopsContainer.appendChild(button);
   });
+  stopsContainer.appendChild(noResultsMessage);
 }
 
 function showModal(line) {
@@ -191,7 +198,7 @@ function showModal(line) {
         const stationsList = modal.querySelector("#stations-list");
         stationsList.innerHTML = '';
         direction.lines.forEach((station) => {
-            const stationElement = document.createElement("p");
+            const stationElement = document.createElement("button");
             stationElement.textContent = station.name_of_station;
             stationElement.addEventListener("click", () => displayTimetableForStation(station, direction.lines));
             stationsList.appendChild(stationElement);

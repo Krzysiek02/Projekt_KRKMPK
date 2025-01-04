@@ -75,7 +75,7 @@ function renderTickets(my_file_tickets, isActive, user) {
                 ticketTimeLabel = '24 h';
             } else if (ticket.travel_time == 2440) {
                 ticketTimeLabel = '48 h';
-            } else if (ticket.travel_time == 2880) {
+            } else if (ticket.travel_time == 4320) {
                 ticketTimeLabel = '72 h';
             } else if (ticket.travel_time == 10080) {
                 if (isPolish) {
@@ -99,7 +99,7 @@ function renderTickets(my_file_tickets, isActive, user) {
                         <p><strong>Bilet ${name}</strong></p>
                         ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
                         <p>Czas: ${ticketTimeLabel}</p>
-                        <p>Strefa: ${ticket.zone === 'first' ? '1 Strefa' : '1 + 2 + 3 Strefa'}</p>
+                        <p>Strefa: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
                         <p>Cena: ${ticket.price} zł</p>
                         <p>Ilość: ${currentCount}</p>
                         ${isActive ? `<div class="timer" id="timer-${index}"></div>` : ''}
@@ -116,8 +116,8 @@ function renderTickets(my_file_tickets, isActive, user) {
                         <p><strong>Ticket ${name}</strong></p>
                         ${ticket.family ? '<p>Family Ticket</p>' : ''}
                         <p>Time: ${ticketTimeLabel}</p>
-                        <p>Zone: ${ticket.zone === 'first' ? '1 Zone' : '1 + 2 + 3 Zone'}</p>
-                        <p>Price: ${ticket.price} zł</p>
+                        <p>Zone: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
+                        <p>Price: ${ticket.price} PLN</p>
                         <p>Amount: ${currentCount}</p>
                         ${isActive ? `<div class="timer" id="timer-${index}"></div>` : ''}
                     </div>
@@ -152,13 +152,13 @@ function renderTickets(my_file_tickets, isActive, user) {
         if (isPolish) {
             element.innerHTML = `  
                 <div class="ticket-info">
-                    <p><strong>Brak Biletów</strong></p>
+                    <p><strong>Brak Biletów.</strong></p>
                 </div>
             `;
         } else {
             element.innerHTML = `  
                 <div class="ticket-info">
-                    <p><strong>No Tickets</strong></p>
+                    <p><strong>No Tickets.</strong></p>
                 </div>
             `;
         }

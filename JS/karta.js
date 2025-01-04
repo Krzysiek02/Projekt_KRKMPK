@@ -41,7 +41,7 @@ function renderAuthorized(user) {
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" value="${user.csv}" readonly />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} zł</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} PLN</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
                 </form>
             `;
@@ -81,7 +81,7 @@ function renderUnauthorizedWithTickets() {
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" placeholder="Wpisz kod CSV" />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()}</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
                 </form>
             `;    
@@ -102,7 +102,7 @@ function renderUnauthorizedWithTickets() {
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" placeholder="Enter CSV code" />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()}</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} PLN</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
                 </form>
             `;        

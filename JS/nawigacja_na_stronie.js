@@ -28,7 +28,7 @@ function updateNavigation() {
             navigationLinks.innerHTML = `
                 <a href="./inteligentny_zakup_biletu.html">Smart ticket purchase</a>
                 <a href="./szybki_zakup_biletu.html">Quick ticket purchase</a>
-                <a href="./mapy_schematy.html">Maps and diagrams of Krakow</a>
+                <a href="./mapy_schematy.html">Maps of Cracow</a>
                 <a href="./rozklad_jazdy.html">Schedule</a>
             `;
         }

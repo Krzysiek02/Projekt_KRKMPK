@@ -117,18 +117,18 @@ function validateForm() {
             const currentYear = currentDate.getFullYear() % 100;
             const currentMonth = currentDate.getMonth() + 1;
 
+            const expiryError = document.querySelector('.expiry_date_error');
+            if (expiryError) expiryError.remove();
+
             if (year < currentYear || (year === currentYear && month < currentMonth)) {
                 isValid = false;
                 input.style.border = '2px solid red';
                 const errorMessage = document.createElement('div');
-                errorMessage.className = `${field.class}-error`;
+                errorMessage.className = `expiry_date_error`;
                 errorMessage.style.color = 'red';
-
-                if (isPolish) {
-                    errorMessage.textContent = 'Karta nieaktualna. Podaj poprawną datę ważności.';
-                } else {
-                    errorMessage.textContent = 'Card expired. Please provide correct expiration date.';
-                }
+                errorMessage.textContent = isPolish 
+                    ? 'Karta nieaktualna. Podaj poprawną datę ważności.' 
+                    : 'Card expired. Please provide correct expiration date.';
 
                 input.insertAdjacentElement('afterend', errorMessage);
             }
