@@ -133,7 +133,10 @@
   transition: all 0.3s ease;
   margin-left:4%;
 }
-
+#buttons button:hover, #swap-stations:hover {
+  background-color: #f7e5eb;
+  border-color: #a52a2a;
+}
 
 button:hover {
   background-color: #f7e5eb;
@@ -147,6 +150,7 @@ button:hover {
   padding: 12px 24px;
   border-radius: 25px;
   border:none;
+  cursor: pointer;
 }
 #search_ticket_button:hover {
   background-color: #740938;
@@ -212,6 +216,12 @@ button:hover {
   font-size: 20px;
   color:#740938;
   
+}
+#close-time-modal, #close-date-modal{
+  transition: all 0.3s ease;
+}
+#close-date-modal:hover, #close-time-modal:hover{
+  background-color: #ad195a;
 }
 /* Wybor biletu */
 
