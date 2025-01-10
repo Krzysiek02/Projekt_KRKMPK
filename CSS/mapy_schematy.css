@@ -7,7 +7,7 @@
   max-width: 1700px;
 }
 .image_item {
-    width: 500px; 
+    width: 440px; 
     box-sizing: border-box; 
     display: flex;
     flex-direction: column;
@@ -16,6 +16,8 @@
     /* border: 1px black dotted; */
     margin-bottom: 20px;
     position: relative;
+    margin-left:5px;
+    margin-right:5px;
 }
 
 .image_item img {
