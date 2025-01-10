@@ -121,6 +121,7 @@ function renderContentEnglish() {
 function renderStops(filter = "", vehicleType = "tram") {
   const stopsContainer = document.getElementById("stops-container");
   const noResultsMessage = document.createElement("p");
+  noResultsMessage.classList.add("no-results");
   const isPolish = get_language();
 
   if (isPolish) {
@@ -322,13 +323,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetButton = document.getElementById("reset-filters");
 
   const isPolish = get_language();
-
+  
   if (isPolish) {
     noResultsMessage.textContent = "Brak linii o wskazanych kryteriach.";
   } else {
     noResultsMessage.textContent = "No lines with the specified criteria.";
   }
 
+  
   noResultsMessage.style.color = "red";
   noResultsMessage.style.display = "none";
   stopsContainer.parentNode.appendChild(noResultsMessage);

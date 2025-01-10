@@ -7,7 +7,7 @@
     backdrop-filter: blur(5px);
 }
 #payment-form{
-    border: 2px solid black;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,4 +50,7 @@
   color: white;
   cursor: pointer;
   width:250px;
+}
+#payment-form button:hover{
+    background-color: #ad0d53;
 }

@@ -53,3 +53,17 @@
   background: #740938;
   color: white;
 }
+#payment-form button.enabled{
+  background: #740938;
+  color: white;
+}
+#payment-form button.enabled:hover, #payment-form #cancel-button:hover {
+  background-color: #b61058;
+}
+
+#payment-form button.disabled {
+  cursor: not-allowed;
+  background-color: transparent;
+  color: grey;
+  cursor: not-allowed;
+}

@@ -24,6 +24,7 @@
     align-items: center;
     word-wrap: break-word;
     color: white;
+    
 }
 .left_form h3 {
     font-weight: lighter;
@@ -125,7 +126,7 @@ label {
     .right form {
         width: 40vw;
     }
-    .left{
+    .left_form{
         width:35vw;
     }
 }
@@ -137,7 +138,7 @@ label {
     .right form {
         width: 80vw;
     }
-    .left{
+    .left_form{
         width:60vw;
     }
     .div_content_container{

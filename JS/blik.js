@@ -103,14 +103,12 @@ function validateForm() {
 
     if (isBlikNumberValid) {
         payButton.disabled = false;
-        payButton.style.backgroundColor = "#740938";
-        payButton.style.color = "white";
-        payButton.style.cursor = "pointer";
+        payButton.classList.add('enabled');
+        payButton.classList.remove('disabled');
     } else {
         payButton.disabled = true;
-        payButton.style.backgroundColor = 'transparent';
-        payButton.style.color = "grey";
-        payButton.style.cursor = "not-allowed";
+        payButton.classList.add('disabled');
+        payButton.classList.remove('enabled');
     }
 }
 
