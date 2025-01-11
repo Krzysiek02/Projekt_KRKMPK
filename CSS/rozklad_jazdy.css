@@ -78,6 +78,7 @@
   border-radius: 5px;
   width: 80%;
   max-width: 800px;
+  position:relative;
 }
 
 .hidden {
@@ -90,26 +91,31 @@
   font-size: 20px;
   color: red;
   cursor: pointer;
+  position: absolute;
+  right:25px;
 }
 
 /* Vehicle Type Icon */
 #vehicle-icon {
   width: 50px;
   height: 50px;
+  margin-top:10px;
 }
 
 /* Direction buttons */
 .direction-btn {
   margin-right: 10px;
+  margin-top:15px;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #b40f56;
   color: white;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .direction-btn:hover {
-  background-color: #45a049;
+  background-color: #bd4f8b;
 }
 
 #route-container, #timetable-container, #stations-container {
@@ -139,7 +145,7 @@ h3 {
 #stations-list{
   display: flex;
   gap:20px;
-  margin-top: 20px;
+  margin-top: 10px;
   flex-wrap: wrap;
 }
 #stations-list button {
@@ -253,6 +259,15 @@ background-color: #b41158;
   align-items: flex-start;
 
 }
+}
+.timetable-table th,
+.timetable-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  white-space: pre-line; /* Umożliwia łamanie linii */
+}
 
-
+.timetable-table {
+  width: 100%;
+  border-collapse: collapse;
 }

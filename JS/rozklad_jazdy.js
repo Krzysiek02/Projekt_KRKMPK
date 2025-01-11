@@ -1,3 +1,4 @@
+
 function renderContentPolish() {
   const contentContainer = document.querySelector('.div_content_container');
 
@@ -279,8 +280,16 @@ function showModal(line) {
             </tbody>
           `;
         }
-        
+        // DODALEM
         timetableContainer.appendChild(timetableTable);
+        const tableCells = document.querySelectorAll('td');
+        tableCells.forEach(cell => {
+          let text = cell.textContent;
+          text = text.split(',').map(item => item.trim()).join('<br>');
+          text = text.replace(/:/g, '&nbsp;&nbsp;&nbsp;');
+          cell.innerHTML = text;
+        });
+            
     };
 
     const formatTimeForSchedule = (timeTable, dayType) => {
@@ -339,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add("hidden");
   });
   
+
   lineFilter.addEventListener("input", () => {
     const filterValue = lineFilter.value;
     const selectedType = [...vehicleTypeInputs].find((input) => input.checked).value;
