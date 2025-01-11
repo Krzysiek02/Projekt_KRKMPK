@@ -136,7 +136,25 @@ h3 {
   color: #333;
 }
 
-
+#stations-list{
+  display: flex;
+  gap:20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+#stations-list button {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #740938;
+  cursor: pointer;
+  color:white;
+  transition: background-color 0.3s;
+}
+#stations-list button:hover {
+  background-color: #b41158;
+}
 .vehicle-type input {
 display: none;
 }

@@ -81,6 +81,9 @@ box-sizing: border-box;
 max-width: 200px!important;
 width: 40vw!important; 
 }
+.expiry_date_input, .csv_input {
+    max-width: 200px!important;
+}
 .user_section button {
 font-size:15px;
 font-weight: bold;
@@ -118,4 +121,18 @@ width:140px;
 .csv, .expiry_date, .short > input{
     width: 100px!important; 
 }
+.expiry_date_input{
+    max-width: 100px!important;
+}
+.csv_input {
+    max-width: 60px!important;
+}
+}
+@media (max-width: 400px) {
+    .left_side {
+        width: 100px!important;
+    }
+    .buttons{
+        right: 1% !important;;
+    }
 }

@@ -20,7 +20,7 @@ function renderAuthorized(user) {
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" value="${user.csv}" readonly />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" class="disabled" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
                 </form>
             `;
@@ -41,7 +41,7 @@ function renderAuthorized(user) {
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" value="${user.csv}" readonly />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} PLN</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" class="disabled" disabled>Pay: ${calculateTotalPrice()} PLN</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
                 </form>
             `;
@@ -69,19 +69,19 @@ function renderUnauthorizedWithTickets() {
             contentContainer.innerHTML = `
                 <h2>Płatność kartą</h2>
                 <form id="payment-form">
-                    <div>
+                    <div class="payment_form_input">
                         <label for="card-number">Numer karty</label>
                         <input type="text" id="card-number" placeholder="Wpisz numer karty" />
                     </div>
-                    <div>
+                    <div class="payment_form_input">
                         <label for="expiry-date">Data ważności</label>
                         <input type="text" id="expiry-date" placeholder="MM/YY" />
                     </div>
-                    <div>
+                    <div class="payment_form_input">
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" placeholder="Wpisz kod CSV" />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" class="disabled" disabled>Zapłać: ${calculateTotalPrice()} zł</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Anuluj</button>
                 </form>
             `;    
@@ -90,19 +90,19 @@ function renderUnauthorizedWithTickets() {
             contentContainer.innerHTML = `
                 <h2>Card payment</h2>
                 <form id="payment-form">
-                    <div>
+                    <div class="payment_form_input">
                         <label for="card-number">Card number</label>
                         <input type="text" id="card-number" placeholder="Enter your card number" />
                     </div>
-                    <div>
+                    <div class="payment_form_input">
                         <label for="expiry-date">Expiration date</label>
                         <input type="text" id="expiry-date" placeholder="MM/YY" />
                     </div>
-                    <div>
+                    <div class="payment_form_input">
                         <label for="csv">CSV</label>
                         <input type="text" id="csv" placeholder="Enter CSV code" />
                     </div>
-                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" disabled>Pay: ${calculateTotalPrice()} PLN</button>
+                    <button data-target="../HTML/dokonanie_platnosci.html" id="pay-button" class="disabled" disabled>Pay: ${calculateTotalPrice()} PLN</button>
                     <button data-target="../HTML/koszyk.html" type="button" id="cancel-button">Cancel</button>
                 </form>
             `;        
@@ -136,8 +136,12 @@ function validateForm() {
     
     if (isCardValid && isExpiryDateValid && isCsvValid) {
         payButton.disabled = false;
+        payButton.classList.add('enabled');
+        payButton.classList.remove('disabled');
     } else {
         payButton.disabled = true;
+        payButton.classList.add('disabled');
+        payButton.classList.remove('enabled');
     }
 }
 

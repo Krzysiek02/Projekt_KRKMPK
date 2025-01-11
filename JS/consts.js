@@ -563,7 +563,7 @@ const publicTransportLines = [
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '14', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '14', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
@@ -588,7 +588,7 @@ const publicTransportLines = [
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['15', '35', '55'] },
                                     { id: 2, hour: '14', minutes: ['25', '45', '45'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '7', minutes: ['00', '20', '40'] },
@@ -607,7 +607,7 @@ const publicTransportLines = [
                                 normal_days: [
                                     { id: 1, hour: '5', minutes: ['25', '45', '05'] },
                                     { id: 2, hour: '12', minutes: ['25', '45', '05'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
@@ -615,9 +615,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '7', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '15', minutes: ['05', '25', '45'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -638,7 +638,7 @@ const publicTransportLines = [
                                 normal_days: [
                                     { id: 1, hour: '7', minutes: ['25', '45', '05'] },
                                     { id: 2, hour: '12', minutes: ['25', '45', '05'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '8', minutes: ['10', '30', '50'] },
@@ -648,7 +648,7 @@ const publicTransportLines = [
                                 sundays: [
                                     { id: 1, hour: '9', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '15', minutes: ['05', '25', '45'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -667,7 +667,7 @@ const publicTransportLines = [
                                 saturdays: [
                                     { id: 1, hour: '8', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['05', '25', '45'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '9', minutes: ['15', '35', '55'] },
@@ -690,7 +690,7 @@ const publicTransportLines = [
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '8', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '14', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '14', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
@@ -728,7 +728,7 @@ const publicTransportLines = [
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '14', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '14', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
@@ -747,18 +747,18 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '5', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['15', '35', '55'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -770,19 +770,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '19', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '5', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '6', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '6', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['40', '00', '20'] },
                                     { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '7', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '15', minutes: ['40', '00', '20'] },
-                                    { id: 3, hour: '22', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -825,9 +825,9 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '6', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '6', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '13', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '7', minutes: ['00', '20', '40'] },
@@ -835,8 +835,8 @@ const publicTransportLines = [
                                     { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '16', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '16', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '23', minutes: ['10', '30', '50'] }
                                 ]
                             }
@@ -849,19 +849,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '6', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '13', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '6', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '13', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '7', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '15', minutes: ['40', '00', '20'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '16', minutes: ['50', '10', '30'] },
-                                    { id: 3, hour: '23', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '23', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -887,19 +887,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['40', '00', '20'] },
+                                    { id: 1, hour: '5', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '12', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '19', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '14', minutes: ['40', '00', '20'] },
+                                    { id: 2, hour: '14', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '22', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -940,13 +940,13 @@ const publicTransportLines = [
                                     { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '16', minutes: ['40', '00', '20'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '16', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '23', minutes: ['10', '30', '50'] }
                                 ]
                             }
@@ -971,13 +971,13 @@ const publicTransportLines = [
                                     { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '22', minutes: ['22', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '22', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '16', minutes: ['40', '00', '20'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '16', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '23', minutes: ['10', '30', '50'] }
                                 ]
                             }
@@ -1014,19 +1014,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['40', '00', '20'] },
+                                    { id: 1, hour: '5', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '12', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '19', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '14', minutes: ['40', '00', '20'] },
+                                    { id: 2, hour: '14', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '21', minutes: ['02', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '22', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1052,9 +1052,9 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '19', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '5', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
@@ -1062,9 +1062,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '22', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1105,13 +1105,13 @@ const publicTransportLines = [
                                     { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '16', minutes: ['40', '00', '20'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '16', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '23', minutes: ['10', '30', '50'] }
                                 ]
                             }
@@ -1136,13 +1136,13 @@ const publicTransportLines = [
                                     { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '22', minutes: ['21', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '21', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '16', minutes: ['40', '00', '20'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '16', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '23', minutes: ['10', '30', '50'] }
                                 ]
                             }
@@ -1179,9 +1179,9 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '19', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '5', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
@@ -1189,9 +1189,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '21', minutes: ['11', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '22', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1265,19 +1265,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '4', minutes: ['25', '45', '05'] },
+                                    { id: 1, hour: '4', minutes: ['05', '25', '45'] },
                                     { id: 2, hour: '11', minutes: ['15', '35', '55'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '5', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '15', minutes: ['25', '45', '05'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '5', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '15', minutes: ['05', '25', '45'] },
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '16', minutes: ['15', '35', '55'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1296,19 +1296,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '4', minutes: ['25', '45', '05'] },
+                                    { id: 1, hour: '4', minutes: ['05', '25', '45'] },
                                     { id: 2, hour: '12', minutes: ['15', '35', '55'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '5', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '5', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['25', '45', '05'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '16', minutes: ['15', '35', '55'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1406,14 +1406,14 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '5', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '6', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '6', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '7', minutes: ['10', '30', '50'] },
@@ -1430,19 +1430,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '5', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '5', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '6', minutes: ['30', '50', '10'] },
-                                    { id: 2, hour: '14', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '21', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '6', minutes: ['10', '30', '50'] },
+                                    { id: 2, hour: '14', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '21', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1487,17 +1487,17 @@ const publicTransportLines = [
                                 normal_days: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '13', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '7', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '15', minutes: ['25', '45', '05'] },
+                                    { id: 2, hour: '15', minutes: ['05', '25', '45'] },
                                     { id: 3, hour: '22', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '8', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '16', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '23', minutes: ['20', '40', '00'] }
+                                    { id: 2, hour: '16', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '23', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1509,19 +1509,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '6', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '13', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '6', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '13', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '15', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40']  },
+                                    { id: 2, hour: '15', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '16', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '23', minutes: ['30', '50', '10'] }
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '16', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '23', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1553,7 +1553,7 @@ const publicTransportLines = [
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '7', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '13', minutes: ['30', '50', '10'] },
+                                    { id: 2, hour: '13', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
@@ -1572,7 +1572,7 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40']  },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
@@ -1581,9 +1581,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40']  },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1595,19 +1595,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '6', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '18', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '6', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '18', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '13', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1626,19 +1626,19 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '9', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '18', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '9', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '18', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '13', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1651,7 +1651,7 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '9', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
@@ -1660,9 +1660,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1680,7 +1680,7 @@ const publicTransportLines = [
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '7', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '13', minutes: ['30', '50', '10'] },
+                                    { id: 2, hour: '13', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
@@ -1713,16 +1713,16 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '5', minutes: ['50', '10', '30'] },
-                                    { id: 2, hour: '11', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '17', minutes: ['30', '50', '10'] }
+                                    { id: 2, hour: '11', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '17', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '13', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ]
@@ -1737,7 +1737,7 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '6', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
@@ -1746,9 +1746,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1761,18 +1761,18 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '13', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1792,18 +1792,18 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '6', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '12', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '12', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ]
                             }
                         ]
@@ -1816,7 +1816,7 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '6', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '12', minutes: ['30', '50', '10'] },
+                                    { id: 2, hour: '12', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
@@ -1825,9 +1825,9 @@ const publicTransportLines = [
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '14', minutes: ['10', '30', '50'] },
-                                    { id: 3, hour: '20', minutes: ['20', '40', '00'] }
+                                    { id: 3, hour: '20', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1840,16 +1840,16 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '5', minutes: ['50', '10', '30'] },
-                                    { id: 2, hour: '11', minutes: ['20', '40', '00'] },
-                                    { id: 3, hour: '17', minutes: ['30', '50', '10'] }
+                                    { id: 2, hour: '11', minutes: ['00', '20', '40'] },
+                                    { id: 3, hour: '17', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
                                     { id: 1, hour: '6', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '14', minutes: ['30', '50', '10'] },
+                                    { id: 2, hour: '14', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '18', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '13', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ]
@@ -1884,12 +1884,12 @@ const publicTransportLines = [
                                 saturdays: [
                                     { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '9', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '15', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '21', minutes: ['20', '40', '00'] }
+                                    { id: 2, hour: '15', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1902,12 +1902,12 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '7', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '13', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '13', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '14', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '14', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '20', minutes: ['40', '00', '20'] }
                                 ],
                                 sundays: [
@@ -1925,17 +1925,17 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '13', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '13', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '9', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '9', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '21', minutes: ['00', '20', '40'] }
                                 ]
@@ -1963,12 +1963,12 @@ const publicTransportLines = [
                                 saturdays: [
                                     { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
                                     { id: 1, hour: '9', minutes: ['00', '20', '40'] },
-                                    { id: 2, hour: '15', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '22', minutes: ['20', '40', '00'] }
+                                    { id: 2, hour: '15', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ]
                             }
                         ]
@@ -1981,12 +1981,12 @@ const publicTransportLines = [
                             {
                                 normal_days: [
                                     { id: 1, hour: '7', minutes: ['10', '30', '50'] },
-                                    { id: 2, hour: '13', minutes: ['20', '40', '00'] },
+                                    { id: 2, hour: '13', minutes: ['00', '20', '40'] },
                                     { id: 3, hour: '19', minutes: ['10', '30', '50'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '8', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '14', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '14', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '20', minutes: ['40', '00', '20'] }
                                 ],
                                 sundays: [
@@ -2004,17 +2004,17 @@ const publicTransportLines = [
                         time_table: [
                             {
                                 normal_days: [
-                                    { id: 1, hour: '7', minutes: ['20', '40', '00'] },
-                                    { id: 2, hour: '13', minutes: ['30', '50', '10'] },
-                                    { id: 3, hour: '19', minutes: ['20', '40', '00'] }
+                                    { id: 1, hour: '7', minutes: ['00', '20', '40'] },
+                                    { id: 2, hour: '13', minutes: ['10', '30', '50'] },
+                                    { id: 3, hour: '19', minutes: ['00', '20', '40'] }
                                 ],
                                 saturdays: [
-                                    { id: 1, hour: '8', minutes: ['30', '50', '10'] },
+                                    { id: 1, hour: '8', minutes: ['10', '30', '50'] },
                                     { id: 2, hour: '14', minutes: ['00', '20', '40'] },
-                                    { id: 3, hour: '20', minutes: ['30', '50', '10'] }
+                                    { id: 3, hour: '20', minutes: ['10', '30', '50'] }
                                 ],
                                 sundays: [
-                                    { id: 1, hour: '9', minutes: ['20', '40', '00'] },
+                                    { id: 1, hour: '9', minutes: ['00', '20', '40'] },
                                     { id: 2, hour: '15', minutes: ['10', '30', '50'] },
                                     { id: 3, hour: '22', minutes: ['00', '20', '40'] }
                                 ]
