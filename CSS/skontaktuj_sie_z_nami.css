@@ -1,6 +1,7 @@
 .div_content_container {
     width: 80vw;
     justify-content: space-around;
+    max-width: 1200px;
 }
 .left_form {
     border-radius: 15px;
