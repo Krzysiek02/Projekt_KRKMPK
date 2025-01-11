@@ -122,6 +122,27 @@
 
 }
 
+#date-picker, #time-picker{
+  padding: 10px;
+  border: #a52a2a solid 2px;
+  border-radius: 50px;
+  width: 120px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  appearance: none; /* Ensure custom styling */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+}
+
+
+/* Change color when choosing from icon */
+#time-picker:focus,#date-picker:focus {
+  border-color: #d11667; 
+  background-color: #f7e5eb; 
+  color: #740938;
+}
+
+
 #buttons button {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -450,7 +471,7 @@ input[type="number"] {
   display: flex;
   flex-wrap: wrap;
   border-radius: 0.5rem;
-  background-color: #EEE;
+  background-color: #eeeeee;
   box-sizing: border-box;
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
   padding: 0.25rem;
@@ -480,8 +501,9 @@ input[type="number"] {
 }
 
 .filters .radio input:checked + .name {
-  background-color: #fff;
+  background-color: #740938;
   font-weight: 600;
+  color:white;
 }
 
 
