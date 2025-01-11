@@ -264,9 +264,12 @@ function renderTickets(historyTickets) {
                 displayedTicketCounts[uniqueKey] = currentCount;
             }
 
-            const firstLetter = (isPolish ? ticket.client_type : ticket.client_type_ang)[0].toUpperCase();
-            const restOfText = (isPolish ? ticket.client_type : ticket.client_type_ang).slice(1);
-            const name = firstLetter + restOfText;
+            let firstLetter = (isPolish ? ticket.client_type : ticket.client_type_ang)[0].toUpperCase();
+            let restOfText = (isPolish ? ticket.client_type : ticket.client_type_ang).slice(1);
+            const clientType = firstLetter + restOfText;
+            firstLetter = (isPolish ? ticket.quantity_type : ticket.quantity_type_ang)[0].toUpperCase();
+            restOfText = (isPolish ? ticket.quantity_type : ticket.quantity_type_ang).slice(1);
+            const quantityType = firstLetter + restOfText;
             const ticketTimeLabel = formatTicketTime(ticket.travel_time, isPolish);
             
             const ticketElement = document.createElement('div');
@@ -278,8 +281,9 @@ function renderTickets(historyTickets) {
                 
                 <div class="ticket-info">
                     <div class="ticket-description">
-                        <p><strong>${isPolish ? 'Bilet' : 'Ticket'} ${name}</strong></p>
+                        <p><strong>${isPolish ? 'Bilet' : 'Ticket'} ${clientType}</strong></p>
                         ${ticket.family ? `<p>${isPolish ? 'Bilet Rodzinny' : 'Family Ticket'}</p>` : ''}
+                        <p>${isPolish ? 'Typ' : 'Type'}: ${quantityType}</p>
                         <p>${isPolish ? 'Czas' : 'Time'}: ${ticketTimeLabel}</p>
                         <p>${isPolish ? 'Strefa' : 'Zone'}: ${ticket.zone === 'first' ? 
                             (isPolish ? '1' : '1') : 

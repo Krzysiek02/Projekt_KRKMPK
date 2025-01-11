@@ -163,8 +163,6 @@ function setupAutoComplete(input, suggestionsBox) {
     endInput.value = temp;
   }
   
-
-  
   document.addEventListener('DOMContentLoaded', () => {
 
     updateContent();
@@ -212,11 +210,12 @@ function setupAutoComplete(input, suggestionsBox) {
             if (isPolish) {
                 if (date) {
                     finalDate = date;
-                    document.getElementById('selected-date').textContent = `Data: ${date}`;
+                    document.getElementById('selected-date').textContent = `Wybrana Data: ${date}`;
                 }
             } else {
                 if (date) {
-                    document.getElementById('selected-date').textContent = `Date: ${date}`;
+                    finalDate = date;
+                    document.getElementById('selected-date').textContent = `Selected Date: ${date}`;
                 }
             }
         }
@@ -231,12 +230,13 @@ function setupAutoComplete(input, suggestionsBox) {
             const isPolish = get_language();
             if (isPolish) {
                 if (time) {
-                    document.getElementById('selected-time').textContent = `Godzina: ${time || 'Brak Wybranej Godziny'}`;
+                    finalTime = time;
+                    document.getElementById('selected-time').textContent = `Wybrana Godzina: ${time}`;
                 }
             } else {
                 if (time) {
                     finalTime = time;
-                    document.getElementById('selected-time').textContent = `Hour: ${time || 'No Selected Hour'}`;
+                    document.getElementById('selected-time').textContent = `Selected Hour: ${time}`;
                 }
             }
         }
@@ -562,6 +562,11 @@ function setupAutoComplete(input, suggestionsBox) {
 
         });
 
+        function capitalize(string) {
+            if (!string || typeof string !== 'string') return string;
+            return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+        }
+
         function generateConnectionsHTML(connections) {
             return connections.map(connection => {
                 const vehicleImage = connection.vehicleType === 'bus' ? '../IMAGES/bus_image.png' : '../IMAGES/tram_image.png';
@@ -569,7 +574,7 @@ function setupAutoComplete(input, suggestionsBox) {
                 let result = ``;
                 if (isPolish) {
                     const ticketDetails = connection.bestTicket.tickets.map(ticket => 
-                        `${ticket.count} x ${ticket.ticket.client_type} (${ticket.ticket.quantity_type}) - ${ticket.ticket.price * ticket.count} zł`
+                        `${ticket.count} x ${capitalize(ticket.ticket.client_type)} (${capitalize(ticket.ticket.quantity_type)}) - ${ticket.ticket.price * ticket.count} zł`
                     ).join('<br>');
                     result = `
                     <div class="connection">
@@ -583,7 +588,7 @@ function setupAutoComplete(input, suggestionsBox) {
                     `;
                 } else {
                     const ticketDetails = connection.bestTicket.tickets.map(ticket => 
-                        `${ticket.count} x ${ticket.ticket.client_type_ang} (${ticket.ticket.quantity_type_ang}) - ${ticket.ticket.price * ticket.count} PLN`
+                        `${ticket.count} x ${capitalize(ticket.ticket.client_type_ang)} (${capitalize(ticket.ticket.quantity_type_ang)}) - ${ticket.ticket.price * ticket.count} PLN`
                     ).join('<br>');
                     result = `
                     <div class="connection">

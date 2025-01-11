@@ -297,7 +297,9 @@ function showModal(line) {
         if (daySchedule) {
             return {
                 hour: daySchedule[dayType].map(t => t.hour).join(', '),
-                minutes: daySchedule[dayType].map(t => t.minutes.join(':')).join(', ')
+                minutes: daySchedule[dayType]
+                .map(t => t.minutes.sort((a, b) => a - b).join(':'))
+                .join(', ')
             };
         }
 

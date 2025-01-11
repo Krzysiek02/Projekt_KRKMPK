@@ -43,6 +43,14 @@ function renderAuthorized(user) {
                 };
             });
             saveCurrentHistory(purchaseHistory);
+            const myNotActiveFile = currentBasket.map(ticket => {
+                return {
+                    ...ticket,
+                    activation_date: null,
+                    activation_time: null,
+                };
+            });
+            saveCurrentNotActiveFile(myNotActiveFile);
         }
 
         const qrContainer = document.createElement('div');
@@ -92,6 +100,24 @@ function renderAuthorized(user) {
                         };
                     });
                     saveCurrentActiveFile(myActiveFile);
+                    const loggedInUser = users.find(user => user.is_logged_in);
+                    myActiveFile.forEach(activeTicket => {
+                        const notActiveIndex = loggedInUser.not_active_file.findIndex(
+                            ticket => ticket.id === activeTicket.id
+                        );
+                        if (notActiveIndex !== -1) {
+                            const notActiveTicket = loggedInUser.not_active_file[notActiveIndex];
+                            if (notActiveTicket.quantity === activeTicket.quantity) {
+                                loggedInUser.not_active_file.splice(notActiveIndex, 1);
+                            } else if (notActiveTicket.quantity > activeTicket.quantity) {
+                                loggedInUser.not_active_file[notActiveIndex] = {
+                                    ...notActiveTicket,
+                                    quantity: notActiveTicket.quantity - activeTicket.quantity
+                                };
+                            } 
+                        }
+                    });
+                    localStorage.setItem('users', JSON.stringify(users));
                 });
             }
         });
@@ -104,14 +130,6 @@ function renderAuthorized(user) {
                 } else {
                     alert("Tickets have been added to your folder.");
                 }
-                const myNotActiveFile = currentBasket.map(ticket => {
-                    return {
-                        ...ticket,
-                        activation_date: null,
-                        activation_time: null,
-                    };
-                });
-                saveCurrentNotActiveFile(myNotActiveFile);
             });
         }
 

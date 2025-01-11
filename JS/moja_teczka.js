@@ -56,18 +56,25 @@ function renderTickets(my_file_tickets, isActive, user) {
     if (my_file_tickets.length > 0) {
         my_file_tickets.forEach((ticket, index) => {
             const ticketElement = document.createElement('div');
-            let first_letter;
-            let rest_of_text;
+            let first_letter1;
+            let rest_of_text1;
+            let first_letter2;
+            let rest_of_text2;
 
             if (isPolish) {
-                first_letter = ticket.client_type[0].toUpperCase();
-                rest_of_text = ticket.client_type.slice(1);
+                first_letter1 = ticket.client_type[0].toUpperCase();
+                rest_of_text1 = ticket.client_type.slice(1);
+                first_letter2 = ticket.quantity_type[0].toUpperCase();
+                rest_of_text2 = ticket.quantity_type.slice(1);
             } else {
-                first_letter = ticket.client_type_ang[0].toUpperCase();
-                rest_of_text = ticket.client_type_ang.slice(1);
+                first_letter1 = ticket.client_type_ang[0].toUpperCase();
+                rest_of_text1 = ticket.client_type_ang.slice(1);
+                first_letter2 = ticket.quantity_type_ang[0].toUpperCase();
+                rest_of_text2 = ticket.quantity_type_ang.slice(1);
             }
             
-            const name = first_letter + rest_of_text;
+            const clientType = first_letter1 + rest_of_text1;
+            const quantityType = first_letter2 + rest_of_text2;
             const currentCount = ticket.quantity || 0;
 
             let ticketTimeLabel;
@@ -96,8 +103,9 @@ function renderTickets(my_file_tickets, isActive, user) {
             if (isPolish) {
                 ticketElement.innerHTML = `
                     <div class="ticket-info">
-                        <p><strong>Bilet ${name}</strong></p>
+                        <p><strong>Bilet ${clientType}</strong></p>
                         ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                        <p>Typ: ${quantityType}</p>
                         <p>Czas: ${ticketTimeLabel}</p>
                         <p>Strefa: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
                         <p>Cena: ${ticket.price} zł</p>
@@ -113,8 +121,9 @@ function renderTickets(my_file_tickets, isActive, user) {
             } else {
                 ticketElement.innerHTML = `
                     <div class="ticket-info">
-                        <p><strong>Ticket ${name}</strong></p>
+                        <p><strong>Ticket ${clientType}</strong></p>
                         ${ticket.family ? '<p>Family Ticket</p>' : ''}
+                        <p>Type: ${quantityType}</p>
                         <p>Time: ${ticketTimeLabel}</p>
                         <p>Zone: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
                         <p>Price: ${ticket.price} PLN</p>

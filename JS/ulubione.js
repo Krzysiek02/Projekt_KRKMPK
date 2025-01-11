@@ -272,9 +272,12 @@ function renderTickets(favouriteTickets) {
     if (favouriteTickets.length > 0) {
         favouriteTickets.forEach(ticket => {
             if (isPolish) {
-                const first_letter = ticket.client_type[0].toUpperCase();
-                const rest_of_text = ticket.client_type.slice(1);
-                const name = first_letter + rest_of_text;
+                let first_letter = ticket.client_type[0].toUpperCase();
+                let rest_of_text = ticket.client_type.slice(1);
+                const clientType = first_letter + rest_of_text;
+                first_letter = ticket.quantity_type[0].toUpperCase();
+                rest_of_text = ticket.quantity_type.slice(1);
+                const quantityType = first_letter + rest_of_text;
                 const ticketElement = document.createElement('div');
                 const currentCount = selectedTickets[ticket.id] || 0;
                 let ticketTimeLabel;
@@ -292,8 +295,9 @@ function renderTickets(favouriteTickets) {
                 ticketElement.classList.add('ticket');
                 ticketElement.innerHTML = `
                     <div class="ticket-info">
-                        <p><strong>Bilet ${name}</strong></p>
+                        <p><strong>Bilet ${clientType}</strong></p>
                         ${ticket.family ? '<p>Bilet Rodzinny</p>' : ''}
+                        <p>Typ: ${quantityType}</p>
                         <p>Czas: ${ticketTimeLabel}</p>
                         <p>Strefa: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
                         <p>Cena: ${ticket.price} zł</p>
@@ -307,9 +311,12 @@ function renderTickets(favouriteTickets) {
                 ticketsContainer.appendChild(ticketElement);
                 selectedTickets[ticket.id] = currentCount;
             } else {
-                const first_letter = ticket.client_type_ang[0].toUpperCase();
-                const rest_of_text = ticket.client_type_ang.slice(1);
-                const name = first_letter + rest_of_text;
+                let first_letter = ticket.client_type_ang[0].toUpperCase();
+                let rest_of_text = ticket.client_type_ang.slice(1);
+                const clientType = first_letter + rest_of_text;
+                first_letter = ticket.quantity_type_ang[0].toUpperCase();
+                rest_of_text = ticket.quantity_type_ang.slice(1);
+                const quantityType = first_letter + rest_of_text;
                 const ticketElement = document.createElement('div');
                 const currentCount = selectedTickets[ticket.id] || 0;
                 let ticketTimeLabel;
@@ -327,8 +334,9 @@ function renderTickets(favouriteTickets) {
                 ticketElement.classList.add('ticket');
                 ticketElement.innerHTML = `
                     <div class="ticket-info">
-                        <p><strong>Ticket ${name}</strong></p>
+                        <p><strong>Ticket ${clientType}</strong></p>
                         ${ticket.family ? '<p>Family Ticket</p>' : ''}
+                        <p>Type: ${quantityType}</p>
                         <p>Time: ${ticketTimeLabel}</p>
                         <p>Zone: ${ticket.zone === 'first' ? '1' : '1 + 2 + 3'}</p>
                         <p>Price: ${ticket.price} PLN</p>
