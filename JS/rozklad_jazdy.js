@@ -280,7 +280,7 @@ function showModal(line) {
             </tbody>
           `;
         }
-        // DODALEM
+        // Zamiana dwukropka na trzy spacje oraz przecinka na <br>
         timetableContainer.appendChild(timetableTable);
         const tableCells = document.querySelectorAll('td');
         tableCells.forEach(cell => {
