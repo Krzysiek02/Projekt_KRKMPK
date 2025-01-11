@@ -18,6 +18,9 @@ function renderContentPolish() {
                 
                     <label for="password">Hasło:</label>
                     <input id="password" type="password" class="password" name="password" autocomplete="new-password"><br>
+
+                    <label for="repeatPassword">Powtórzone Hasło:</label>
+                    <input id="repeatPassword" type="password" class="repeatPassword" name="repeatPassword" autocomplete="repeat-password"><br>
                 
                     <label for="cardNumber">Numer Karty:</label>
                     <input id="cardNumber" type="text" class="card_number" name="cardNumber" autocomplete="cc-number"><br>
@@ -55,6 +58,9 @@ function renderContentEnglish() {
                 
                     <label for="password">Password:</label>
                     <input id="password" type="password" class="password" name="password" autocomplete="new-password"><br>
+
+                    <label for="repeatPassword">Powtórzone Hasło:</label>
+                    <input id="repeatPassword" type="password" class="repeatPassword" name="repeatPassword" autocomplete="repeat-password"><br>
                 
                     <label for="cardNumber">Card Number:</label>
                     <input id="cardNumber" type="text" class="card_number" name="cardNumber" autocomplete="cc-number"><br>
@@ -79,6 +85,7 @@ function validateForm() {
         { class: 'last_name', regex: /^[a-zA-Ząćęłńóśżź]{1,50}$/, error: 'Nazwisko może zawierać tylko litery i maksymalnie 50 znaków.', errorANG: 'The last name can contain only letters and a maximum of 50 characters.' },
         { class: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, error: 'Wprowadź poprawny adres email.', errorANG: 'Please enter a valid email address.' },
         { class: 'password', regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,100}$/, error: 'Hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną cyfrę i jeden znak specjalny.', errorANG: 'Password must be at least 8 characters long, one uppercase letter, one number, and one special character.' },
+        { class: 'repeatPassword', regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,100}$/, error: 'Powtórzone hasło musi mieć co najmniej 8 znaków, jedną dużą literę, jedną cyfrę i jeden znak specjalny.', errorANG: 'Repeated password must be at least 8 characters long, one uppercase letter, one number, and one special character.' },
         { class: 'card_number', regex: /^\d{4} ?\d{4} ?\d{4} ?\d{4}$/, error: 'Numer karty musi składać się z 16 cyfr, może zawierać spacje co 4 cyfry.', errorANG: 'The card number must consist of 16 digits, it can contain spaces every 4 digits.' },
         { class: 'expiry_date', regex: /^(0[1-9]|1[0-2])\/\d{2}$/, error: 'Data ważności w formacie MM/YY.', errorANG: 'Expiration date in format MM/YY.' },
         { class: 'csv', regex: /^\d{3}$/, error: 'CSV musi zawierać 3 cyfry.', errorANG: 'CSV must contain 3 digits.' }
@@ -131,6 +138,25 @@ function validateForm() {
                     : 'Card expired. Please provide correct expiration date.';
 
                 input.insertAdjacentElement('afterend', errorMessage);
+            }
+        }
+
+        if (field.class === 'repeatPassword' && field.regex.test(input.value.trim())) {
+            const passwordInput = document.querySelector('.password');
+            const repeatPasswordError = document.querySelector('.repeatPassword_error');
+
+            if (repeatPasswordError) repeatPasswordError.remove();
+
+            if (passwordInput.value.trim() !== input.value.trim()) {
+                isValid = false;
+                input.style.border = '2px solid red';
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'repeatPassword_error';
+                errorMessage.style.color = 'red';
+                errorMessage.textContent = isPolish
+                    ? 'Hasła muszą być identyczne.'
+                    : 'Passwords must match.';
+                    input.insertAdjacentElement('afterend', errorMessage);
             }
         }
     });

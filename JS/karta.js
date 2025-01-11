@@ -110,9 +110,7 @@ function renderUnauthorizedWithTickets() {
 
         const form = document.getElementById('payment-form');
 
-        form.addEventListener('input', function() {
-            validateForm();
-        });
+        form.addEventListener('input', validateForm);
 
         const navigationButtons = document.querySelectorAll('[data-target]');
 
@@ -146,8 +144,9 @@ function validateForm() {
 }
 
 function validateCardNumber(cardNumber) {
-    const cardPattern = /^\d{4} \d{4} \d{4} \d{4}$/;
-    return cardPattern.test(cardNumber);
+    const digitsOnly = cardNumber.replace(/\s+/g, '');
+    const cardPattern = /^\d{16}$/;
+    return cardPattern.test(digitsOnly);
 }
 
 function validateExpiryDate(expiryDate) {

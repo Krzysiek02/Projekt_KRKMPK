@@ -632,7 +632,7 @@ function setupAutoComplete(input, suggestionsBox) {
                 const combination = [];
                 let remainingTickets = ticketCount;
             
-                const maxGroupSize = 15;
+                const maxGroupSize = 20;
             
                 while (remainingTickets > 0) {
                     if (cheapestGroupTicket && remainingTickets >= 2) {

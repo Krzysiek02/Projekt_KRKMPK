@@ -27,15 +27,19 @@ function renderAuthorized(user) {
 
         let currentBasket = getCurrentBasket();
         let qrContent = "";
+        let ticketInfo = "";
 
         if (currentBasket.length > 0) {
             const now = new Date();
             const purchaseDate = now.toLocaleDateString('pl-PL');
+            const purchaseTime = now.toLocaleTimeString('pl-PL');
             const purchaseHistory = currentBasket.map(ticket => {
                 if (isPolish) {
-                    qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
+                    qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}, Czas Zakupu: ${purchaseTime}\n`;
+                    ticketInfo += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}\n`;
                 } else {
-                    qrContent += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}, Purchase Date: ${purchaseDate}\n`;
+                    qrContent += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}, Purchase Date: ${purchaseDate}\n, Purchase Time: ${purchaseTime}`;
+                    ticketInfo += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}\n`;
                 }
                 return {
                     ...ticket,
@@ -77,9 +81,9 @@ function renderAuthorized(user) {
             if (downloadButton) {
                 downloadButton.addEventListener('click', () => {
                     if (isPolish) {
-                        alert("Bilety zostały pobrane.");
+                        alert(`Bilety zostały pobrane.\n${ticketInfo}`);
                     } else {
-                        alert("Tickets have been downloaded.");
+                        alert(`Tickets have been downloaded.\n${ticketInfo}`);
                     }
                     const link = document.createElement('a');
                     link.href = url;
@@ -126,9 +130,9 @@ function renderAuthorized(user) {
         if (addToFolderButton) {
             addToFolderButton.addEventListener('click', () => {
                 if (isPolish) {
-                    alert("Bilety zostały dodane do teczki.");
+                    alert(`Bilety zostały dodane do teczki.\n${ticketInfo}`);
                 } else {
-                    alert("Tickets have been added to your folder.");
+                    alert(`Tickets have been added to your folder.\n${ticketInfo}`);
                 }
             });
         }
@@ -166,15 +170,19 @@ function renderUnauthorizedWithTickets() {
         
         let currentBasket = getCurrentBasket();
         let qrContent = "";
+        let ticketInfo = "";
         const now = new Date();
         const purchaseDate = now.toLocaleDateString('pl-PL');
+        const purchaseTime = now.toLocaleTimeString('pl-PL');
 
         if (currentBasket.length > 0) {
             currentBasket.forEach(ticket => {
                 if (isPolish) {
-                    qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}\n`;
+                    qrContent += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}, Data zakupu: ${purchaseDate}, Czas Zakupu: ${purchaseTime}\n`;
+                    ticketInfo += `Bilet: ${ticket.name}, Ilość: ${ticket.quantity}, Cena: ${ticket.sum_price}\n`;
                 } else {
-                    qrContent += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}, Purchase Date: ${purchaseDate}\n`;
+                    qrContent += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}, Purchase Date: ${purchaseDate}\n, Purchase Time: ${purchaseTime}`;
+                    ticketInfo += `Ticket: ${ticket.name_ang}, Amount: ${ticket.quantity}, Price: ${ticket.sum_price}\n`;
                 }
                 ticket.quantity = 0;
                 ticket.sum_price = 0;
@@ -207,9 +215,9 @@ function renderUnauthorizedWithTickets() {
             if (downloadButton) {
                 downloadButton.addEventListener('click', () => {
                     if (isPolish) {
-                        alert("Bilety zostały pobrane.");
+                        alert(`Bilety zostały pobrane.\n${ticketInfo}`);
                     } else {
-                        alert("Tickets have been downloaded.");
+                        alert(`Tickets have been downloaded.\n${ticketInfo}`);
                     }
                     const link = document.createElement('a');
                     link.href = url;

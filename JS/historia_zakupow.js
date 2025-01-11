@@ -298,8 +298,7 @@ function renderTickets(historyTickets) {
                         <p>${isPolish ? 'Cena za 1szt.' : 'Price for one ticket'}<br>${ticket.price} zł</p>
                     </div>
                     <div class="ticket-sum-price">
-                        ${ticket.sum_price !== ticket.price ? 
-                            `<p>${isPolish ? 'Łącznie' : 'Sum'}<br>${ticket.sum_price} ${isPolish ? 'zł' : 'PLN'}</p>` : ''}
+                        <p>${isPolish ? 'Łącznie' : 'Sum'}<br>${ticket.sum_price} zł</p>
                     </div>
                 </div>
                 <div class="ticket-actions">
