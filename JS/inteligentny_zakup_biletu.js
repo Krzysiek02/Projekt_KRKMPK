@@ -163,6 +163,8 @@ function setupAutoComplete(input, suggestionsBox) {
     endInput.value = temp;
   }
   
+
+  
   document.addEventListener('DOMContentLoaded', () => {
 
     updateContent();
@@ -771,9 +773,13 @@ function showSummary(connection) {
                     </div>
                     ${ticketSummary}
                     <div class="total-price">Łączna cena: ${totalPrice} zł</div>
-                    <button id="reselect-button">Ponowne Inteligentne Wybranie Biletu</button>
-                    <button id="add-to-cart-button">Dodaj do Koszyka</button>
-                    <button id="proceed-to-payment-button">Przejdź do Płatności</button>
+                    <div class="buttons_summary">
+                        <div class="top_buttons">
+                            <button id="reselect-button">Ponowne Inteligentne Wybranie Biletu</button>
+                            <button id="add-to-cart-button">Dodaj do Koszyka</button>
+                        </div>
+                        <button id="proceed-to-payment-button">Przejdź do Płatności</button>
+                    </div>
                 </div>
             </div>
         `;

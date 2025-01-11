@@ -1,3 +1,7 @@
+.div_content_container{
+    width:80vw;
+    max-width: 1500px;
+}
 .tickets-container {
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +18,7 @@
 }
 
 .ticket-button img {
-    width: 100px;
+    width: 300px;
     height: auto;
     border: 2px solid transparent;
     border-radius: 5px;
@@ -28,6 +32,7 @@
 .favourites-button {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
+    margin-left:10px;
     font-size: 1rem;
     cursor: pointer;
     background-color: red;
@@ -41,4 +46,12 @@
 .favourites-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+@media(max-width:600px){
+    .ticket-button img {
+        width: 250px;
+    }
+    .favourites-button {
+        width: 100%;
+    }
 }

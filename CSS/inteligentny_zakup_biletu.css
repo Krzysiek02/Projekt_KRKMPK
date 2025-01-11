@@ -3,6 +3,7 @@
   width: 180vw;
   background-color: transparent;
   box-shadow: none;
+  margin-top: 0px;
 }
 #travel-form{
   margin-top:50px;
@@ -53,8 +54,7 @@
   border-radius: 5px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  left: 70%;
-  transform: translateX(-50%);
+  right:30px;
 }
 .station-input input{
   margin-right:10px;
@@ -122,6 +122,27 @@
 
 }
 
+#date-picker, #time-picker{
+  padding: 10px;
+  border: #a52a2a solid 2px;
+  border-radius: 50px;
+  width: 120px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  appearance: none; /* Ensure custom styling */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+}
+
+
+/* Change color when choosing from icon */
+#time-picker:focus,#date-picker:focus {
+  border-color: #d11667; 
+  background-color: #f7e5eb; 
+  color: #740938;
+}
+
+
 #buttons button {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -133,7 +154,10 @@
   transition: all 0.3s ease;
   margin-left:4%;
 }
-
+#buttons button:hover, #swap-stations:hover {
+  background-color: #f7e5eb;
+  border-color: #a52a2a;
+}
 
 button:hover {
   background-color: #f7e5eb;
@@ -147,6 +171,7 @@ button:hover {
   padding: 12px 24px;
   border-radius: 25px;
   border:none;
+  cursor: pointer;
 }
 #search_ticket_button:hover {
   background-color: #740938;
@@ -207,6 +232,17 @@ button:hover {
 
 .selected-values p {
   margin: 5px 0;
+}
+#date-modal-description, #time-modal-description{
+  font-size: 20px;
+  color:#740938;
+  
+}
+#close-time-modal, #close-date-modal{
+  transition: all 0.3s ease;
+}
+#close-date-modal:hover, #close-time-modal:hover{
+  background-color: #ad195a;
 }
 /* Wybor biletu */
 
@@ -358,18 +394,6 @@ input[type="number"] {
     font-size: 34px;
 }
 
-/* .summary_opis{
-  display: flex;
-  width: 100%;
-  
-  justify-content: space-between;
-  
-}
-.summary_opis_title{
-  margin-right:30px;
-  margin-left:30px;
-  font-size: 20px;
-} */
 
 #connections {
     display: flex;
@@ -410,8 +434,28 @@ input[type="number"] {
     font-size: 16px;
 }
 
-
-
+#no-connections {
+    text-align: center;
+    font-size: 25px;
+    color: #4d082a;
+    margin-top: 20px;
+}
+#reset-webpage {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  margin-left:20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #740938;
+  color:white;
+  width: fit-content;
+  
+}
+#reset-webpage:hover {
+  background-color: #f5066d;
+}
 /* Ustawienia ceny */
 .connection .cost {
     font-weight: bold;
@@ -427,7 +471,7 @@ input[type="number"] {
   display: flex;
   flex-wrap: wrap;
   border-radius: 0.5rem;
-  background-color: #EEE;
+  background-color: #eeeeee;
   box-sizing: border-box;
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
   padding: 0.25rem;
@@ -457,8 +501,9 @@ input[type="number"] {
 }
 
 .filters .radio input:checked + .name {
-  background-color: #fff;
+  background-color: #740938;
   font-weight: 600;
+  color:white;
 }
 
 
@@ -483,7 +528,7 @@ input[type="number"] {
   margin-top: 20px;
   
   font-size:10px;
-  height:400px;
+  
   width:95vw;
 }
 .summary-left{
@@ -513,19 +558,22 @@ input[type="number"] {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #333;
+  display: flex;
+  flex-direction: column;
 }
 .summary_opis{
   display: flex;
-  width: 100%;
-  /* border: 1px solid black; */
+  margin-right:5px;
+  
   justify-content: space-between;
   
 }
 .summary_opis_title{
-  margin-right:2vw;
-  margin-left:2vw;
+  justify-content: center;
+  display: flex;
+  flex: 1; 
   font-size: 20px;
-  
+  box-sizing: border-box; 
 }
 .ticket-row {
   background: #f8f8f8;
@@ -536,6 +584,7 @@ input[type="number"] {
   border-radius:40px;
   font-weight: bold;
   font-size:13px;
+  padding-right: 5px;
 }
 
 .ticket-row span {
@@ -549,31 +598,44 @@ input[type="number"] {
   font-weight: bold;
   margin: 20px 0;
 }
-
-.modal-content button, #reselect-button button, #add-to-cart-button button, #proceed-to-payment-button button {
+.buttons_summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buttons_summary .top_buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+  font-size: 15px;
+}
+.buttons_summary button{
+  max-height: 50px;
+}
+.modal-content button, .buttons_summary button{
   padding: 10px 20px;
   margin: 10px 5px;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  background-color: #740938;
+  color:white;
+  width: fit-content;
+  
 }
-
-/* #reselect-button {
-  background-color: #f0f0f0;
-  color: #333;
+#proceed-to-payment-button{
+  background-color: #b8125a;
+  margin-top: 20px;
 }
-
-#add-to-cart-button {
-  background-color: #ff6f61;
-  color: #fff;
+.buttons_summary button:hover {
+  background-color: rgb(180, 23, 99)
 }
-
-#proceed-to-payment-button {
-  background-color: #8b1e3f;
-  color: #fff;
-} */
-@media (max-width: 780px) {
+#proceed-to-payment-button:hover{
+  background-color: #f5066d;
+}
+@media (max-width: 859px) {
   .summary-container{
     flex-direction: column;
   }
@@ -591,5 +653,15 @@ input[type="number"] {
   }
   .summary_opis_title{
     font-size: 12px;
+  }
+}
+@media(max-width:582px){
+  .top_buttons{
+    flex-direction: column;
+    width: max-content!important; 
+    align-items: center;
+  }
+  #add-to-cart-button{
+    margin-top:-5px;
   }
 }

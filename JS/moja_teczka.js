@@ -151,13 +151,13 @@ function renderTickets(my_file_tickets, isActive, user) {
         const element = document.createElement('div');
         if (isPolish) {
             element.innerHTML = `  
-                <div class="ticket-info">
+                <div class="ticket-info ticket-info-empty" >
                     <p><strong>Brak Biletów.</strong></p>
                 </div>
             `;
         } else {
             element.innerHTML = `  
-                <div class="ticket-info">
+                <div class="ticket-info ticket-info-empty">
                     <p><strong>No Tickets.</strong></p>
                 </div>
             `;

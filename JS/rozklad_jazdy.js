@@ -1,3 +1,4 @@
+
 function renderContentPolish() {
   const contentContainer = document.querySelector('.div_content_container');
 
@@ -121,6 +122,7 @@ function renderContentEnglish() {
 function renderStops(filter = "", vehicleType = "tram") {
   const stopsContainer = document.getElementById("stops-container");
   const noResultsMessage = document.createElement("p");
+  noResultsMessage.classList.add("no-results");
   const isPolish = get_language();
 
   if (isPolish) {
@@ -278,8 +280,16 @@ function showModal(line) {
             </tbody>
           `;
         }
-        
+        // Zamiana dwukropka na trzy spacje oraz przecinka na <br>
         timetableContainer.appendChild(timetableTable);
+        const tableCells = document.querySelectorAll('td');
+        tableCells.forEach(cell => {
+          let text = cell.textContent;
+          text = text.split(',').map(item => item.trim()).join('<br>');
+          text = text.replace(/:/g, '&nbsp;&nbsp;&nbsp;');
+          cell.innerHTML = text;
+        });
+            
     };
 
     const formatTimeForSchedule = (timeTable, dayType) => {
@@ -322,13 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetButton = document.getElementById("reset-filters");
 
   const isPolish = get_language();
-
+  
   if (isPolish) {
     noResultsMessage.textContent = "Brak linii o wskazanych kryteriach.";
   } else {
     noResultsMessage.textContent = "No lines with the specified criteria.";
   }
 
+  
   noResultsMessage.style.color = "red";
   noResultsMessage.style.display = "none";
   stopsContainer.parentNode.appendChild(noResultsMessage);
@@ -337,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add("hidden");
   });
   
+
   lineFilter.addEventListener("input", () => {
     const filterValue = lineFilter.value;
     const selectedType = [...vehicleTypeInputs].find((input) => input.checked).value;

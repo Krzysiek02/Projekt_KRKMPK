@@ -3,13 +3,12 @@
     max-width: 900px;
     background-color: transparent;
     box-shadow: none;
+    margin-top: 0px;
 }
 .ticket-purchase-container {
     display: flex;
     gap: 20px;
     padding: 20px;
-    
-    
     border-radius: 12px;
     max-width: 1200px;
     margin: 40px auto;

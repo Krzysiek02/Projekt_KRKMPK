@@ -7,7 +7,7 @@
     backdrop-filter: blur(5px);
 }
 #payment-form{
-    border: 2px solid black;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,8 @@
     padding-bottom: 20px;
     font-size: 20px;
     color:#740938;
-    width:500px;
+    width:80vw;
+    max-width: 500px;
     height:500px;
     border-radius: 20px;
     background-color: white;
@@ -28,7 +29,7 @@
   margin-bottom: 10px;
   border: none;
   border-radius: 5px;
-  width: 25vw;
+  width: 70vw;
   max-width: 330px;
   min-width: 200px;
 }
@@ -50,4 +51,17 @@
   color: white;
   cursor: pointer;
   width:250px;
+}
+#payment-form button:hover{
+    background-color: #ad0d53;
+}
+#payment-form button.disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+  color: #666;
+}
+@media(max-width:470px){
+  .payment_form_input input{
+    font-size:23px;
+}
 }

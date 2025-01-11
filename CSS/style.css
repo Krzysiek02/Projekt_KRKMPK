@@ -18,7 +18,7 @@ nav {
   justify-content: space-between;
   width:100%;
   padding-top:5px;
-  
+  height:56px;
 }
 
 .nav_div_right {
@@ -88,7 +88,10 @@ nav {
 .nav_div_left a:hover{
   color: #e6cb6b;
 }
-
+.nav_div_lewy{
+  margin-left: 5px;
+  margin-top:14px;
+}
 .gradient_section {
   width:100%;
   
@@ -115,7 +118,7 @@ nav {
 .back_arrow { 
   position: absolute; 
   left: 40px;
-  top:120px;  
+  top:52px;  
   font-size: 40px; 
   cursor: pointer; 
   color: white;
@@ -270,7 +273,10 @@ nav {
   border-radius: 10px;
   cursor: pointer;
 }
-
+.logout_button{
+  font-weight: bolder;
+  background-color: #8d1636!important;
+}
 .menu_options button:hover {
   background-color: #f00645;
 }
@@ -292,6 +298,9 @@ nav {
 }
 
 @media (max-width: 1000px) {
+  nav{
+    height: auto;
+  }
   .hamburger_menu {
     display: flex;
   }
@@ -318,6 +327,7 @@ nav {
   }
 }
 @media (max-width: 700px) {
+  
   .footer {
     flex-direction: column-reverse;
   }
@@ -330,6 +340,7 @@ nav {
   
 }
 @media(max-width: 510px){
+  
   .logo, .logo_MPK {
     font-size: 18px;
   }

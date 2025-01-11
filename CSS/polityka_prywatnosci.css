@@ -8,4 +8,6 @@
 .div_content_container {
     color: #740938;
     font-size: large;
+    border: 1px solid black;
+    padding-left: 40px;
 }
